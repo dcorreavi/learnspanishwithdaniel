@@ -25,7 +25,13 @@
     All four booking calls-to-action open this event directly:
     https://calendly.com/dcorreavi/free-consultation
     To change the event URL later, edit BOOKING_URL near the bottom.
-    The learning-platform preview is explicitly marked as coming soon.
+
+    Tracking: VK Ads pixel is wired in the bottom script — paste the pixel ID
+    into VK_PIXEL_ID and fire the "booking_click" goal, which is already
+    attached to every booking link.
+
+    Hidden for now: the learning-platform preview (#platform) and the social
+    proof block (#reviews), which is waiting for real student quotes.
   -->
   <style>
     :root {
@@ -421,6 +427,19 @@
     @media (prefers-reduced-motion:reduce){
       *,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important}
     }
+    /* Social proof */
+    .proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+    .proof-card{display:flex;flex-direction:column;gap:18px;background:var(--paper);border:1px solid var(--line);border-radius:23px;padding:28px 26px;transition:transform .2s ease,box-shadow .2s ease}
+    .proof-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+    .proof-quote{margin:0;font-size:15px;line-height:1.7;color:#3C5A50}
+    .proof-person{display:flex;align-items:center;gap:13px;margin-top:auto;padding-top:4px}
+    .proof-avatar{display:grid;place-items:center;flex:none;width:46px;height:46px;border-radius:50%;background:var(--sage);color:var(--forest);font-size:16px;font-weight:800;overflow:hidden}
+    .proof-avatar img{width:100%;height:100%;object-fit:cover}
+    .proof-name{margin:0;font-size:15px;font-weight:760;color:var(--ink)}
+    .proof-meta{margin:0;font-size:13px;color:var(--ink-soft)}
+    .proof-stars{display:flex;gap:4px;color:#D98A3F;font-size:14px;letter-spacing:.08em}
+    [hidden]{display:none!important}
+    @media (max-width:860px){.proof-grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -433,7 +452,6 @@
       </a>
       <div class="nav-center">
         <a href="#who">Для кого</a>
-        <a href="#platform">Как всё устроено</a>
         <a href="#formats">Форматы занятий</a>
       </div>
       <a class="btn btn-dark nav-cta" href="https://calendly.com/dcorreavi/free-consultation" target="_blank" rel="noopener noreferrer" data-booking data-cta="header">
@@ -523,7 +541,7 @@
       </div>
     </section>
 
-    <section class="section platform-wrap" id="platform" aria-labelledby="platform-title">
+    <section class="section platform-wrap" id="platform" aria-labelledby="platform-title" hidden>
       <div class="container">
         <div class="platform-heading">
           <div><div class="platform-kicker"><div class="eyebrow"><span class="eyebrow-dot"></span> Ваш учебный кабинет</div><span class="platform-coming-soon">Скоро появится</span></div><h2 id="platform-title">Не только уроки.<br><span class="serif">Всё в одном месте.</span></h2></div>
@@ -621,6 +639,49 @@
       </div>
     </section>
 
+    <!--
+      SOCIAL PROOF — hidden until real student quotes arrive.
+      To publish: replace the three cards below with real quotes (and photos,
+      if you have them), then remove the `hidden` attribute from <section>.
+      Do not publish stock photos as students: fabricated testimonials are
+      prohibited by EU consumer law and by VK's ad rules.
+    -->
+    <section class="section" id="reviews" aria-labelledby="reviews-title" hidden>
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow"><span class="eyebrow-dot"></span> Уже занимаются</div>
+          <h2 id="reviews-title">Не только про язык. <span class="serif">Про уверенность.</span></h2>
+          <p>Три истории учеников — о том, что изменилось после первых недель.</p>
+        </div>
+        <div class="proof-grid">
+          <article class="proof-card">
+            <div class="proof-stars" aria-label="Оценка 5 из 5">★★★★★</div>
+            <p class="proof-quote">Здесь будет отзыв ученика: что изменилось за первый месяц занятий.</p>
+            <div class="proof-person">
+              <div class="proof-avatar" aria-hidden="true">А</div>
+              <div><p class="proof-name">Имя</p><p class="proof-meta">Город · уровень</p></div>
+            </div>
+          </article>
+          <article class="proof-card">
+            <div class="proof-stars" aria-label="Оценка 5 из 5">★★★★★</div>
+            <p class="proof-quote">Здесь будет отзыв ученика: как прошёл первый урок и что было дальше.</p>
+            <div class="proof-person">
+              <div class="proof-avatar" aria-hidden="true">М</div>
+              <div><p class="proof-name">Имя</p><p class="proof-meta">Город · уровень</p></div>
+            </div>
+          </article>
+          <article class="proof-card">
+            <div class="proof-stars" aria-label="Оценка 5 из 5">★★★★★</div>
+            <p class="proof-quote">Здесь будет отзыв ученика: что получилось после нескольких недель.</p>
+            <div class="proof-person">
+              <div class="proof-avatar" aria-hidden="true">К</div>
+              <div><p class="proof-name">Имя</p><p class="proof-meta">Город · уровень</p></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="closing-section" id="booking" aria-labelledby="booking-title">
       <div class="container">
         <div class="closing">
@@ -648,6 +709,31 @@
   <script>
     'use strict';
 
+    // VK Ads pixel. Create it in VK Ads → Конверсии → Пиксели, then paste the ID here.
+    // In the same cabinet, add a JS event named exactly "booking_click" so the
+    // campaign can optimise for it instead of clicks.
+    const VK_PIXEL_ID = 'REPLACE_ME';
+    const vkPixelActive = VK_PIXEL_ID !== 'REPLACE_ME';
+
+    if (vkPixelActive) {
+      window._tmr = window._tmr || [];
+      window._tmr.push({ id: VK_PIXEL_ID, type: 'pageView', start: (new Date()).getTime() });
+      (function (d, w, id) {
+        if (d.getElementById(id)) return;
+        var ts = d.createElement('script');
+        ts.type = 'text/javascript';
+        ts.async = true;
+        ts.id = id;
+        ts.src = 'https://top-fwz1.mail.ru/js/code.js';
+        var f = function () {
+          var s = d.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(ts, s);
+        };
+        if (w.opera == '[object Opera]') d.addEventListener('DOMContentLoaded', f, false);
+        else f();
+      })(document, window, 'tmr-code');
+    }
+
     // Direct Calendly booking link — no inline calendar or popup.
     const BOOKING_URL = 'https://calendly.com/dcorreavi/free-consultation';
     const bookingUrl = new URL(BOOKING_URL);
@@ -662,6 +748,9 @@
       link.addEventListener('click', () => {
         if (typeof window.gtag === 'function') {
           window.gtag('event', 'calendar_click', { position: link.dataset.cta });
+        }
+        if (vkPixelActive) {
+          window._tmr.push({ id: VK_PIXEL_ID, type: 'reachGoal', goal: 'booking_click' });
         }
       });
     });
