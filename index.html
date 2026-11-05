@@ -328,15 +328,17 @@
       .nav{min-height:70px}
       .brand{font-size:17px}
       .brand-mark{width:36px;height:36px;font-size:25px}
-      .nav-cta{font-size:12px;min-height:39px;padding:10px 12px}
-      .nav-cta svg{display:none}
+      .nav-cta{display:none}
       .hero{padding:42px 0 56px}
       .hero-grid{grid-template-columns:1fr;gap:22px}
       .hero-copy{padding:0}
       .hero-kicker{font-size:10px;letter-spacing:.115em;margin-bottom:20px}
       .hero h1{font-size:clamp(47px,11.5vw,70px);letter-spacing:-.068em;margin-bottom:19px}
       .hero h1 .serif{white-space:normal}
-      .hero-lead{font-size:17px;margin-bottom:24px}
+      .hero-lead{font-size:16.5px;line-height:1.6;margin-bottom:22px}
+      .hero-lead .lead-more{display:none}
+      .hero-under{font-size:12.5px}
+      .hero-under .u-extra{display:none}
       .hero-actions .btn{width:100%;min-height:58px}
       .hero-under{justify-content:center;margin-top:12px}
       .hero-proof{margin-top:28px;gap:8px}
@@ -410,7 +412,8 @@
       .footer{padding:23px 0 96px}
       .footer-inner{align-items:flex-start;flex-direction:column}
       .footer small{font-size:11px}
-      .mobile-cta{position:fixed;display:block;bottom:0;left:0;right:0;z-index:25;padding:11px 16px max(11px,env(safe-area-inset-bottom));background:rgba(250,249,244,.96);border-top:1px solid #DDE5D9;box-shadow:0 -8px 30px rgba(22,65,52,.07);backdrop-filter:blur(10px)}
+      .mobile-cta{position:fixed;display:block;bottom:0;left:0;right:0;z-index:25;padding:11px 16px max(11px,env(safe-area-inset-bottom));background:rgba(250,249,244,.96);border-top:1px solid #DDE5D9;box-shadow:0 -8px 30px rgba(22,65,52,.07);backdrop-filter:blur(10px);transform:translateY(115%);visibility:hidden;transition:transform .25s ease,visibility .25s ease}
+      .mobile-cta.is-on{transform:none;visibility:visible}
       .mobile-cta .btn{display:flex;width:100%;min-height:51px;font-size:14px;border-radius:11px}
       .toast{bottom:88px}
     }
@@ -468,7 +471,7 @@
         <div class="hero-copy">
           <div class="hero-kicker">Онлайн-уроки испанского для русскоязычных</div>
           <h1 id="hero-title">Испанский для <span class="serif">настоящей жизни.</span></h1>
-          <p class="hero-lead">Чувствуйте себя увереннее <strong>в Испании и Латинской Америке</strong> — в поездках, на работе и в повседневных разговорах. Учимся на ситуациях, которые важны именно вам.</p>
+          <p class="hero-lead">Чувствуйте себя увереннее <strong>в Испании и Латинской Америке</strong> — в поездках, на работе и в повседневных разговорах.<span class="lead-more"> Учимся на ситуациях, которые важны именно вам.</span></p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="https://calendly.com/dcorreavi/free-consultation" target="_blank" rel="noopener noreferrer" data-booking data-cta="hero">
               Записаться на бесплатный урок
@@ -477,7 +480,7 @@
           </div>
           <div class="hero-under">
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-            20 минут · бесплатно · без экзамена · можно на русском
+            20 минут · бесплатно<span class="u-extra"> · без экзамена</span> · можно на русском
           </div>
           <div class="hero-proof" aria-label="Преимущества занятий">
             <span class="proof-pill"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Носитель испанского</span>
@@ -753,6 +756,19 @@
         }
       });
     });
+
+    // Mobile sticky CTA: show it only after the hero button scrolls out of view,
+    // so the first screen has a single call to action.
+    const stickyCta = document.querySelector('.mobile-cta');
+    const heroCta = document.querySelector('.hero-actions');
+    if (stickyCta && heroCta) {
+      const updateSticky = () => {
+        stickyCta.classList.toggle('is-on', heroCta.getBoundingClientRect().bottom < 0);
+      };
+      window.addEventListener('scroll', updateSticky, { passive: true });
+      window.addEventListener('resize', updateSticky);
+      updateSticky();
+    }
 
     // Accessible platform mockup tabs; no network or data collection.
     const tabList = document.querySelector('.dash-tabs');
