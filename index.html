@@ -12,14 +12,16 @@
   <title>Испанский для жизни, работы и путешествий — с Даниэлем</title>
   <!--
     QUICK SETUP (no build tools required):
-    1) Near the bottom of this file set BOOKING_URL to your actual calendar link.
-       Example: https://calendly.com/your-name/intro-spanish
-       All CTA buttons will then open that URL. UTM parameters are preserved.
+    1) Booking buttons scroll to the on-page Calendly calendar; a direct link remains as fallback.
+       Booking event URL: https://calendly.com/dcorreavi/free-consultation
+       UTM parameters are preserved.
     2) Portrait photo is embedded below (data URI), so this HTML file works on its own.
     3) OPTIONAL: Replace the clearly labeled coming-soon platform mockup with a real screenshot.
     4) Verify bio, lesson/group policies, and add real pricing/testimonials if available.
-    No fonts, libraries, images, or scripts are loaded from external servers.
+    Calendly's official widget script supplies the inline scheduling calendar.
   -->
+  <!-- Official Calendly inline booking embed. -->
+  <script defer src="https://assets.calendly.com/assets/external/widget.js"></script>
   <style>
     :root {
       --bg:#F8F7F1;
@@ -416,6 +418,24 @@
     @media (prefers-reduced-motion:reduce){
       *,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important}
     }
+
+    /* Inline Calendly booking area */
+    .booking-calendar{max-width:980px;margin:24px auto 0;background:var(--paper);border:1px solid #D5E2D7;border-radius:27px;box-shadow:var(--shadow);overflow:hidden}
+    .booking-calendar-head{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:22px 30px 19px;border-bottom:1px solid #E4EAE4;text-align:left}
+    .booking-calendar-head strong{display:block;font-size:16px;color:var(--ink);letter-spacing:-.02em}
+    .booking-calendar-head span{font-size:13px;color:#667D70}
+    .booking-calendar-tag{background:var(--sage);padding:8px 11px;border-radius:99px;color:var(--forest)!important;font-size:12px!important;font-weight:750;white-space:nowrap}
+    .calendly-inline-widget{width:100%;min-width:320px;height:750px;position:relative}
+    .booking-calendar-fallback{padding:14px 22px 20px;text-align:center;border-top:1px solid #E4EAE4;font-size:13px;color:#62796D}
+    .booking-calendar-fallback a{color:var(--cta);font-weight:760;text-underline-offset:3px}
+    @media(max-width:680px){
+      #booking .container{width:100%}
+      #booking .closing{margin-inline:18px}
+      .booking-calendar{margin-top:18px;border-left:0;border-right:0;border-radius:0}
+      .booking-calendar-head{padding:18px 16px 15px;align-items:flex-start;flex-direction:column;gap:10px}
+      .calendly-inline-widget{height:800px}
+      .booking-calendar-fallback{padding:16px 18px 24px}
+    }
   </style>
 </head>
 <body>
@@ -622,12 +642,15 @@
           <div class="eyebrow"><span class="eyebrow-dot"></span> Начните без стресса</div>
           <h2 id="booking-title">Давайте просто <span class="serif">поговорим.</span></h2>
           <p>За 20 минут поймём ваш уровень, обсудим цели и наметим первые шаги. <strong style="color:var(--ink)">Я говорю по-русски</strong> — переживать не о чем.</p>
-          <a class="btn btn-primary" href="#booking" data-booking data-cta="footer">
-            Записаться бесплатно · 20 минут
-            <svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </a>
-          <div class="closing-note">20 минут · онлайн · бесплатно</div>
-          <div id="setupWarning" class="setup-warning" role="note">Для публикации: откройте HTML-файл в редакторе и вставьте настоящую ссылку на календарь в переменную <code>BOOKING_URL</code> внизу файла. После этого все кнопки будут открывать вашу запись.</div>
+          <div class="closing-note">Выберите удобное время в календаре ниже · 20 минут · онлайн · бесплатно</div>
+        </div>
+        <div class="booking-calendar" aria-label="Календарь записи на бесплатный вводный урок">
+          <div class="booking-calendar-head">
+            <div><strong>Выберите дату и время</strong><span>Забронируйте бесплатную 20-минутную встречу прямо здесь.</span></div>
+            <span class="booking-calendar-tag">Бесплатно · 20 минут</span>
+          </div>
+          <div class="calendly-inline-widget" data-url="https://calendly.com/dcorreavi/free-consultation" data-resize="true" style="min-width:320px;height:750px;"></div>
+          <div class="booking-calendar-fallback">Календарь не загрузился? <a href="https://calendly.com/dcorreavi/free-consultation" id="calendar-fallback-link" target="_blank" rel="noopener noreferrer">Откройте запись в Calendly</a>.</div>
         </div>
       </div>
     </section>
@@ -645,52 +668,26 @@
   <script>
     'use strict';
 
-    // ===== EDIT THIS ONE LINE TO ACTIVATE ALL BOOKING BUTTONS =====
-    const BOOKING_URL = 'PASTE_YOUR_CALENDAR_LINK_HERE';
-    // For example: 'https://calendly.com/your-name/spanish-intro'
-    // ==============================================================
-
+    // Booking: primary CTAs scroll to the inline Calendly calendar.
+    const BOOKING_URL = 'https://calendly.com/dcorreavi/free-consultation';
     const ctaLinks = document.querySelectorAll('[data-booking]');
-    const toast = document.getElementById('toast');
-    let toastTimer;
-    function showToast(message) {
-      toast.textContent = message;
-      toast.classList.add('show');
-      clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => toast.classList.remove('show'), 4400);
+    const bookingUrl = new URL(BOOKING_URL);
+    const campaignParameters = new URLSearchParams(window.location.search);
+    for (const key of ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term']) {
+      if (campaignParameters.has(key)) bookingUrl.searchParams.set(key, campaignParameters.get(key));
     }
+    // Calendly's deferred script reads this URL after parsing completes.
+    const calendarWidget = document.querySelector('.calendly-inline-widget');
+    if (calendarWidget) calendarWidget.dataset.url = bookingUrl.href;
+    const calendarFallback = document.getElementById('calendar-fallback-link');
+    if (calendarFallback) calendarFallback.href = bookingUrl.href;
 
-    let validBookingUrl = null;
-    try {
-      const parsed = new URL(BOOKING_URL);
-      if (parsed.protocol === 'https:' || parsed.protocol === 'http:') {
-        validBookingUrl = parsed;
-        // Pass acquisition UTM data into compatible calendar links.
-        const campaignParameters = new URLSearchParams(window.location.search);
-        for (const key of ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term']) {
-          if (campaignParameters.has(key)) parsed.searchParams.set(key, campaignParameters.get(key));
+    ctaLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'calendar_click', { position: link.dataset.cta });
         }
-      }
-    } catch (_) { /* In preview mode, the calendar link has not been configured. */ }
-
-    ctaLinks.forEach((link) => {
-      if (validBookingUrl) {
-        link.href = validBookingUrl.href;
-        link.target = '_blank';
-        link.rel = 'noopener noreferrer';
-        link.addEventListener('click', () => {
-          // Optional event for an analytics tool already installed by the site owner.
-          if (typeof window.gtag === 'function') {
-            window.gtag('event', 'calendar_click', { position: link.dataset.cta });
-          }
-        });
-      } else {
-        link.addEventListener('click', (event) => {
-          event.preventDefault();
-          document.getElementById('setupWarning').classList.add('visible');
-          showToast('Это предпросмотр: добавьте ссылку на календарь в BOOKING_URL, чтобы включить запись.');
-        });
-      }
+      });
     });
 
     // Accessible platform mockup tabs; no network or data collection.
