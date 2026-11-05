@@ -27,9 +27,8 @@
     https://calendly.com/dcorreavi/free-consultation
     To change the event URL later, edit BOOKING_URL near the bottom.
 
-    Tracking: VK Ads pixel is wired in the bottom script — paste the pixel ID
-    into VK_PIXEL_ID and fire the "booking_click" goal, which is already
-    attached to every booking link.
+    Tracking: VK Ads pixel 3812030 loads from <head>; every booking link also
+    fires its "booking_click" goal.
 
     Hidden for now: the learning-platform preview (#platform) and the social
     proof block (#reviews), which is waiting for real student quotes.
@@ -445,6 +444,19 @@
     [hidden]{display:none!important}
     @media (max-width:860px){.proof-grid{grid-template-columns:1fr}}
   </style>
+  <!-- Top.Mail.Ru counter (VK Ads pixel 3812030) -->
+  <script type="text/javascript">
+  var _tmr = window._tmr || (window._tmr = []);
+  _tmr.push({id: "3812030", type: "pageView", start: (new Date()).getTime()});
+  (function (d, w, id) {
+    if (d.getElementById(id)) return;
+    var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;
+    ts.src = "https://top-fwz1.mail.ru/js/code.js";
+    var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+    if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+  })(document, window, "tmr-code");
+  </script>
+  <noscript><div><img src="https://top-fwz1.mail.ru/counter?id=3812030;js=na" style="position:absolute;left:-9999px" alt="Top.Mail.Ru" /></div></noscript>
 </head>
 <body>
   <a class="skip" href="#main">Перейти к содержанию</a>
@@ -711,31 +723,6 @@
   <script>
     'use strict';
 
-    // VK Ads pixel. Create it in VK Ads → Конверсии → Пиксели, then paste the ID here.
-    // In the same cabinet, add a JS event named exactly "booking_click" so the
-    // campaign can optimise for it instead of clicks.
-    const VK_PIXEL_ID = 'REPLACE_ME';
-    const vkPixelActive = VK_PIXEL_ID !== 'REPLACE_ME';
-
-    if (vkPixelActive) {
-      window._tmr = window._tmr || [];
-      window._tmr.push({ id: VK_PIXEL_ID, type: 'pageView', start: (new Date()).getTime() });
-      (function (d, w, id) {
-        if (d.getElementById(id)) return;
-        var ts = d.createElement('script');
-        ts.type = 'text/javascript';
-        ts.async = true;
-        ts.id = id;
-        ts.src = 'https://top-fwz1.mail.ru/js/code.js';
-        var f = function () {
-          var s = d.getElementsByTagName('script')[0];
-          s.parentNode.insertBefore(ts, s);
-        };
-        if (w.opera == '[object Opera]') d.addEventListener('DOMContentLoaded', f, false);
-        else f();
-      })(document, window, 'tmr-code');
-    }
-
     // Direct Calendly booking link — no inline calendar or popup.
     const BOOKING_URL = 'https://calendly.com/dcorreavi/free-consultation';
     const bookingUrl = new URL(BOOKING_URL);
@@ -751,8 +738,10 @@
         if (typeof window.gtag === 'function') {
           window.gtag('event', 'calendar_click', { position: link.dataset.cta });
         }
-        if (vkPixelActive) {
-          window._tmr.push({ id: VK_PIXEL_ID, type: 'reachGoal', goal: 'booking_click' });
+        // Same pixel ID as the counter in <head>. Event "booking_click" must
+        // exist in VK Ads → Конверсии → Пиксели → События (JS-событие).
+        if (window._tmr) {
+          window._tmr.push({ id: '3812030', type: 'reachGoal', goal: 'booking_click' });
         }
       });
     });
