@@ -435,6 +435,14 @@
     .proof-card{display:flex;flex-direction:column;gap:18px;background:var(--paper);border:1px solid var(--line);border-radius:23px;padding:28px 26px;transition:transform .2s ease,box-shadow .2s ease}
     .proof-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
     .proof-quote{margin:0;font-size:15px;line-height:1.7;color:#3C5A50}
+    .proof-more{margin-top:2px}
+    .proof-more summary{cursor:pointer;font-size:14px;font-weight:700;color:var(--cta);list-style:none;display:inline-flex;gap:6px;align-items:center}
+    .proof-more summary::-webkit-details-marker{display:none}
+    .proof-more summary::after{content:"↓";font-size:13px;transition:transform .2s ease}
+    .proof-more[open] summary::after{transform:rotate(180deg)}
+    .proof-more .full{margin:14px 0 0;font-size:15px;line-height:1.72;color:#3C5A50}
+    .proof-more .full p{margin:0 0 12px}
+    .proof-more .full p:last-child{margin-bottom:0}
     .proof-person{display:flex;align-items:center;gap:13px;margin-top:auto;padding-top:4px}
     .proof-avatar{display:grid;place-items:center;flex:none;width:46px;height:46px;border-radius:50%;background:var(--sage);color:var(--forest);font-size:16px;font-weight:800;overflow:hidden}
     .proof-avatar img{width:100%;height:100%;object-fit:cover}
@@ -670,7 +678,15 @@
         <div class="proof-grid">
           <article class="proof-card">
             <div class="proof-stars" aria-label="Оценка 5 из 5">★★★★★</div>
-            <p class="proof-quote">Начинала буквально с «hola». С Даниэлем дошла до того, что в Бильбао спокойно справлялась с реальными ситуациями.</p>
+            <p class="proof-quote">Переехала в Бильбао практически с нулевым испанским. Сейчас спокойно схожу в поликлинику, объяснюсь в супермаркете и поддержу разговор.</p>
+            <details class="proof-more">
+              <summary>Читать полностью</summary>
+              <div class="full">
+                <p>Мне очень понравилось заниматься с Даниэлем. Я переехала жить в Испанию, в Бильбао, практически с нулевым уровнем испанского. Благодаря занятиям сейчас я спокойно могу сходить в поликлинику, объясниться в супермаркете, зайти в небольшие местные магазинчики и поддержать разговор. Для меня это очень ощутимый результат и, главное, большая уверенность в повседневной жизни.</p>
+                <p>Отдельно хочу отметить сам подход к обучению. Уроки хорошо адаптированы под мой темп: мы не переходим к новой теме, пока не закрепили предыдущую. При этом повторения органично встроены в общение, и ты даже не замечаешь, как снова и снова используешь изученные слова и конструкции.</p>
+                <p>Однозначно рекомендую Даниэля тем, кто хочет не просто изучать грамматику, а действительно научиться общаться на испанском!</p>
+              </div>
+            </details>
             <div class="proof-person">
               <div class="proof-avatar" aria-hidden="true"><img src="avatars/lidiia.jpg" width="46" height="46" alt="" loading="lazy" decoding="async"></div>
               <div><p class="proof-name">Лидия</p><p class="proof-meta">Санкт-Петербург</p></div>
