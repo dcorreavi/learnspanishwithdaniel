@@ -432,6 +432,7 @@
     }
     /* Social proof */
     .proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+    .proof-grid.is-open{align-items:start}
     .proof-card{display:flex;flex-direction:column;gap:18px;background:var(--paper);border:1px solid var(--line);border-radius:23px;padding:28px 26px;transition:transform .2s ease,box-shadow .2s ease}
     .proof-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
     .proof-quote{margin:0;font-size:15px;line-height:1.7;color:#3C5A50}
@@ -791,6 +792,19 @@
       window.addEventListener('resize', updateSticky);
       updateSticky();
     }
+
+    // Reviews: opening one disclosure opens all three, closing one closes all,
+    // so the column heights stay in sync instead of the grid jumping.
+    const reviewDetails = [...document.querySelectorAll('details.proof-more')];
+    const reviewGrid = document.querySelector('.proof-grid');
+    reviewDetails.forEach((item) => {
+      item.addEventListener('toggle', () => {
+        reviewDetails.forEach((other) => {
+          if (other !== item && other.open !== item.open) other.open = item.open;
+        });
+        if (reviewGrid) reviewGrid.classList.toggle('is-open', reviewDetails.some((d) => d.open));
+      });
+    });
 
     // Accessible platform mockup tabs; no network or data collection.
     const tabList = document.querySelector('.dash-tabs');
