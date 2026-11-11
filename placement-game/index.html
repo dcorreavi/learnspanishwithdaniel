@@ -36,6 +36,10 @@ main{max-width:none;margin:0;padding:0;height:100dvh;width:100%;display:grid}
 .hero-ring:before{content:"";position:absolute;top:-5px;left:50%;width:10px;height:10px;margin-left:-5px;border-radius:50%;
   background:#e7c15b;box-shadow:0 0 18px #e7c15bb3}
 @keyframes ring-spin{to{transform:rotate(360deg)}}
+.hero-art{position:relative;width:clamp(64px,13vh,140px);animation:bob 4.6s ease-in-out infinite}
+.hero-art svg{width:100%;height:auto;display:block;filter:drop-shadow(0 12px 18px #00000066)}
+.pfh{width:34px;height:34px;flex:none;display:block}
+.pfh svg{width:100%;height:100%;display:block;border-radius:9px;box-shadow:0 2px 5px #253e321a}
 .hero-flag{position:relative;font-size:clamp(52px,10.5vh,104px);line-height:1;filter:drop-shadow(0 12px 18px #00000066);
   animation:bob 4.6s ease-in-out infinite}
 @keyframes bob{0%,100%{transform:translateY(-5px) rotate(-3deg)}50%{transform:translateY(7px) rotate(3deg)}}
@@ -161,6 +165,25 @@ function results(partial=false){leaveCombat();runId++;state.screen='results';let
 home();
 
 /* ===================== ARCADE SCREENS ===================== */
+
+function heroArt(id){
+  const P={general:['#2f7a5c','#e7c15b'],spain:['#c8503c','#f2d35c'],mexico:['#3a8a4a','#f2d35c'],colombia:['#f0c33c','#3a6fc0'],argentina:['#6fb3e0','#ffffff']}[id]||['#2f7a5c','#e7c15b'];
+  const body=P[0], band=P[1];
+  let top='';
+  if(id==='mexico'){top='<path d="M22 26 Q22 8 48 8 Q74 8 74 26 L70 30 Q48 20 26 30 Z" fill="#8a5a2b"/><path d="M24 30 Q48 22 72 30 L70 34 Q48 28 26 34 Z" fill="#a86a32"/>';}
+  else if(id==='argentina'){top='<circle cx="48" cy="24" r="9" fill="#f4d35c"/>' + [0,45,90,135].map(a=>'<line x1="48" y1="11" x2="48" y2="17" stroke="#f4d35c" stroke-width="3" transform="rotate('+a+' 48 24)"/>').join('');}
+  else if(id==='spain'){top='<path d="M36 24 Q48 16 60 24 L60 30 Q48 23 36 30 Z" fill="#1f1f1f"/>';}
+  else if(id==='colombia'){top='<path d="M40 24 L48 10 L56 24 Z" fill="#3a6fc0"/>';}
+  else{top='<path d="M34 22 Q48 12 62 22 L62 27 Q48 20 34 27 Z" fill="#1f3a30"/>';}
+  return '<svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">'
+    + '<path d="M28 26 Q28 8 48 8 Q68 8 68 26 L72 88 Q48 96 24 88 Z" fill="'+body+'"/>'
+    + '<rect x="26" y="58" width="44" height="11" rx="5" fill="'+band+'" opacity="0.9"/>'
+    + '<circle cx="38" cy="38" r="4.5" fill="#ffffff"/><circle cx="58" cy="38" r="4.5" fill="#ffffff"/>'
+    + '<circle cx="38" cy="38" r="2.1" fill="#1f3a30"/><circle cx="58" cy="38" r="2.1" fill="#1f3a30"/>'
+    + '<path d="M42 47 Q48 53 54 47" stroke="#1f3a30" stroke-width="2.4" fill="none" stroke-linecap="round"/>'
+    + top + '</svg>';
+}
+
 const HERO_NAMES={general:'Путешественник',spain:'Живу в Испании',mexico:'Живу в Мексике',colombia:'Живу в Колумбии',argentina:'Живу в Аргентине'};
 function heroName(id){return HERO_NAMES[id]||countries[id].name}
 function arcTop(step){
@@ -183,7 +206,7 @@ home=function(){
   app.innerHTML=`<div class="arc">${arcTop(1)}
     <div class="arc-main hero">
       <div class="hero-stage">
-        <div class="hero-token" id="heroToken"><div class="hero-ring"></div><span class="hero-flag">${c.flag}</span></div>
+        <div class="hero-token" id="heroToken"><div class="hero-ring"></div><div class="hero-art">${heroArt(state.country)}</div></div>
         <div class="hero-name">${heroName(state.country)}</div>
         <div class="hero-sub">${c.name}</div>
       </div>
@@ -193,7 +216,7 @@ home=function(){
         <p class="arc-lead">Пять ступеней, три снаряда и слова, которые летят к базе. Примерный словарный уровень — за 5–7 минут.</p>
         <div class="persona-list">
           ${ids.map(id=>`<button class="persona ${state.country===id?'is-on':''}" data-country="${id}" aria-pressed="${state.country===id}">
-            <span class="pf">${countries[id].flag}</span>
+            <span class="pfh">${heroArt(id)}</span>
             <span><b>${heroName(id)}</b><small>${countries[id].sub}</small></span>
             <span class="tick">${state.country===id?'✓':''}</span>
           </button>`).join('')}
