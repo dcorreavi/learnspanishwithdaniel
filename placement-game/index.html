@@ -22,6 +22,8 @@ main{max-width:none;margin:0;padding:0;height:100dvh;width:100%;display:grid}
 .arc-steps .on:before{content:'';display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--orange);margin-right:5px;vertical-align:middle}
 .arc-back{color:#4d6349;text-decoration:none;border:1px solid #c6d0bb;border-radius:30px;padding:7px 13px;background:#ffffffa6;font-size:10px}
 .arc-back:hover{background:#fff}
+.arc-help{width:22px;height:22px;border-radius:50%;border:1px solid #c6d0bb;background:#ffffffa6;color:#4d6349;font-size:11px;font-weight:800;line-height:1;padding:0;cursor:pointer}
+.arc-help:hover{background:#fff}
 .arc-main{flex:1;min-height:0;display:grid}
 /* ---- hero ---- */
 .hero{grid-template-columns:minmax(200px,.85fr) 1.15fr;align-items:center;gap:clamp(16px,3vw,54px)}
@@ -170,6 +172,7 @@ function arcTop(step){
       <span class="${step===2?'on':''}"><b>2</b> Снаряд</span>
       <span class="${step===3?'on':''}"><b>3</b> Игра</span>
       <span class="${step===4?'on':''}"><b>4</b> Результат</span>
+      <button class="arc-help" type="button" onclick="document.getElementById('method').showModal()" aria-label="Как считается результат">?</button>
     </div>
   </div>`;
 }
