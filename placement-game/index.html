@@ -78,6 +78,41 @@ main{max-width:none;margin:0;padding:0;height:100dvh;width:100%;display:grid}
 .weapon-foot{display:flex;align-items:center;justify-content:space-between;gap:14px}
 .weapon-hint{font-size:10.5px;color:#6b7d63;text-align:center;flex:1}
 .arc-back2{background:#ffffffa6;border:1px solid #c6d0bb;border-radius:30px;padding:9px 15px;font-size:11px;color:#4d6349}
+
+/* ---- result screen ---- */
+.res-screen .res{flex:1;min-height:0;display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(16px,3vw,40px);align-items:stretch}
+.res-main{display:flex;flex-direction:column;justify-content:center;gap:clamp(8px,1.5vh,16px);min-height:0}
+.res-title{margin:0;font-size:clamp(24px,3.4vh,38px);line-height:1.05;letter-spacing:-1.2px}
+.res-level-row{display:flex;align-items:flex-end;gap:clamp(12px,2vw,24px);border-top:1px solid #cfd8c4;border-bottom:1px solid #cfd8c4;padding:clamp(8px,1.6vh,18px) 0}
+.res-level{font-family:Georgia,serif;font-size:clamp(54px,9.6vh,100px);line-height:.84;color:var(--green);letter-spacing:-.045em}
+.res-level-meta{display:flex;flex-direction:column;gap:9px;padding-bottom:5px}
+.res-level-meta p{margin:0;font-size:clamp(10.5px,1.45vh,13px);line-height:1.45;color:#5b6f57;max-width:36ch}
+.res-track{display:flex;gap:6px;flex-wrap:wrap}
+.res-track span{font-size:9.5px;font-weight:800;letter-spacing:.05em;padding:4px 9px;border-radius:20px;border:1px solid #cfd8c4;color:#8a977f;background:#ffffff8c}
+.res-track span.on{background:#dfe7cf;border-color:#a7b78c;color:#33503a}
+.res-track span.now{background:var(--orange);border-color:var(--orange);color:#fff}
+.res-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.res-stats>div{border-left:1px solid #cfd8c4;padding-left:12px}
+.res-stats>div:first-child{border-left:0;padding-left:0}
+.res-stats strong{display:block;font-size:clamp(17px,2.4vh,24px);letter-spacing:-.02em}
+.res-stats span{display:block;font-size:10px;color:#6b7d63;margin-top:2px}
+.res-note{margin:0;font-size:clamp(11.5px,1.6vh,14px);line-height:1.5;color:#3f5a49;max-width:54ch}
+.res-fine{margin:0;font-size:10px;line-height:1.5;color:#7d8c79;max-width:54ch}
+.res-side{background:#eeefe3;border:1px solid #cfd8c4;border-radius:20px;padding:clamp(14px,2.2vh,24px);display:flex;flex-direction:column;gap:clamp(6px,1.1vh,11px);min-height:0}
+.res-hero{width:clamp(46px,7.5vh,70px)}
+.res-side h2{margin:0;font-size:clamp(17px,2.4vh,25px);line-height:1.1;letter-spacing:-.6px}
+.res-side p{margin:0;font-size:clamp(10.5px,1.45vh,13px);line-height:1.5;color:#54685a}
+.res-cta{width:100%;justify-content:space-between;margin-top:6px}
+.res-under{font-size:9.5px;color:#6b7d63;text-align:center}
+.res-side .review{margin:4px 0 0;font-size:11px}
+.res-side .review summary{font-size:10.5px}
+.res-side .textbtn{font-size:10.5px;align-self:flex-start;padding:4px 0}
+@media (max-width:900px){
+  .res-screen .res{grid-template-columns:1fr;overflow:auto;gap:12px}
+  .res-main{justify-content:flex-start}
+  .res-level{font-size:clamp(46px,11vh,72px)}
+}
+
 /* ---- results / interlude fit ---- */
 .results,.interlude{max-height:calc(100dvh - 32px);overflow:auto;margin:auto;width:min(760px,calc(100vw - 32px))}
 body.playing .arc{display:none}
@@ -162,7 +197,48 @@ document.addEventListener('visibilitychange',()=>{if(document.hidden&&state.scre
 function next(){state.q++;if(state.q<state.queue.length){game();return}const core=state.answers.filter(a=>a.stage===state.stage&&!a.regional&&!a.extra),hits=core.filter(a=>a.correct).length;if(state.extra){const extra=state.answers.filter(a=>a.stage===state.stage&&a.extra);conclude(extra.filter(a=>a.correct).length>=2);return}const pass=state.country==='general'?5:4,border=3;if(hits>=pass){conclude(true)}else if(hits>=border){state.extra=true;state.queue=state.used.splice(0,3).map(r=>makeQ(r));state.q=0;interlude('Уточним результат','Ещё три слова этой сложности — чтобы лучше понять, насколько уверенно ты их узнаёшь.','Продолжить',game,false)}else conclude(false)}
 function conclude(pass){if(pass)state.passed=state.stage;const a=state.answers.filter(a=>a.stage===state.stage),h=a.filter(a=>a.correct).length;if(pass&&state.stage<4){interlude('Ступень пройдена!',`Ты распознал ${h} из ${a.length} слов и выражений. Впереди — «${levels[state.stage+1]}».`,'На следующую ступень',()=>{state.stage++;beginStage()},true)}else if(pass){interlude('Все пять ступеней!',`Ты прошёл весь маршрут. Посмотрим, что получилось.`,'Мой результат',()=>results(false),true)}else{interlude('Твоя точка старта найдена',`На этой ступени ты распознал ${h} из ${a.length} слов. Этого достаточно, чтобы предложить следующий шаг.`,'Мой результат',()=>results(false),false)}}
 function interlude(title,desc,label,action,celebrate){stopCombat();state.screen='interlude';app.innerHTML=steps(3)+`<div class="interlude"><div class="medal">${celebrate?'✦':'◎'}</div><div class="eyebrow" style="justify-content:center">${state.stage+1} / 5 · ${levels[state.stage]}</div><h2>${title}</h2><p>${desc}</p><p>${state.points} игровых очков · ${countries[state.country].name}</p><button class="primary" id="continue">${label} →</button></div>`;$('#continue').onclick=action;$('#continue').focus({preventScroll:true});if(celebrate){let b=$('.medal').getBoundingClientRect();burst(b.left+b.width/2,b.top+b.height/2)}}
-function results(partial=false){leaveCombat();runId++;state.screen='results';let core=state.answers.filter(a=>!a.regional),reg=state.answers.filter(a=>a.regional),hit=core.filter(a=>a.correct).length;let band=state.passed<0?'Старт':['A1','A2','B1','B2','B2+'][state.passed];let explanations=['Начни с самых частых слов: люди, еда, дом и повседневные действия.','Ты узнаёшь базовые слова. Следующий шаг — повседневные ситуации и короткие выражения.','Повседневная лексика уже знакома. Расширяй словарь для планов, впечатлений и решения бытовых задач.','Ты узнаёшь много практических выражений. Дальше — более точные значения и абстрактная лексика.','Ты уверенно справляешься с более сложной лексикой. Следующий шаг — оттенки смысла и устойчивые выражения.','Ты узнаёшь и сложные выражения. Теперь стоит проверить, насколько свободно ты используешь их в речи.'][state.passed+1];let tooFew=partial&&state.passed<0;app.innerHTML=steps(4)+`<div class="results"><div class="eyebrow" style="justify-content:center">${countries[state.country].flag} ТВОЙ РЕЗУЛЬТАТ</div><h2>${tooFew?'Первые слова — первый шаг':partial?'Промежуточный результат':'Испанский становится ближе.'}</h2><div class="result-level">${tooFew?'—':band}</div><p>${tooFew?'Пока недостаточно ответов для оценки.':state.passed<0?'Начальная ступень: базовая лексика пока требует практики.':'Примерный уровень узнавания общей лексики'+(partial?' · не ниже пройденной ступени':'')}</p><div class="stats"><div><strong>${hit}/${core.length}</strong><small>общих слов распознано</small></div><div><strong>${state.points}</strong><small>игровых очков</small></div></div>${reg.length?`<p class="note">${countries[state.country].name}: ${reg.filter(a=>a.correct).length} из ${reg.length} местных слов и выражений.<br>Небольшая выборка; учитывается отдельно от общего уровня.</p>`:''}<p>${tooFew?'Пройди хотя бы первую ступень, чтобы получить ориентир.':explanations}</p><p class="note">${partial?'Игра завершена досрочно. ':''}Это предварительная оценка по небольшой выборке слов,<br>а не полного уровня испанского или общего количества знакомых слов.</p><div class="cta"><h2>А как ты говоришь<br>по-испански?</h2><p>На бесплатной 20-минутной встрече со мной проверим разговорный уровень и обсудим, что учить дальше.</p><a class="primary orange" href="https://calendly.com/dcorreavi/free-consultation" target="_blank" rel="noopener">Проверить разговорный уровень бесплатно ↗</a><p class="note">Даниэль · Носитель испанского · Можно по-русски</p></div><details class="review"><summary>Посмотреть слова этой игры (${state.answers.length})</summary>${state.answers.map(a=>`<div class="review-row"><span>${a.correct?'✓':'○'} ${a.ru}<br><small>${a.regional?'Местное выражение':'Ступень '+(a.stage+1)}</small></span><strong>${a.answer}</strong></div>`).join('')}</details><button class="textbtn" id="again">Сыграть ещё раз или выбрать другую страну →</button><div class="under">При повторной игре ответы могут быть знакомы — результат уже менее показателен.</div></div>`;$('#again').onclick=home;window.scrollTo({top:0,behavior:'instant'})}
+function results(partial=false){
+  leaveCombat();runId++;state.screen='results';
+  const core=state.answers.filter(a=>!a.regional),reg=state.answers.filter(a=>a.regional),hit=core.filter(a=>a.correct).length;
+  const band=state.passed<0?'Старт':['A1','A2','B1','B2','B2+'][state.passed];
+  const explanations=['Начни с самых частых слов: люди, еда, дом и повседневные действия.','Ты узнаёшь базовые слова. Следующий шаг — повседневные ситуации и короткие выражения.','Повседневная лексика уже знакома. Расширяй словарь для планов, впечатлений и решения бытовых задач.','Ты узнаёшь много практических выражений. Дальше — более точные значения и абстрактная лексика.','Ты уверенно справляешься с более сложной лексикой. Следующий шаг — оттенки смысла и устойчивые выражения.','Ты узнаёшь и сложные выражения. Теперь стоит проверить, насколько свободно ты используешь их в речи.'][state.passed+1];
+  const tooFew=partial&&state.passed<0;
+  const regHit=reg.filter(a=>a.correct).length;
+  const track=['A1','A2','B1','B2','B2+'].map((b,i)=>`<span class="${state.passed>i?'on':state.passed===i?'now':''}">${b}</span>`).join('');
+  app.innerHTML=`<div class="arc res-screen">${arcTop(4)}
+    <div class="res">
+      <section class="res-main">
+        <div class="eyebrow">${countries[state.country].flag} РЕЗУЛЬТАТ · ${heroName(state.country)}</div>
+        <h1 class="res-title">${tooFew?'Первые слова — первый шаг':partial?'Промежуточный результат':'Испанский становится ближе.'}</h1>
+        <div class="res-level-row">
+          <div class="res-level">${tooFew?'—':band}</div>
+          <div class="res-level-meta">
+            <p>${tooFew?'Пока недостаточно ответов для оценки.':'Примерный уровень узнавания общей лексики'+(partial?' · не ниже пройденной ступени':'')}</p>
+            <div class="res-track">${track}</div>
+          </div>
+        </div>
+        <div class="res-stats">
+          <div><strong>${hit}/${core.length}</strong><span>слов распознано</span></div>
+          <div><strong>${state.points}</strong><span>игровых очков</span></div>
+          ${reg.length?`<div><strong>${regHit}/${reg.length}</strong><span>местных выражений</span></div>`:''}
+        </div>
+        <p class="res-note">${tooFew?'Пройди хотя бы первую ступень, чтобы получить ориентир.':explanations}</p>
+        <p class="res-fine">${partial?'Игра завершена досрочно. ':''}Предварительная оценка по небольшой выборке слов — не полный уровень испанского и не общее число знакомых слов.</p>
+      </section>
+      <aside class="res-side">
+        <div class="res-hero" aria-hidden="true">${heroArt(state.country)}</div>
+        <h2>А как ты говоришь по-испански?</h2>
+        <p>На бесплатной 20-минутной встрече со мной проверим разговорный уровень и обсудим, что учить дальше.</p>
+        <a class="primary orange res-cta" href="https://calendly.com/dcorreavi/free-consultation" target="_blank" rel="noopener">Проверить разговорный уровень <span>↗</span></a>
+        <div class="res-under">20 минут · бесплатно · можно по-русски</div>
+        <details class="review"><summary>Слова этой игры (${state.answers.length})</summary>${state.answers.map(a=>`<div class="review-row"><span>${a.correct?'✓':'○'} ${a.ru}<br><small>${a.regional?'Местное выражение':'Ступень '+(a.stage+1)}</small></span><strong>${a.answer}</strong></div>`).join('')}</details>
+        <button class="textbtn" id="again">Сыграть ещё раз или выбрать другую страну →</button>
+      </aside>
+    </div>
+  </div>`;
+  $('#again').onclick=home;
+  window.scrollTo({top:0,behavior:'instant'});
+}
 /* ===================== ARCADE SCREENS ===================== */
 
 const HERO_PALETTE={general:{shirt:'#2f7a5c',hair:'#3a2a20',skin:'#f2c49b',accent:'#e7c15b',hat:'cap'},spain:{shirt:'#c8503c',hair:'#2b1d16',skin:'#f2c49b',accent:'#f2d35c',hat:'none'},mexico:{shirt:'#3a8a4a',hair:'#2b1d16',skin:'#e8b78c',accent:'#f2d35c',hat:'sombrero'},colombia:{shirt:'#f0c33c',hair:'#2b1d16',skin:'#dfa87b',accent:'#3a6fc0',hat:'none'},argentina:{shirt:'#6fb3e0',hair:'#2b1d16',skin:'#f2c49b',accent:'#ffffff',hat:'none'}};
