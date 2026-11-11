@@ -451,6 +451,30 @@
     .proof-meta{margin:0;font-size:13px;color:var(--ink-soft)}
     .proof-stars{display:flex;gap:4px;color:#D98A3F;font-size:14px;letter-spacing:.08em}
     [hidden]{display:none!important}
+
+    /* Game teaser */
+    .teaser-card{display:grid;grid-template-columns:1.02fr .98fr;gap:26px;align-items:center;text-decoration:none;
+      background:var(--paper);border:1px solid var(--line);border-radius:30px;padding:34px 36px;transition:transform .2s ease,box-shadow .2s ease}
+    .teaser-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+    .teaser-copy h2{margin:10px 0 12px;font-size:clamp(28px,3.4vw,42px);line-height:1.05}
+    .teaser-copy p{font-size:16px;line-height:1.7;margin:0 0 20px;max-width:44ch}
+    .teaser-copy .btn{pointer-events:none}
+    .teaser-note{display:block;margin-top:14px;font-size:12.5px;color:#6A7C72}
+    .teaser-art{position:relative;height:296px;border-radius:22px;overflow:hidden;background:radial-gradient(120% 90% at 60% 0%,#eef1dc,#dfe5cd);border:1px solid #d3ddc4}
+    .ta-hud{position:absolute;top:14px;left:14px;right:14px;display:flex;justify-content:space-between;font-size:9px;font-weight:800;letter-spacing:.1em;color:#4d6349}
+    .ta-hud span{background:#ffffffc4;border:1px solid #cbd5c0;border-radius:20px;padding:5px 9px}
+    .ta-prompt{position:absolute;top:62px;left:0;right:0;text-align:center;font-size:8.5px;letter-spacing:.18em;font-weight:800;color:#5f7457}
+    .ta-word{position:absolute;top:80px;left:0;right:0;text-align:center;font-size:34px;font-weight:800;letter-spacing:-.03em;color:var(--ink)}
+    .ta-tokens{position:absolute;left:14px;right:14px;bottom:98px;display:flex;gap:9px;justify-content:center}
+    .ta-tokens span{background:#FFFDF8;border:1px solid #b8c8ab;border-radius:10px;box-shadow:0 4px 0 #b6c6a9;padding:11px 13px;font-size:13px;font-weight:800;color:#22392f;animation:float 4.6s ease-in-out infinite}
+    .ta-tokens span:nth-child(2){animation-delay:.7s}
+    .ta-tokens span:nth-child(3){animation-delay:1.4s}
+    .ta-tokens .on{background:#e6f0d3;border-color:#7d9a55;box-shadow:0 4px 0 #7d9a55;color:#3f5a2c}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+    .ta-base{position:absolute;left:50%;bottom:6px;width:62px;height:62px;margin-left:-31px;border-radius:50%;border:1px dashed #8aa06d;background:#eef3e0}
+    .ta-base:before{content:"";position:absolute;inset:13px;border-radius:50%;border:2px solid #b6c98f;background:#fffdf3}
+    .ta-launcher{position:absolute;left:50%;bottom:22px;margin-left:-11px;font-size:20px;transform:rotate(-14deg);filter:drop-shadow(0 4px 6px #0003)}
+    @media (max-width:900px){.teaser-card{grid-template-columns:1fr;padding:26px 22px}.teaser-art{height:240px}.teaser-tokens span{font-size:12px}}
     @media (max-width:860px){.proof-grid{grid-template-columns:1fr}}
   </style>
   <!-- Top.Mail.Ru counter (VK Ads pixel 3812030) -->
@@ -479,6 +503,7 @@
         <a href="#who">Для кого</a>
         <a href="#formats">Форматы занятий</a>
         <a href="#reviews">Отзывы</a>
+        <a href="/placement-game/">Тест уровня</a>
       </div>
       <a class="btn btn-dark nav-cta" href="https://calendly.com/dcorreavi/free-consultation" target="_blank" rel="noopener noreferrer" data-booking data-cta="header">
         Бесплатный урок
@@ -650,6 +675,31 @@
           </div>
           <div class="intro-foot"><span class="emoji" aria-hidden="true">☕</span><span>Это не экзамен и не проверка на ошибки. Если удобнее, начнём разговор полностью на русском.</span></div>
         </div>
+      </div>
+    </section>
+
+
+    <section class="section game-teaser" aria-labelledby="game-teaser-title">
+      <div class="container">
+        <a class="teaser-card" href="/placement-game/" aria-label="Открыть игру-тест: проверь свой испанский">
+          <div class="teaser-copy">
+            <div class="eyebrow"><span class="eyebrow-dot"></span> Игра · 5–7 минут</div>
+            <h2 id="game-teaser-title">Проверь свой испанский <span class="serif">в игре.</span></h2>
+            <p>Пять ступеней, три снаряда и слова, которые летят к базе. Примерный словарный уровень — без регистрации.</p>
+            <span class="btn btn-primary">Играть
+              <svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+            <span class="teaser-note">Бесплатно · 30 слов и выражений · результат сразу</span>
+          </div>
+          <div class="teaser-art" aria-hidden="true">
+            <div class="ta-hud"><span>СТУПЕНЬ 1/5</span><span>ОЧКИ 240</span></div>
+            <div class="ta-prompt">НАЙДИ ПЕРЕВОД · ЗАЩИТИ БАЗУ</div>
+            <div class="ta-word">viaje</div>
+            <div class="ta-tokens"><span>comida</span><span class="on">viaje</span><span>trabajo</span></div>
+            <div class="ta-base"></div>
+            <div class="ta-launcher">✈</div>
+          </div>
+        </a>
       </div>
     </section>
 
