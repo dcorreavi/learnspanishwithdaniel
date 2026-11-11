@@ -40,7 +40,9 @@ main{max-width:none;margin:0;padding:0;height:100dvh;width:100%;display:grid}
 .hero-art{position:relative;width:clamp(64px,13vh,140px);animation:bob 4.6s ease-in-out infinite}
 .hero-art svg{width:100%;height:auto;display:block;filter:drop-shadow(0 12px 18px #00000066)}
 .pfh{width:34px;height:34px;flex:none;display:block}
-.pfh svg{width:100%;height:100%;display:block;border-radius:9px;box-shadow:0 2px 5px #253e321a}
+.pfh{border-radius:9px;overflow:hidden;background:radial-gradient(circle at 34% 26%,#35745c 0%,#17453a 70%);box-shadow:0 2px 5px #253e321a}
+.pfh svg{width:100%;height:100%;display:block}
+.hx-st *{fill:#f6f4e9!important;stroke:#f6f4e9!important;stroke-width:6px!important;opacity:1!important}
 .hero-flag{position:relative;font-size:clamp(52px,10.5vh,104px);line-height:1;filter:drop-shadow(0 12px 18px #00000066);
   animation:bob 4.6s ease-in-out infinite}
 @keyframes bob{0%,100%{transform:translateY(-5px) rotate(-3deg)}50%{transform:translateY(7px) rotate(3deg)}}
@@ -140,6 +142,134 @@ body.playing .arc{display:none}
   .wcard small{display:none}
 }
 
+
+/* ===================== COHERENT SCREENS v2 ===================== */
+.arc{overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch}
+.arc-stepm{display:none;font-size:9px;letter-spacing:.14em;font-weight:800;color:#5d7457;border:1px solid #c6d0bb;border-radius:30px;padding:7px 11px;background:#ffffffa6}
+.arc-stepm b{color:var(--orange)}
+.arc-back,.arc-brand,.arc-stepm{white-space:nowrap}
+.res2-grid{margin:auto}
+@media (max-width:680px){.battle-hint{display:none}}
+@media (max-width:400px){.arc-stepm em{display:none}}
+.persona{width:100%;min-height:52px}
+.persona:focus-visible,.primary:focus-visible{outline:3px solid #c65b31;outline-offset:3px}
+.ghost{background:#ffffffa6;border:1px solid #c6d0bb;border-radius:9px;padding:15px 18px;font-size:12px;font-weight:700;color:#33503a;transition:.16s}
+.ghost:hover{background:#fff}
+
+/* ---- weapon (shares the hero layout) ---- */
+.wpn .hero-token{overflow:visible}
+.ammo{position:absolute;right:2%;bottom:6%;width:31%;aspect-ratio:1;border-radius:50%;background:var(--paper);display:grid;place-items:center;
+  box-shadow:0 10px 24px #0f2f2759,0 0 0 4px #e4b951;animation:ammo-bob 3.2s ease-in-out infinite}
+.ammo svg{width:66%;height:66%;display:block}
+@keyframes ammo-bob{0%,100%{transform:translateY(0) rotate(-8deg)}50%{transform:translateY(-6px) rotate(8deg)}}
+.wico{width:44px;height:44px;flex:none;border-radius:11px;background:#eef1e2;border:1px solid #d6dccb;display:grid;place-items:center}
+.wico svg{width:32px;height:32px;display:block}
+.persona.is-on .wico{background:#fff;border-color:#b9c7a8}
+.wpn .persona small{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.4}
+.wpn .persona b{font-family:Georgia,serif;font-weight:400;font-size:16px}
+.switch-row{display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:11px;background:#ffffff73;border:1px dashed #c6d0bb;cursor:pointer}
+.switch-row input{position:absolute;opacity:0;pointer-events:none}
+.switch{width:38px;height:22px;flex:none;border-radius:20px;background:#c3ccb6;position:relative;transition:.2s}
+.switch:after{content:'';position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 3px #0003;transition:.2s}
+.switch-row input:checked+.switch{background:var(--green)}
+.switch-row input:checked+.switch:after{left:19px}
+.switch-row input:focus-visible+.switch{outline:3px solid #c65b31;outline-offset:2px}
+.switch-row b{display:block;font-size:12px}
+.switch-row small{display:block;font-size:10px;color:#6f8068;margin-top:2px;line-height:1.35}
+.arc-actions{display:grid;grid-template-columns:auto 1fr;gap:9px}
+.arc-actions .primary{justify-content:space-between}
+
+/* ---- stage interlude ---- */
+.playing main:has(.stage-card){background:radial-gradient(120% 90% at 50% 0%,#eef1dc,#d9e2c6)}
+.stage-card{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(460px,calc(100% - 32px));max-height:calc(100dvh - 32px);overflow:auto;
+  background:var(--paper);border:1px solid #cfd8c4;border-radius:24px;padding:28px 26px 24px;text-align:center;box-shadow:0 30px 80px #2a46321f}
+.stage-badge{position:relative;width:118px;height:118px;margin:0 auto 14px;border-radius:50%;display:grid;place-items:center;
+  background:radial-gradient(circle at 34% 26%,#35745c 0%,#17453a 55%,#0f2f27 100%);box-shadow:0 16px 34px #16382b3d}
+.stage-badge .hero-art{width:62px}
+.stage-badge .medal-mini{position:absolute;right:-4px;top:-2px;width:38px;height:38px;border-radius:50%;background:#e4b951;color:var(--green);display:grid;place-items:center;
+  font-size:17px;font-weight:900;border:3px solid var(--paper);box-shadow:0 4px 10px #0002}
+.stage-badge .medal-mini.soft{background:#dfe7cf}
+.pips{display:flex;justify-content:center;gap:6px;margin:12px 0 4px}
+.pips i{width:34px;height:6px;border-radius:9px;background:#dce0d1}
+.pips i.done{background:#8f9c68}.pips i.now{background:var(--orange)}
+.stage-card h2{font-size:clamp(24px,6vw,30px);letter-spacing:-1px;margin:12px 0 8px;line-height:1.1}
+.stage-card p{margin:0 auto;font-size:13.5px;line-height:1.6;color:var(--muted);max-width:34ch}
+.stage-meta{display:flex;justify-content:center;gap:8px;margin:16px 0 18px;flex-wrap:wrap}
+.stage-meta span{font-size:11px;font-weight:700;border:1px solid var(--line);border-radius:30px;padding:7px 12px;background:#fff9}
+.stage-meta .gem{color:#7d9657;letter-spacing:2px}
+.stage-card .primary{width:100%;justify-content:space-between}
+
+/* ---- results v2 ---- */
+.res2-grid{flex:1;min-height:0;display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(16px,2.6vw,36px);align-items:start;max-width:1180px;width:100%;margin:0 auto}
+.res2-main{display:flex;flex-direction:column;gap:14px}
+.res2-card{position:relative;display:grid;grid-template-columns:auto 1fr;align-items:center;gap:clamp(14px,2.4vw,28px);padding:clamp(18px,2.6vh,26px) clamp(18px,2.4vw,30px);border-radius:22px;overflow:hidden;color:var(--paper);
+  background:radial-gradient(120% 140% at 15% 10%,#35745c 0%,#1b4a3c 50%,#0f2f27 100%);box-shadow:0 24px 50px #16382b33}
+.res2-card:before{content:'';position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;border:2px dashed #e7c15b40}
+.res2-hero{width:clamp(84px,11vw,120px);animation:bob 4.6s ease-in-out infinite}
+.res2-hero svg{width:100%;height:auto;display:block;filter:drop-shadow(0 12px 16px #0007)}
+.res2-eyebrow{font-size:9.5px;letter-spacing:.18em;font-weight:800;text-transform:uppercase;color:#e4b951}
+.res2-level{font-family:Georgia,serif;font-size:clamp(64px,10vh,104px);line-height:.9;letter-spacing:-.04em;margin:6px 0 2px;color:#fff8e6}
+.res2-level.small{font-size:clamp(40px,7vh,64px)}
+.res2-cap{font-size:11.5px;color:#cfe0cf;line-height:1.4}
+.res2-track{display:flex;gap:5px;margin-top:12px;flex-wrap:wrap}
+.res2-track span{font-size:9.5px;font-weight:800;letter-spacing:.04em;padding:4px 8px;border-radius:20px;border:1px solid #ffffff2e;color:#a9c2b1}
+.res2-track span.on{background:#ffffff1f;color:#e9f2e4}
+.res2-track span.now{background:var(--orange);border-color:var(--orange);color:#fff}
+.res2-title{margin:4px 0 0;font-size:clamp(24px,3.6vh,36px);line-height:1.08;letter-spacing:-1.2px}
+.res2-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:8px}
+.res2-stats div{background:#ffffffa6;border:1px solid #d3dbc8;border-radius:13px;padding:11px 13px}
+.res2-stats strong{display:block;font-size:20px;letter-spacing:-.02em}
+.res2-stats span{display:block;font-size:10px;color:#6b7d63;margin-top:2px;line-height:1.3}
+.res2-next{margin:0;padding:14px 16px;border-left:3px solid var(--orange);background:#ffffff73;border-radius:0 12px 12px 0;font-size:13.5px;line-height:1.55;color:#33503a}
+.res2-next b{display:block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin-bottom:4px}
+.res2-fine{margin:0;font-size:10.5px;line-height:1.5;color:#7d8c79}
+.res2-fine button{background:none;padding:0;font-size:inherit;color:#4d6349;text-decoration:underline;text-underline-offset:3px}
+.res2-side{background:#f8f6ea;border:1px solid #cfd8c4;border-radius:22px;padding:clamp(18px,2.6vh,26px);display:flex;flex-direction:column;gap:12px}
+.res2-side h2{margin:0;font-size:clamp(21px,3vh,27px);line-height:1.1;letter-spacing:-.8px}
+.res2-side h2 em{font-family:Georgia,serif;font-weight:400;color:var(--orange)}
+.res2-side p{margin:0;font-size:13px;line-height:1.6;color:#54685a}
+.res2-perks{display:grid;gap:6px;margin:2px 0;padding:0;list-style:none;font-size:12px;color:#33503a}
+.res2-perks li{display:flex;gap:8px;align-items:baseline}
+.res2-perks li:before{content:'✓';color:var(--orange);font-weight:900}
+.res2-side .primary{width:100%;justify-content:space-between}
+.res2-under{font-size:10px;color:#6b7d63;text-align:center;margin-top:-4px}
+.res2-side .review{margin:4px 0 0;border-top:1px solid var(--line);padding-top:12px}
+.res2-side .review summary{font-size:12px;font-weight:800;cursor:pointer}
+.res2-side .review-row{font-size:12px}
+.res2-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.res2-actions .ghost{padding:13px 10px}
+
+@media (max-width:900px){
+  .res2-grid{grid-template-columns:1fr;gap:14px}
+}
+@media (max-width:820px){
+  .arc-stepm{display:inline-block}
+  .arc-brand{font-size:14px}
+  .arc{gap:14px;padding:12px 16px max(16px,env(safe-area-inset-bottom))}
+  .hero{align-content:start;gap:14px}
+  .hero-side{gap:10px}
+  .hero-side .eyebrow{font-size:9px}
+  .wpn .arc-lead{display:block;font-size:12px}
+  .wpn .persona small{-webkit-line-clamp:2;font-size:10px}
+  .arc-cta,.arc-actions{position:sticky;bottom:0;z-index:5;box-shadow:0 -14px 18px -6px #e3e8d3}
+  .arc-actions{background:#e3e8d3;padding-top:6px}
+  .res2-card{grid-template-columns:88px 1fr;padding:18px}
+  .res2-hero{width:88px}
+  .res2-title{font-size:25px}
+  .stage-card{padding:24px 18px 18px}
+  .pips i{width:26px}
+}
+@media (max-width:380px){
+  .arc-back{padding:6px 10px;font-size:9px}
+  .arc-brand{font-size:12.5px}
+  .res2-level{font-size:62px}
+  .res2-stats strong{font-size:18px}
+}
+@media (max-height:640px) and (max-width:820px){
+  .hero-token{width:96px}
+  .hero-name{font-size:18px}
+  .wpn .persona small{-webkit-line-clamp:1}
+}
 </style><link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
 <link rel="shortcut icon" href="/favicon.ico">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -149,7 +279,7 @@ const $=s=>document.querySelector(s), app=$('#app');
 const countries={general:{name:'Общий испанский',sub:'Без привязки к стране',flag:'🌎',place:'Un mundo de palabras',color:'#d7e2cb',items:[['plane','Avión de papel','Бумажный самолётик. Запускай его навстречу новым словам.'],['sun','Sol','Солнце. Добавь немного тепла каждому попаданию.'],['star','Estrella','Звезда. Твой маленький проводник в мире испанского.']]},colombia:{name:'Колумбия',sub:'Кофе, горы и ¡qué chévere!',flag:'🇨🇴',place:'Un café en Colombia',color:'#d2dfbc',items:[['arepa','Arepa','Арепа — традиционная кукурузная лепёшка, популярная в Колумбии.'],['bunuelo','Buñuelo','Буньюэло — золотистый жареный шарик из теста с сыром. Любимая закуска в Колумбии.'],['coffee','Grano de café','Кофейное зерно. Колумбия славится своим кофе — теперь он летит точно в цель.']]},spain:{name:'Испания',sub:'Тапас, солнце и ¡vale!',flag:'🇪🇸',place:'Una tarde en España',color:'#e8d9be',items:[['olive','Aceituna','Оливка — классическая закуска к напиткам в Испании. Маленькая, но меткая!'],['tapa','Tapa','Тапа — небольшая порция закуски. Наша — хрустящий тост с помидором.'],['bottle','Botella de vino','Бутылка вина — часть испанской гастрономической культуры. Здесь — игровой снаряд.']]},mexico:{name:'Мексика',sub:'Яркие краски и ¡qué padre!',flag:'🇲🇽',place:'Colores de México',color:'#e0d8b6',items:[['taco','Taco','Тако — тортилья с начинкой. Одно из самых узнаваемых блюд Мексики.'],['tortilla','Tortilla','Тортилья — тонкая лепёшка из кукурузной или пшеничной муки. Готова к запуску!'],['chili','Chile','Чили — перец, который добавляет характер мексиканской кухне. Острое попадание!']]},argentina:{name:'Аргентина',sub:'Мате, прогулки и ¡che!',flag:'🇦🇷',place:'Un paseo por Buenos Aires',color:'#cbdde0',items:[['empanada','Empanada','Эмпанада — пирожок с начинкой. В Аргентине у каждого региона свои рецепты.'],['alfajor','Alfajor','Альфахор — два печенья с начинкой, часто с дульсе де лече. Сладкое попадание!'],['mate','Mate','Мате — напиток из листьев йерба мате. Твой снаряд — традиционный сосуд с трубочкой.']]}};
 function art(kind,cls=''){let s='';const ellipse=(x,y,rx,ry,c)=>`<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" fill="${c}"/>`;if(['arepa','tortilla','bunuelo','alfajor'].includes(kind)){s=ellipse(50,58,38,27,'#ba7738')+ellipse(50,50,38,28,kind==='alfajor'?'#c89153':'#edc567');if(kind==='bunuelo')s=ellipse(50,50,32,33,'#cf8137')+ellipse(43,42,23,23,'#e6a84b');if(kind==='alfajor')s+=`<path d="M15 60 Q50 81 86 59" stroke="#693d23" stroke-width="8" fill="none"/>`;for(let i=0;i<9;i++){let x=26+(i*17)%49,y=35+(i*11)%28;s+=ellipse(x,y,3,1.7,'#bc873a')}s+=`<path d="M25 37Q45 22 67 35" stroke="#ffe3a2" stroke-width="3" fill="none"/>`}else if(kind==='coffee'){s=ellipse(50,50,28,36,'#6e412b')+`<path d="M58 17C25 40 75 60 41 84" stroke="#b97b4d" stroke-width="5" fill="none"/>`}else if(kind==='olive'){s=ellipse(48,52,30,35,'#829143')+ellipse(47,31,11,8,'#aa573b')+`<path d="M58 22Q65 6 78 15Q76 31 58 22" fill="#465a36"/>`+ellipse(32,44,7,13,'#aeb75c')}else if(kind==='bottle'){s=`<path d="M40 8H60V32L72 44V90Q50 100 28 90V44L40 32Z" fill="#4d603c"/><path d="M40 8H60V22H40Z" fill="#b76039"/><path d="M29 56H71V80H29Z" fill="#f1dfb9"/><circle cx="50" cy="67" r="8" fill="#a74535"/><path d="M37 45V85" stroke="#8fa068" stroke-width="4"/>`}else if(kind==='tapa'){s=`<path d="M12 35Q12 14 47 18Q84 14 88 37L83 82H18Z" fill="#b77d43"/><path d="M19 36Q19 22 48 26Q77 22 81 39L76 73H25Z" fill="#e4bd76"/><path d="M26 42Q50 30 74 44L69 67H30Z" fill="#cb5a39"/><path d="M36 46L54 59M62 42L45 65" stroke="#829549" stroke-width="5"/>`}else if(kind==='taco'||kind==='empanada'){s=`<path d="M10 67Q17 9 53 18Q84 22 93 71Q50 95 10 67" fill="#e6ad4f"/>`;if(kind==='taco')s+=`<path d="M17 54Q40 16 83 57" stroke="#688b41" stroke-width="12" fill="none"/><path d="M25 51L35 40M47 33L57 43M70 44L77 57" stroke="#bc5134" stroke-width="9"/><path d="M13 64Q39 34 89 68Q50 97 13 64" fill="#f2cd74"/>`;else s+=`<path d="M13 67Q50 93 91 68" fill="none" stroke="#b77f36" stroke-width="7" stroke-dasharray="3 5"/>`;s+=`<path d="M35 65L39 61M52 69L56 65M68 70L72 66" stroke="#c08b3d" stroke-width="3"/>`}else if(kind==='chili'){s=`<path d="M66 25Q98 77 16 91Q54 62 46 35Z" fill="#c84c32"/><path d="M47 34L68 29L60 18L69 8" stroke="#526e39" stroke-width="8" fill="none"/><path d="M65 43Q75 65 47 76" stroke="#ed9270" stroke-width="4" fill="none"/>`}else if(kind==='mate'){s=`<path d="M59 39L76 7" stroke="#849895" stroke-width="7"/><path d="M22 44Q16 93 51 92Q87 93 79 44Z" fill="#a06d3e"/><ellipse cx="50" cy="44" rx="29" ry="12" fill="#b9bba1"/><ellipse cx="50" cy="44" rx="23" ry="8" fill="#657746"/><path d="M28 61Q50 75 73 61" fill="none" stroke="#dfb36e" stroke-width="5"/>`}else if(kind==='plane'){s=`<path d="M6 33L95 12L64 90L44 57L6 33Z" fill="#f8f4df" stroke="#687c69" stroke-width="2"/><path d="M44 57L95 12L30 47" fill="#bdcbb6"/><path d="M44 57L40 80L55 69" fill="#8caa91"/>`}else if(kind==='star'){s=`<path d="M50 6L63 35L96 39L72 61L78 94L50 77L21 94L27 61L4 39L37 35Z" fill="#e7b749" stroke="#bd8a35" stroke-width="2"/>`}else{s=`<circle cx="50" cy="50" r="26" fill="#edb84f"/>`;for(let i=0;i<12;i++)s+=`<path d="M50 7V17" stroke="#d69739" stroke-width="5" transform="rotate(${i*30} 50 50)"/>`}return `<svg class="${cls}" viewBox="0 0 100 100" aria-hidden="true">${s}</svg>`}
 function scene(){let c=countries[state.country],is=state.country;return `<svg class="scene" viewBox="0 0 600 600" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><rect width="600" height="600" fill="${c.color}"/><circle cx="490" cy="116" r="54" fill="#f4dc9b" opacity=".8"/><path d="M0 331Q130 257 244 328T600 305V600H0Z" fill="#c3d0af"/><path d="M0 390Q118 330 270 405T600 354V600H0Z" fill="#a7bb90"/><path d="M0 494Q200 393 600 482V600H0Z" fill="#e3dec5"/><path d="M255 600L326 456H353L396 600" fill="#f2ead7"/>${is==='colombia'||is==='general'?`<path d="M0 349L122 192L253 355L386 258L600 390V443H0Z" fill="#7e9b77" opacity=".4"/>`:''}${is==='spain'?`<path d="M24 424V302H153V424" fill="#c78e68"/><path d="M11 304L88 266L167 304Z" fill="#ab654a"/><path d="M66 424V365Q88 333 111 365V424" fill="#68774f"/><rect x="42" y="326" width="25" height="29" rx="12" fill="#efcf92"/><rect x="113" y="326" width="25" height="29" rx="12" fill="#efcf92"/>`:''}${is==='mexico'?`<path d="M47 445V343Q47 326 59 343V372H80V318Q80 302 92 318V445M500 453V358Q500 344 512 358V382H535V337Q535 320 548 337V453" fill="none" stroke="#67825b" stroke-width="16" stroke-linejoin="round"/><path d="M20 189Q300 239 580 189" stroke="#7d8862" fill="none"/>${[60,140,220,300,380,460,540].map((x,i)=>`<path d="M${x} ${199+Math.sin(i/6*Math.PI)*25}h36v36l-18 -8 -18 8Z" fill="${['#c97d55','#d4ad57','#8e9f71'][i%3]}"/>`).join('')}`:''}${is==='argentina'?`<path d="M21 428V305H151V428" fill="#bdac8d"/><path d="M18 305L86 282L155 305" fill="#8d9b86"/>${[38,78,118].map(x=>`<path d="M${x} 351V326Q${x+10} 309 ${x+20} 326V351Z" fill="#526c60"/><rect x="${x}" y="370" width="20" height="36" fill="#526c60"/>`).join('')}<path d="M505 444V290M488 312H523" stroke="#4c6554" stroke-width="5"/><circle cx="505" cy="281" r="14" fill="#efe3b7"/>`:''}<path d="M5 600V492Q2 462 21 448Q40 463 30 493L27 600M565 600V454Q542 423 559 404Q577 416 577 451L585 600" fill="#6f885d"/><path d="M0 550Q50 481 86 513Q75 552 0 573M600 524Q557 464 526 497Q542 534 600 550" fill="#839b68"/></svg>`}
-function launcher(){return '<svg class="launcher" viewBox="0 0 100 120" aria-hidden="true">'+bottleArm()+heroBody(state.country)+'</svg>'}
+function launcher(){return '<svg class="launcher" viewBox="0 0 100 120" aria-hidden="true">'+heroBody(state.country)+bottleArm()+'</svg>'}
 const levels=['Первые попадания','На каждый день','Больше свободы','Точный смысл','Сложный вызов'];
 // Original questions, pedagogically ordered using PCIC thematic inventories; bands are provisional.
 const raw=[
@@ -184,7 +314,7 @@ const battle=$('#battle'),g=arenaGeometry(innerWidth,innerHeight);combat={g,elap
 function layoutBase(){if(!combat)return;combat.g=arenaGeometry(innerWidth,innerHeight);const {cx,cy}=combat.g;for(const sel of ['#base','.battle .launcher','.loaded-round']){const e=$(sel);e.style.left=cx+'px';e.style.top=cy+'px'}}
 function positionEnemies(){if(!combat)return;const c=combat;const positions=c.enemies.map(en=>{const t=state.motion?Math.max(0,(c.elapsed-en.delay)/c.duration):0;return {...enemyPosition(c.g,en.angle,Math.min(.76,t*.76),en.index,en.el.offsetWidth,en.el.offsetHeight),en,t,w:en.el.offsetWidth,h:en.el.offsetHeight}});for(let pass=0;pass<5;pass++)for(let i=0;i<positions.length;i++)for(let j=i+1;j<positions.length;j++){const a=positions[i],b=positions[j],dx=Math.abs(a.x-b.x),dy=Math.abs(a.y-b.y),ox=(a.w+b.w)/2+14-dx,oy=(a.h+b.h)/2+20-dy;if(ox>0&&oy>0){const dir=a.y<=b.y?-1:1;a.y+=dir*(oy/2+1);b.y-=dir*(oy/2+1);a.y=Math.max(c.g.top+a.h/2,Math.min(c.g.bottom-a.h/2,a.y));b.y=Math.max(c.g.top+b.h/2,Math.min(c.g.bottom-b.h/2,b.y))}}for(const p of positions){const en=p.en;en.el.style.transform=`translate(${p.x-p.w/2}px,${p.y-p.h/2}px) rotate(${Math.sin(p.t*5+en.index)*3}deg)`;en.el.style.opacity=c.elapsed<en.delay&&state.motion?'0':'1';en.el.style.pointerEvents=c.elapsed<en.delay&&state.motion?'none':'auto';en.el.classList.toggle('danger',p.t>.72);en.x=p.x;en.y=p.y}$('#meter').style.width=(state.motion?Math.max(0,Math.min(100,100-c.elapsed/c.duration*100)):100)+'%'}
 function tickBattle(now){if(!combat||state.screen!=='game')return;let c=combat;const dt=Math.min(80,now-c.last);c.last=now;if(!c.paused&&!state.locked&&!c.breached){c.elapsed+=dt;positionEnemies();if(state.motion&&c.elapsed>=c.duration+400)breach()}arenaFrame=requestAnimationFrame(tickBattle)}
-function aim(x,y){if(!combat)return;const {cx,cy}=combat.g;const angle=Math.atan2(y-cy,x-cx)*180/Math.PI;const arm=$('.battle .launcher .aim-arm');if(arm)arm.style.transform='rotate('+angle+'deg)'}
+function aim(x,y){if(!combat)return;const {cx,cy}=combat.g;const angle=Math.atan2(y-cy,x-cx)*180/Math.PI;const arm=$('.battle .launcher .aim-arm');if(arm)arm.style.transform='rotate('+(angle+90)+'deg)'}
 function shootPoint(x,y,done){if(!combat){done?.();return}let now=performance.now();if(!done&&now-combat.lastShot<200)return;combat.lastShot=now;aim(x,y);const {cx,cy}=combat.g;const el=document.createElement('div');el.className='flight';el.innerHTML=art(countries[state.country].items[state.weapon][0]);el.style.left=(cx-25)+'px';el.style.top=(cy-25)+'px';document.body.appendChild(el);let token=combat;const anim=el.animate([{transform:'translate(0,0) rotate(0deg)'},{transform:`translate(${x-cx}px,${y-cy}px) rotate(300deg)`}],{duration:state.motion?Math.min(330,140+Math.hypot(x-cx,y-cy)*.25):100,easing:'linear',fill:'forwards'});anim.onfinish=()=>{el.remove();if(combat!==token)return;burst(x,y);let ring=document.createElement('i');ring.className='shot-ring';ring.style.left=(x-22)+'px';ring.style.top=(y-22)+'px';document.body.appendChild(ring);setTimeout(()=>ring.remove(),500);done?.()}}
 function pauseBattle(){if(!combat||combat.paused)return;combat.paused=true;clearTimeout(advanceTimer);$('#pause-overlay').hidden=false}
 function resumeBattle(){if(!combat)return;combat.paused=false;combat.last=performance.now();$('#pause-overlay').hidden=true;if(state.locked&&combat.resolved)advanceTimer=setTimeout(next,600)}
@@ -195,7 +325,7 @@ document.addEventListener('keydown',e=>{if(state.screen!=='game'||!combat)return
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&state.screen==='game')pauseBattle()});
 
 function next(){state.q++;if(state.q<state.queue.length){game();return}const core=state.answers.filter(a=>a.stage===state.stage&&!a.regional&&!a.extra),hits=core.filter(a=>a.correct).length;if(state.extra){const extra=state.answers.filter(a=>a.stage===state.stage&&a.extra);conclude(extra.filter(a=>a.correct).length>=2);return}const pass=state.country==='general'?5:4,border=3;if(hits>=pass){conclude(true)}else if(hits>=border){state.extra=true;state.queue=state.used.splice(0,3).map(r=>makeQ(r));state.q=0;interlude('Уточним результат','Ещё три слова этой сложности — чтобы лучше понять, насколько уверенно ты их узнаёшь.','Продолжить',game,false)}else conclude(false)}
-function conclude(pass){if(pass)state.passed=state.stage;const a=state.answers.filter(a=>a.stage===state.stage),h=a.filter(a=>a.correct).length;if(pass&&state.stage<4){interlude('Ступень пройдена!',`Ты распознал ${h} из ${a.length} слов и выражений. Впереди — «${levels[state.stage+1]}».`,'На следующую ступень',()=>{state.stage++;beginStage()},true)}else if(pass){interlude('Все пять ступеней!',`Ты прошёл весь маршрут. Посмотрим, что получилось.`,'Мой результат',()=>results(false),true)}else{interlude('Твоя точка старта найдена',`На этой ступени ты распознал ${h} из ${a.length} слов. Этого достаточно, чтобы предложить следующий шаг.`,'Мой результат',()=>results(false),false)}}
+function conclude(pass){if(pass)state.passed=state.stage;const a=state.answers.filter(a=>a.stage===state.stage),h=a.filter(a=>a.correct).length;if(pass&&state.stage<4){interlude('Ступень пройдена!',`Узнано ${h} из ${a.length} слов и выражений. Дальше — «${levels[state.stage+1]}».`,'На следующую ступень',()=>{state.stage++;beginStage()},true)}else if(pass){interlude('Все пять ступеней!',`Весь маршрут пройден — все пять ступеней. Смотрим результат!`,'Мой результат',()=>results(false),true)}else{interlude('Твоя точка старта найдена',`На этой ступени узнано ${h} из ${a.length} слов — этого достаточно, чтобы понять, с чего начать.`,'Мой результат',()=>results(false),false)}}
 function interlude(title,desc,label,action,celebrate){stopCombat();state.screen='interlude';app.innerHTML=steps(3)+`<div class="interlude"><div class="medal">${celebrate?'✦':'◎'}</div><div class="eyebrow" style="justify-content:center">${state.stage+1} / 5 · ${levels[state.stage]}</div><h2>${title}</h2><p>${desc}</p><p>${state.points} игровых очков · ${countries[state.country].name}</p><button class="primary" id="continue">${label} →</button></div>`;$('#continue').onclick=action;$('#continue').focus({preventScroll:true});if(celebrate){let b=$('.medal').getBoundingClientRect();burst(b.left+b.width/2,b.top+b.height/2)}}
 function results(partial=false){
   leaveCombat();runId++;state.screen='results';
@@ -241,32 +371,138 @@ function results(partial=false){
 }
 /* ===================== ARCADE SCREENS ===================== */
 
-const HERO_PALETTE={general:{shirt:'#2f7a5c',hair:'#3a2a20',skin:'#f2c49b',accent:'#e7c15b',hat:'cap'},spain:{shirt:'#c8503c',hair:'#2b1d16',skin:'#f2c49b',accent:'#f2d35c',hat:'none'},mexico:{shirt:'#3a8a4a',hair:'#2b1d16',skin:'#e8b78c',accent:'#f2d35c',hat:'sombrero'},colombia:{shirt:'#f0c33c',hair:'#2b1d16',skin:'#dfa87b',accent:'#3a6fc0',hat:'none'},argentina:{shirt:'#6fb3e0',hair:'#2b1d16',skin:'#f2c49b',accent:'#ffffff',hat:'none'}};
-function heroBody(id){
-  const p=HERO_PALETTE[id]||HERO_PALETTE.general;
-  let extra='';
-  if(p.hat==='sombrero') extra='<ellipse cx="50" cy="22" rx="27" ry="6" fill="#8a5a2b"/><path d="M39 22 Q39 9 50 9 Q61 9 61 22 Z" fill="#a86a32"/>';
-  else if(p.hat==='cap') extra='<path d="M34 24 Q50 12 66 24 L66 28 Q50 20 34 28 Z" fill="#1f3a30"/><rect x="32" y="26" width="36" height="3.4" rx="1.7" fill="#1f3a30"/>';
-  if(id==='argentina') extra+='<circle cx="50" cy="64" r="5.5" fill="#f4d35c"/>';
-  if(id==='spain'||id==='colombia') extra+='<rect x="34" y="62" width="32" height="5" fill="'+p.accent+'" opacity="0.95"/>';
-  return '<ellipse cx="50" cy="112" rx="24" ry="4.5" fill="#28463222"/>'
-   + '<rect x="38" y="84" width="10" height="24" rx="5" fill="#33404a"/>'
-   + '<rect x="52" y="84" width="10" height="24" rx="5" fill="#33404a"/>'
-   + '<rect x="35" y="104" width="15" height="8" rx="4" fill="#232f38"/>'
-   + '<rect x="50" y="104" width="15" height="8" rx="4" fill="#232f38"/>'
-   + '<path d="M34 56 Q34 48 50 48 Q66 48 66 56 L68 86 Q50 92 32 86 Z" fill="'+p.shirt+'"/>'
-   + '<path d="M37 58 Q27 68 29 84" stroke="'+p.shirt+'" stroke-width="9" fill="none" stroke-linecap="round"/>'
-   + '<path d="M63 58 Q73 68 71 84" stroke="'+p.shirt+'" stroke-width="9" fill="none" stroke-linecap="round"/>'
-   + '<circle cx="29" cy="86" r="4.6" fill="'+p.skin+'"/><circle cx="71" cy="86" r="4.6" fill="'+p.skin+'"/>'
-   + '<rect x="45" y="42" width="10" height="9" fill="'+p.skin+'"/>'
-   + '<circle cx="50" cy="33" r="15" fill="'+p.skin+'"/>'
-   + '<path d="M35 31 Q35 17 50 17 Q65 17 65 31 Q59 23 50 23 Q41 23 35 31 Z" fill="'+p.hair+'"/>'
-   + '<circle cx="45" cy="33" r="1.9" fill="#24352c"/><circle cx="55" cy="33" r="1.9" fill="#24352c"/>'
-   + '<path d="M46 38 Q50 41 54 38" stroke="#24352c" stroke-width="1.7" fill="none" stroke-linecap="round"/>'
-   + extra;
-}
+/* ===================== ARCADE HEROES =====================
+   Chunky, ink-outlined, big-head sprites on a 100x120 canvas.
+   Right hand stays at (71,86): it is the pivot for the aiming arm in launcher(). */
+const HK='#1d3529';
+const hP=(d,f,w=2)=>`<path d="${d}" fill="${f}" stroke="${HK}" stroke-width="${w}" stroke-linejoin="round" stroke-linecap="round"/>`;
+const hF=(d,f,o)=>`<path d="${d}" fill="${f}"${o!=null?` opacity="${o}"`:''}/>`;
+const hC=(x,y,r,f,w=2)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="${f}"${w?` stroke="${HK}" stroke-width="${w}"`:''}/>`;
+const hE=(x,y,rx,ry,f,o)=>`<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" fill="${f}"${o!=null?` opacity="${o}"`:''}/>`;
+const hL=(d,c,w=1.6)=>`<path d="${d}" fill="none" stroke="${c}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round"/>`;
+const hRays=(x,y,r1,r2,n,c,w=1.3)=>{let s='';for(let i=0;i<n;i++){const a=i/n*Math.PI*2;s+=`M${(x+Math.cos(a)*r1).toFixed(1)} ${(y+Math.sin(a)*r1).toFixed(1)}L${(x+Math.cos(a)*r2).toFixed(1)} ${(y+Math.sin(a)*r2).toFixed(1)}`}return hL(s,c,w)};
+const H_SKIN={light:'#f3c9a0',mid:'#e2ac7f',tan:'#c98d62'};
+/* shared pieces */
+function hLegs(pants,shoe,tall){const top=tall?96:103;return hP('M39 84H48.5V106H39Z',pants)+hP('M51.5 84H61V106H51.5Z',pants)
+  +hP(`M36 ${top}Q36 ${top-2} 39 ${top-2}H48.5V111Q42 113.5 35.5 111.5Z`,shoe)+hP(`M51.5 ${top-2}H61Q64 ${top-2} 64 ${top}V111.5Q58 113.5 51.5 111Z`,shoe)}
+function hArms(c,cuff){return hP('M37 54Q25 64 24.5 83L33.5 84Q34 70 42 62Z',c)+hP('M63 54Q75 64 75.5 83L66.5 84Q66 70 58 62Z',c)
+  +(cuff?hP('M24.4 79.5L33.6 80.5L33.5 84.5L24.4 83.5Z',cuff,1.4)+hP('M75.6 79.5L66.4 80.5L66.5 84.5L75.6 83.5Z',cuff,1.4):'')}
+function hHands(s,left=true){return (left?hC(29,86,5,s):'')+hC(71,86,5,s)}
+function hTorso(c,shade=true){return hP('M34.5 55Q34.5 48.5 50 48.5Q65.5 48.5 65.5 55L67 89Q50 93.5 33 89Z',c)+(shade?hF('M59 50Q65.5 50.5 65.5 55L67 89Q63 90.6 59.5 91Z','#1d3529',.14):'')}
+function hHead(s){return hC(33.5,36,3.6,s)+hC(66.5,36,3.6,s)+hC(50,33,17,s)}
+function hFace(o={}){const y=o.eyeY||35;let s='';
+  s+=hE(43.5,y,2.5,3.3,HK)+hE(56.5,y,2.5,3.3,HK)+hC(44.4,y-1.3,.95,'#fff',0)+hC(57.4,y-1.3,.95,'#fff',0);
+  if(!o.noBrows)s+=hL(`M40.5 ${y-6}Q43.5 ${y-8} 46.5 ${y-6.3}M53.5 ${y-6.3}Q56.5 ${y-8} 59.5 ${y-6}`,o.brow||HK,1.5);
+  if(!o.noBlush)s+=hE(39.3,41.3,3,1.7,'#e66b37',.33)+hE(60.7,41.3,3,1.7,'#e66b37',.33);
+  s+=hP('M45.8 42.4Q50 47.6 54.2 42.4Z','#8a3a2a',1.4)+hF('M47.4 43.6Q50 44.6 52.6 43.6L52.2 42.9Q50 43.4 47.8 42.9Z','#fff');
+  return s}
+function hFan(cx,cy,r,a0,a1,c,rib){const pt=a=>[(cx+Math.cos(a)*r).toFixed(1),(cy+Math.sin(a)*r).toFixed(1)];const [x0,y0]=pt(a0),[x1,y1]=pt(a1);
+  let ribs='';for(let i=1;i<6;i++){const [x,y]=pt(a0+(a1-a0)*i/6);ribs+=`M${cx} ${cy}L${x} ${y}`}
+  return hP(`M${cx} ${cy}L${x0} ${y0}A${r} ${r} 0 0 1 ${x1} ${y1}Z`,c)+hL(ribs,rib,1)}
+
+const HEROES={
+/* Путешественник — brand-green field jacket, orange scarf, ✺ cap, rolled map */
+general(){const s=H_SKIN.light,hair='#5a3826';return ''
+  +hP('M27 53Q27 47.5 33 47.5H67Q73 47.5 73 53V83Q50 87.5 27 83Z','#b8693a')
+  +hP('M25.5 46Q25.5 40.5 31 40.5H69Q74.5 40.5 74.5 46Q74.5 51.5 69 51.5H31Q25.5 51.5 25.5 46Z','#e4b951')+hL('M33 41V51M67 41V51','#b8933a',1.2)
+  +hLegs('#c9b183','#6b4428')
+  +hTorso('#2f7a5c')+hF('M46.5 49H53.5L53 91H47Z','#f6f4e9')+hL('M47 49L46.5 91M53 49L53.5 91',HK,1.2)
+  +hP('M38.5 50.5L42.5 50.5L43.5 76L39.5 76Z','#7a4a2a',1.3)+hP('M61.5 50.5L57.5 50.5L56.5 76L60.5 76Z','#7a4a2a',1.3)
+  +hP('M33.6 81Q50 85 66.4 81L66.8 86.5Q50 90.5 33.2 86.5Z','#5a3b22',1.5)+hP('M47.5 82.5H52.5V88.5H47.5Z','#e4b951',1.2)
+  +hArms('#2f7a5c','#245f48')
+  +hP('M12.5 75.5L20 72.5L26 75.5L26 93L20 90L12.5 93Z','#f3e9c8',1.6)+hL('M20 72.5V90','#c9b48a',1)+hL('M15 85Q18 80 22 83','#e66b37',1.1)+hL('M21.5 77.5l2.5 2.5m0-2.5l-2.5 2.5','#c8503c',1.2)
+  +hHands(s)
+  +hHead(s)+hP('M33 33Q33 19 50 18.5Q67 19 67 33Q63 27 58 28Q55 23 50 26Q45 23 42 28Q37 27 33 33Z',hair)
+  +hFace()
+  +hP('M32.5 26Q33 10 50 10Q67 10 67.5 26Q50 21 32.5 26Z','#284f3b')+hP('M29 27Q50 19.5 71 27Q73 31 67 30.5Q50 25.5 33 30.5Q27 31 29 27Z','#1d3529',1.6)
+  +hC(50,17.5,3,'#e66b37',0)+hRays(50,17.5,3.8,5.6,8,'#e66b37',1.1)
+  +hP('M36.5 49.5Q50 56 63.5 49.5Q64 45.5 50 46.5Q36 45.5 36.5 49.5Z','#e66b37',1.6)+hP('M55.5 52L60.5 63L55 64.5L51.5 54Z','#d45a2a',1.5);},
+
+/* España — flamenco dancer: polka-dot ruffles, carnation, golden abanico */
+spain(){const s=H_SKIN.light,hair='#24170f',red='#cf3f35',dk='#a92f28';
+  const dots=[[41,58],[57,56],[49,66],[39,72],[60,71],[45,94],[56,96],[35,96],[66,95]].map(([x,y])=>hC(x,y,1.7,'#f6f4e9',0)).join('');
+  return ''
+  +hC(50,13.5,8,hair)
+  +hP('M41 98H48.5V108H41Z',s,1.6)+hP('M51.5 98H59V108H51.5Z',s,1.6)
+  +hP('M38 106.5H49V111.5Q43 113.5 37.5 112Z','#1d3529',1.6)+hP('M51 106.5H62.5V112Q57 113.5 51 111.5Z','#1d3529',1.6)
+  +hTorso(red)
+  +hP('M34.5 78Q50 83 65.5 78L75 96Q50 102.5 25 96Z',red)
+  +hP('M24.5 95Q28.5 100.5 33 96.5Q37 102.5 41.5 97.5Q46 103.5 50 98Q54 103.5 58.5 97.5Q63 102.5 67 96.5Q71.5 100.5 75.5 95L77.5 100.5Q71 106 65 102Q58 107 50 103.5Q42 107 35 102Q29 106 22.5 100.5Z',dk)
+  +dots+hP('M33.6 79Q50 84 66.4 79L66.6 83Q50 88 33.4 83Z','#1d3529',1.3)
+  +hArms(red)+hP('M23.5 78Q29 76 34.5 79L34 84Q29 82 23.8 83.5Z',dk,1.4)+hP('M76.5 78Q71 76 65.5 79L66 84Q71 82 76.2 83.5Z',dk,1.4)
+  +hFan(29,86,22,Math.PI*1.08,Math.PI*1.52,'#e4b951','#b8933a')
+  +hHands(s)
+  +hHead(s)+hP('M32.5 37Q31 17 50 16.5Q69 17 67.5 37Q66 25 53 23L50 27.5L47 23Q34 25 32.5 37Z',hair)
+  +hFace({noBrows:false})
+  +`<circle cx="33.6" cy="42.5" r="2.4" fill="none" stroke="#e4b951" stroke-width="1.3"/><circle cx="66.4" cy="42.5" r="2.4" fill="none" stroke="#e4b951" stroke-width="1.3"/>`
+  +hP('M66 26Q72 25 71.5 30Q67 31 66 26Z','#3a7a3f',1.2)
+  +hC(64.5,20.5,4.3,red,1.6)+hC(68.8,23.5,3.8,red,1.6)+hC(63.5,25.2,3.4,dk,1.6)+hC(65.5,22.8,1.6,'#f2d35c',0);},
+
+/* México — luchador: green mask with flames, red cape, championship belt, flexing */
+mexico(){const s=H_SKIN.mid,g='#2f8a4a',r='#c8423a',gold='#e4b951';return ''
+  +hP('M34 51Q20 70 18 105L26 101L34 106L42 102L50 107L58 102L66 106L74 101L82 105Q80 70 66 51Z',r)+hF('M66 51Q80 70 82 105L74 101L70 103Q72 72 62 52Z','#1d3529',.15)
+  +hLegs(r,'#f6f4e9',true)+hL('M40 99.5h6M40 103h6M54 99.5h6M54 103h6',r,1.2)
+  +hTorso(s,false)+hP('M38 52Q50 58 62 52L66 79Q50 83 34 79Z',g)+hL('M44 66q6 3 12 0',HK,1.1)
+  +hP('M33.4 77Q50 82 66.6 77L67.2 86Q50 91 32.8 86Z',gold)+hC(50,82.5,5,'#f2d35c',1.6)+hC(50,82.5,2,r,1)
+  +hP('M38 54Q27 55 21 61Q18.5 66 23.5 67.5Q30 63 40 62.5Z',s)+hP('M19.5 64Q17 53 19.8 46.5L27.5 46.5Q27.6 55 26.5 64.5Z',s)+hP('M19 50.5H28.3V55H19Z',g,1.4)+hC(23.6,43.5,5.6,s)
+  +hP('M63 54Q75 64 75.5 83L66.5 84Q66 70 58 62Z',s)+hP('M66.4 77.5L75.6 76.5L75.7 81.5L66.5 82Z',g,1.4)+hHands(s,false)
+  +hC(50,33,17,g)+hP('M42.5 41Q50 37 57.5 41Q58 49.5 50 50.2Q42 49.5 42.5 41Z',s,1.5)
+  +hP('M36 35.5Q36.5 26.5 46 28.5Q48.8 33 46.5 39.5Q39.5 41 36 35.5Z',r,1.5)+hP('M64 35.5Q63.5 26.5 54 28.5Q51.2 33 53.5 39.5Q60.5 41 64 35.5Z',r,1.5)
+  +hP('M36 30Q33 25 35 21Q38 26 40.5 26.5Z',r,1.3)+hP('M64 30Q67 25 65 21Q62 26 59.5 26.5Z',r,1.3)
+  +hE(43.5,34.5,3.3,3.8,'#fff')+hE(56.5,34.5,3.3,3.8,'#fff')+hE(43.8,34.8,2.1,2.8,HK)+hE(56.2,34.8,2.1,2.8,HK)+hC(44.6,33.6,.8,'#fff',0)+hC(57,33.6,.8,'#fff',0)
+  +hP('M50 16.5L54.5 22.5L50 27.5L45.5 22.5Z','#f6f4e9',1.4)+hC(50,22.4,1.5,r,0)
+  +hP('M45.6 43.6Q50 48.2 54.4 43.6Z','#8a3a2a',1.3)+hF('M47.2 44.6Q50 45.6 52.8 44.6L52.4 44Q50 44.5 47.6 44Z','#fff');},
+
+/* Colombia — cafetera: sombrero vueltiao, flag-colour outfit, mochila wayuu */
+colombia(){const s=H_SKIN.tan,hair='#22160e',y='#f2c63c',b='#2f5fae',r='#cf3f35';
+  const braid=[[34.5,50],[33.5,56],[33,62],[33,68]].map(([x,yy])=>hC(x,yy,3.4,hair,1.5)).join('');
+  return ''
+  +hP('M41 99H48.5V107H41Z',s,1.6)+hP('M51.5 99H59V107H51.5Z',s,1.6)
+  +hP('M37.5 106H49V111.5Q43 113.5 37 112Z','#8a5a2b',1.5)+hP('M51 106H62.5V112Q57 113.5 51 111.5Z','#8a5a2b',1.5)
+  +hTorso(y)+hP('M34.5 54Q42 59 50 56.5Q58 59 65.5 54L65.8 58Q58 62.5 50 60Q42 62.5 34.2 58Z','#f6f4e9',1.3)
+  +hP('M33.8 79Q50 84 66.2 79L71.5 98Q50 104 28.5 98Z',b)+hP('M29.3 94Q50 100 70.7 94L71.6 98.4Q50 104.5 28.4 98.4Z',r,1.5)+hL('M40 84l-2 12M50 85.5v14M60 84l2 12','#24497f',1)
+  +hP('M62 49.5L65.5 52L36.5 81L33 79Z',r,1.2)+hL('M60 54l-2-2M55 59l-2-2M50 64l-2-2M45 69l-2-2M40 74l-2-2',y,1)
+  +hArms(y,'#f6f4e9')
+  +hP('M16.5 76Q16.5 72 20.5 72H32Q36 72 36 76V88Q26 92 16.5 88Z','#e66b37')
+  +hF('M17.5 76.5h17.5v2.4H17.5Z',b)+hF('M17.5 81h17.5v2.4H17.5Z','#2f8a4a')+hL('M18 85.5l2.5-2 2.5 2 2.5-2 2.5 2 2.5-2 2.5 2 2.5-2',y,1.1)
+  +hHands(s)
+  +braid+hP('M30.5 71Q33 69 35.5 71L34.6 73.6L31.4 73.6Z',r,1.2)
+  +hHead(s)+hP('M33 37Q31.5 27 37 27H63Q68.5 27 67 37Q64 30.5 50 30.5Q36 30.5 33 37Z',hair)
+  +hFace({brow:hair})+hC(33.6,42,1.6,'#e4b951',1)+hC(66.4,42,1.6,'#e4b951',1)
+  +hP('M17 27.5Q50 16 83 27.5Q86 32.5 76 32Q50 25 24 32Q14 32.5 17 27.5Z','#f3ead2',1.8)
+  +hL('M22 29.5Q50 20.5 78 29.5',HK,1.1)+hL('M26 30.7l3-2.6 3 2.2 3-2.8 3 2.4M62 28.3l3 2.4 3-2.8 3 2.2 3-2.6',HK,1)
+  +hP('M37 26Q36.5 8 50 8Q63.5 8 63 26Q50 22 37 26Z','#f3ead2',1.8)
+  +hP('M37.6 19.5Q50 16.5 62.4 19.5L62.6 22.5Q50 19.5 37.4 22.5Z',HK,0)+hP('M38.6 13.2Q50 10.8 61.4 13.2L61.8 15.6Q50 13.2 38.2 15.6Z',HK,0);},
+
+/* Argentina — gaucho: boina, celeste poncho with Sol de Mayo, pañuelo, mate */
+argentina(){const s=H_SKIN.light,hair='#4a2e1c',cel='#7cc0e6';return ''
+  +hP('M38.5 84H49L48.5 101H39.5Z','#d9c9a3')+hP('M51 84H61.5L60.5 101H51.5Z','#d9c9a3')
+  +hP('M37.5 99Q37.5 96 40.5 96H48.5V111Q42 113.5 36 111.5Z','#22262b')+hP('M51.5 96H59.5Q62.5 96 62.5 99V111.5Q58 113.5 51.5 111Z','#22262b')
+  +hTorso('#f6f4e9',false)
+  +hArms('#f6f4e9')
+  +hP('M38 48.5Q50 52 62 48.5L79 79Q50 88 21 79Z',cel)
+  +hP('M24.5 72.5Q50 81 75.5 72.5L77.5 76.5Q50 85 22.5 76.5Z','#f6f4e9',1.3)
+  +hL('M23 80v4M27 81.2v4M31 82.2v4M35 83v4M39 83.6v4M43 84v4M47 84.3v4M51 84.3v4M55 84v4M59 83.6v4M63 83v4M67 82.2v4M71 81.2v4M75 80v4','#5a9cc4',1.3)
+  +hC(50,63,3.6,'#f2c63c',1.3)+hRays(50,63,4.6,6.8,12,'#e4b951',1.1)
+  +hP('M39 48.5L61 48.5L50 59Z','#cf3f35',1.6)+hP('M47.8 49.5h4.4l-.8 3.6h-2.8Z','#a92f28',1.2)
+  +hP('M19 79Q17 91 25 93Q33 91 31 79Z','#8a5a2b',1.7)+hE(25,79,6,1.9,'#c9ccd1')+hL('M19.5 82.5q5.5 2 11 0','#c9ccd1',1.4)
+  +hP('M25.5 79L30.8 66.5L32.4 67.1L27.3 79.4Z','#c9ccd1',1)
+  +hHands(s)
+  +hHead(s)+hP('M33.4 37Q32.5 24 37 23H63Q67.5 24 66.6 37Q65 28 60 27H40Q35 28 33.4 37Z',hair)
+  +hFace({brow:hair})
+  +hP('M43.3 41.6Q46.8 38.6 50 40.4Q53.2 38.6 56.7 41.6Q53.3 43 50 41.8Q46.7 43 43.3 41.6Z',hair,1)
+  +hP('M30.5 24Q30 11 50 10.5Q71.5 11 72 22.5Q69 27 50 26Q34 26.5 30.5 24Z','#2a2d33')+hC(50.5,9.8,2,'#2a2d33',1.4)+hL('M35 22.5Q50 25 68 21.5','#41464e',1.2);}
+};
+function heroBody(id){const f=HEROES[id]||HEROES.general,b=f();
+  return '<ellipse cx="50" cy="113" rx="25" ry="4.5" fill="#28463226"/><g class="hx-st">'+b+'</g>'+b}
 function heroArt(id){return '<svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">'+heroBody(id)+'</svg>'}
-function bottleArm(){return '<g class="aim-arm"><rect x="69" y="60" width="9" height="26" rx="3" fill="#3d7a3f"/><rect x="70.5" y="54" width="6" height="8" rx="1.6" fill="#2f5a31"/><rect x="71" y="50" width="5" height="5" rx="1" fill="#8a5a2b"/><rect x="71" y="63" width="5" height="12" rx="1" fill="#f8f5ea" opacity="0.55"/></g>'}
+function heroPortrait(id){return '<svg viewBox="17 4 66 66" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'+heroBody(id)+'</svg>'}
+const HERO_SKIN={general:H_SKIN.light,spain:H_SKIN.light,mexico:H_SKIN.mid,colombia:H_SKIN.tan,argentina:H_SKIN.light};
+/* The hero holds the projectile the player chose; the group pivots on the right hand (73,86). */
+function heldItem(){const kind=countries[state.country].items[state.weapon][0];
+  const svg=art(kind).replace('<svg class=""','<svg x="61" y="60" width="24" height="24" overflow="visible"');
+  return '<g class="aim-arm"><g transform="rotate(-12 73 72)">'+svg+'</g></g>'+hC(71,86,5,HERO_SKIN[state.country]||H_SKIN.light)}
+function bottleArm(){return heldItem()}
 const HERO_NAMES={general:'Путешественник',spain:'Живу в Испании',mexico:'Живу в Мексике',colombia:'Живу в Колумбии',argentina:'Живу в Аргентине'};
 function heroName(id){return HERO_NAMES[id]||countries[id].name}
 function arcTop(step){
@@ -299,7 +535,7 @@ home=function(){
         <p class="arc-lead">Пять ступеней, три снаряда и слова, которые летят к базе. Примерный словарный уровень — за 5–7 минут.</p>
         <div class="persona-list">
           ${ids.map(id=>`<button class="persona ${state.country===id?'is-on':''}" data-country="${id}" aria-pressed="${state.country===id}">
-            <span class="pfh">${heroArt(id)}</span>
+            <span class="pfh">${heroPortrait(id)}</span>
             <span><b>${heroName(id)}</b><small>${countries[id].sub}</small></span>
             <span class="tick">${state.country===id?'✓':''}</span>
           </button>`).join('')}
@@ -311,34 +547,122 @@ home=function(){
   document.querySelectorAll('[data-country]').forEach(b=>b.onclick=()=>{state.country=b.dataset.country;state.weapon=0;home()});
   const ch=document.getElementById('choose'); if(ch) ch.onclick=weapons;
 };
+const STEP_NAMES=['Герой','Снаряд','Игра','Результат'];
+arcTop=function(step){
+  return `<div class="arc-top">
+    <a class="arc-back" href="/">← На сайт</a>
+    <div class="arc-brand">✺ español con Daniel</div>
+    <div class="arc-steps">
+      ${STEP_NAMES.map((n,i)=>`<span class="${step===i+1?'on':''}"><b>${i+1}</b> ${n}</span>`).join('')}
+      <button class="arc-help" type="button" onclick="document.getElementById('method').showModal()" aria-label="Как считается результат">?</button>
+    </div>
+    <span class="arc-stepm" aria-label="Шаг ${step} из 4"><b>${step}</b>/4<em style="font-style:normal"> · ${STEP_NAMES[step-1]}</em></span>
+  </div>`;
+};
 weapons=function(){
-  state.screen='weapons';
-  const c=countries[state.country];
+  leaveCombat();runId++;state.screen='weapons';
+  const c=countries[state.country],w=c.items[state.weapon];
   app.innerHTML=`<div class="arc">${arcTop(2)}
-    <div class="arc-main weapon">
-      <div class="weapon-head"><div>
-        <div class="eyebrow">${c.flag} ${heroName(state.country)}</div>
-        <h1>Выбери <em>снаряд.</em></h1>
-      </div></div>
-      <div class="weapon-row">
-        ${c.items.map(([id,name,desc],i)=>`<button class="wcard ${state.weapon===i?'is-on':''}" data-weapon="${i}" aria-pressed="${state.weapon===i}">
-          <span class="wart">${art(id)}</span>
-          <b>${name}</b>
-          <small>${desc}</small>
-          <span class="tick">${state.weapon===i?'✓':''}</span>
-        </button>`).join('')}
+    <div class="arc-main hero wpn">
+      <div class="hero-stage">
+        <div class="hero-token" id="heroToken"><div class="hero-ring"></div><div class="hero-art">${heroArt(state.country)}</div><div class="ammo" aria-hidden="true">${art(w[0])}</div></div>
+        <div class="hero-name">${w[1]}</div>
+        <div class="hero-sub">${c.flag} ${heroName(state.country)}</div>
       </div>
-      <div class="weapon-foot">
-        <button class="arc-back2" id="back">← Герой</button>
-        <div class="weapon-hint">Слова летят к базе. Клик или касание — выстрел.</div>
-        <button class="primary" id="start">Начать игру <span>→</span></button>
+      <div class="hero-side">
+        <div class="eyebrow">ВЫБЕРИ СНАРЯД</div>
+        <h1>Чем будешь <em>попадать?</em></h1>
+        <p class="arc-lead">Немного местного колорита. Снаряд — для настроения: на результат он не влияет.</p>
+        <div class="persona-list" role="radiogroup" aria-label="Снаряд">
+          ${c.items.map(([id,name,desc],i)=>`<button class="persona ${state.weapon===i?'is-on':''}" data-weapon="${i}" role="radio" aria-checked="${state.weapon===i}">
+            <span class="wico">${art(id)}</span>
+            <span><b>${name}</b><small>${desc}</small></span>
+            <span class="tick">${state.weapon===i?'✓':''}</span>
+          </button>`).join('')}
+        </div>
+        <label class="switch-row"><input type="checkbox" id="motion" ${state.motion?'checked':''}><span class="switch" aria-hidden="true"></span>
+          <span><b>Слова летят к базе</b><small>${state.motion?'Нажми на правильный перевод, пока слово не долетело.':'Спокойный режим: слова стоят на месте, без таймера.'}</small></span></label>
+        <div class="arc-actions">
+          <button class="ghost" id="back">← Герой</button>
+          <button class="primary" id="start">Начать игру <span>→</span></button>
+        </div>
       </div>
     </div>
   </div>`;
-  document.getElementById('back').onclick=home;
-  document.querySelectorAll('[data-weapon]').forEach(b=>b.onclick=()=>{state.weapon=+b.dataset.weapon;weapons()});
-  document.getElementById('start').onclick=start;
+  $('#back').onclick=home;
+  document.querySelectorAll('[data-weapon]').forEach(b=>b.onclick=()=>{state.weapon=+b.dataset.weapon;weapons();$(`[data-weapon="${state.weapon}"]`)?.focus({preventScroll:true,focusVisible:false})});
+  $('#motion').onchange=e=>{state.motion=e.target.checked;e.target.closest('label').querySelector('small').textContent=state.motion?'Нажми на правильный перевод, пока слово не долетело.':'Спокойный режим: слова стоят на месте, без таймера.'};
+  $('#start').onclick=start;
 };
+interlude=function(title,desc,label,action,celebrate){
+  stopCombat();state.screen='interlude';
+  const pips=levels.map((_,i)=>`<i class="${i<state.stage||(i===state.stage&&celebrate)?'done':i===state.stage?'now':''}"></i>`).join('');
+  const sh=state.shields??3;
+  app.innerHTML=`<div class="stage-card" role="dialog" aria-labelledby="stage-title">
+    <div class="stage-badge"><div class="hero-art">${heroArt(state.country)}</div><span class="medal-mini ${celebrate?'':'soft'}" aria-hidden="true">${celebrate?'✦':'◎'}</span></div>
+    <div class="eyebrow" style="justify-content:center">СТУПЕНЬ ${state.stage+1}/5 · ${levels[state.stage]}</div>
+    <div class="pips" aria-hidden="true">${pips}</div>
+    <h2 id="stage-title">${title}</h2>
+    <p>${desc}</p>
+    <div class="stage-meta"><span>${state.points} очков</span><span class="gem" aria-label="Щит ${sh} из 3">${'◆'.repeat(sh)+'◇'.repeat(3-sh)}</span><span>${countries[state.country].flag} ${heroName(state.country)}</span></div>
+    <button class="primary" id="continue">${label} <span>→</span></button>
+  </div>`;
+  $('#continue').onclick=action;$('#continue').focus({preventScroll:true,focusVisible:false});
+  if(celebrate){const b=$('.medal-mini').getBoundingClientRect();burst(b.left+b.width/2,b.top+b.height/2)}
+};
+const RESULT_COPY=[
+  ['Твоя точка старта найдена','Начни с самых частых слов: люди, еда, дом и повседневные действия. Первые 300 слов дают удивительно много.'],
+  ['Первые слова уже твои','Ты узнаёшь базовые слова. Следующий шаг — повседневные ситуации: кафе, магазин, дорога, короткие фразы.'],
+  ['Повседневный испанский — рядом','Бытовая лексика уже знакома. Расширяй словарь для планов, впечатлений и решения бытовых задач.'],
+  ['Уверенный повседневный словарь','Ты узнаёшь много практических выражений. Дальше — точные значения, связки и абстрактная лексика.'],
+  ['Словарь для свободного общения','Сложная лексика тебе по силам. Следующий шаг — оттенки смысла и устойчивые выражения.'],
+  ['Впечатляющий словарный запас','Ты узнаёшь даже редкие выражения. Теперь важно другое: насколько свободно ты используешь их в речи.']
+];
+results=function(partial=false){
+  leaveCombat();runId++;state.screen='results';
+  const core=state.answers.filter(a=>!a.regional),reg=state.answers.filter(a=>a.regional),hit=core.filter(a=>a.correct).length,regHit=reg.filter(a=>a.correct).length;
+  const tooFew=partial&&state.passed<0;
+  const band=state.passed<0?'Старт':['A1','A2','B1','B2','B2+'][state.passed];
+  const [headline,next]=RESULT_COPY[state.passed+1];
+  const track=['A1','A2','B1','B2','B2+'].map((b,i)=>`<span class="${state.passed>i?'on':state.passed===i?'now':''}">${b}</span>`).join('');
+  const c=countries[state.country];
+  app.innerHTML=`<div class="arc">${arcTop(4)}
+    <div class="res2-grid">
+      <section class="res2-main" aria-labelledby="res-title">
+        <div class="res2-card">
+          <div class="res2-hero" aria-hidden="true">${heroArt(state.country)}</div>
+          <div>
+            <div class="res2-eyebrow">${c.flag} Твой результат</div>
+            <div class="res2-level ${band.length>3||tooFew?'small':''}">${tooFew?'—':band}</div>
+            <div class="res2-cap">${tooFew?'Пока мало ответов для оценки':'примерный уровень по лексике'+(partial?' · не ниже':'')}</div>
+            <div class="res2-track" aria-hidden="true">${track}</div>
+          </div>
+        </div>
+        <h1 class="res2-title" id="res-title">${tooFew?'Первые слова — первый шаг':partial?'Промежуточный результат':headline}</h1>
+        <div class="res2-stats">
+          <div><strong>${hit} из ${core.length}</strong><span>слов узнано</span></div>
+          <div><strong>${state.points}</strong><span>игровых очков</span></div>
+          ${reg.length?`<div><strong>${regHit} из ${reg.length}</strong><span>местных выражений</span></div>`:''}
+        </div>
+        <p class="res2-next"><b>Что дальше</b>${tooFew?'Пройди хотя бы первую ступень, чтобы получить ориентир.':next}</p>
+        <p class="res2-fine">${partial?'Игра завершена досрочно. ':''}Это быстрая оценка узнавания слов, а не полный уровень испанского. <button type="button" onclick="document.getElementById('method').showModal()">Как считается результат?</button></p>
+      </section>
+      <aside class="res2-side">
+        <div class="eyebrow">СЛЕДУЮЩИЙ ШАГ</div>
+        <h2>Слова знаешь. <em>А как говоришь?</em></h2>
+        <p>Игра проверила словарь. Разговор покажет остальное — на бесплатной встрече со мной.</p>
+        <ul class="res2-perks"><li>Оценим разговорный уровень</li><li>Составим план: что учить дальше</li><li>Можно по-русски, без стресса</li></ul>
+        <a class="primary orange" href="https://calendly.com/dcorreavi/free-consultation" target="_blank" rel="noopener">Записаться на бесплатную встречу <span>↗</span></a>
+        <div class="res2-under">20 минут · бесплатно · без обязательств</div>
+        <div class="res2-actions"><button class="ghost" id="again">Сыграть ещё раз</button><button class="ghost" id="change">Другой герой</button></div>
+        <details class="review"><summary>Слова из игры (${state.answers.length})</summary>${state.answers.map(a=>`<div class="review-row"><span>${a.correct?'✓':'○'} ${a.ru}<br><small>${a.regional?'Местное выражение':'Ступень '+(a.stage+1)}</small></span><strong>${a.answer}</strong></div>`).join('')}</details>
+      </aside>
+    </div>
+  </div>`;
+  $('#again').onclick=start;$('#change').onclick=home;
+  window.scrollTo({top:0,behavior:'instant'});
+};
+
 home();
 
 </script></body></html>
