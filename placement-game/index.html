@@ -272,7 +272,7 @@ body.playing .arc{display:none}
 }
 
 /* ===================== ARCADE (16-bit) MODE ===================== */
-img.px{image-rendering:pixelated;image-rendering:crisp-edges;display:block;height:auto;margin:auto;user-select:none;-webkit-user-drag:none}
+img.px{image-rendering:crisp-edges;image-rendering:pixelated;display:block;height:auto;margin:auto;user-select:none;-webkit-user-drag:none}
 .hero-art,.res2-hero{animation:pxbob 1s steps(2,jump-none) infinite}
 @keyframes pxbob{0%{transform:translateY(0)}100%{transform:translateY(-4px)}}
 .hero-token .hero-art{width:76%}
@@ -281,7 +281,7 @@ img.px{image-rendering:pixelated;image-rendering:crisp-edges;display:block;heigh
 .res2-hero{width:108px}
 .pxp{display:block;width:100%;height:100%;image-rendering:pixelated;background-repeat:no-repeat;background-size:108px auto;background-position:-37px -17px}
 .wico img.px,.ammo img.px{filter:none}
-.px-canvas{position:absolute;left:0;top:0;z-index:-2;image-rendering:pixelated;image-rendering:crisp-edges;display:block}
+.px-canvas{position:absolute;left:0;top:0;z-index:-2;image-rendering:crisp-edges;image-rendering:pixelated;display:block}
 .battle.bpx{background:#dfe6c2;cursor:crosshair}
 .battle.bpx:after{background:radial-gradient(ellipse at 50% 60%,transparent 55%,#1d352922 100%)}
 .pxf{font-family:'Press Start 2P','Manrope',monospace;letter-spacing:0}
@@ -730,8 +730,13 @@ const ARC=(()=>{
   const spr=(w,h,fn,ol=true)=>{const c=cnv(w,h);fn(c.getContext('2d'));crisp(c);return ol?edge(c,INK):c};
   const R=(x,a,b,w,h,c)=>{x.fillStyle=c;x.fillRect(a,b,w,h)},E=(x,cx,cy,rx,ry,c)=>{x.fillStyle=c;x.beginPath();x.ellipse(cx,cy,rx,ry,0,0,PI*2);x.fill()},
     PL=(x,p,c)=>{x.fillStyle=c;x.beginPath();p.forEach((q,i)=>i?x.lineTo(q[0],q[1]):x.moveTo(q[0],q[1]));x.fill()},BL=(x,cx,cy,r,d,m,l)=>{E(x,cx,cy,r,r*.92,d);E(x,cx-r*.1,cy-r*.12,r*.84,r*.78,m);E(x,cx-r*.32,cy-r*.36,r*.42,r*.36,l)};
-  function raster(svg,w,h){return new Promise(res=>{const im=new Image();im.onload=()=>{const c=cnv(w,h),x=c.getContext('2d');x.drawImage(im,0,0,w,h);res(crisp(c))};im.onerror=()=>res(null);
-    if(!/xmlns=/.test(svg))svg=svg.replace('<svg ','<svg xmlns="http://www.w3.org/2000/svg" ');im.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg)})}
+  // Draw the SVG at K× and give each K×K block its most common colour, so details stay solid instead of blending into mush.
+  function boil(src,w,h,K){const o=cnv(w,h),ox=o.getContext('2d');try{const s=src.getContext('2d').getImageData(0,0,w*K,h*K).data,W=w*K,d=ox.createImageData(w,h);
+    for(let y=0;y<h;y++)for(let x=0;x<w;x++){const m=new Map();let n=0;for(let j=0;j<K;j++)for(let i=0;i<K;i++){const p=((y*K+j)*W+x*K+i)*4;if(s[p+3]<128)continue;n++;const q=(s[p]>>4)<<8|(s[p+1]>>4)<<4|s[p+2]>>4,b=m.get(q);if(b){b[0]++;b[1]+=s[p];b[2]+=s[p+1];b[3]+=s[p+2]}else m.set(q,[1,s[p],s[p+1],s[p+2]])}
+      if(n*2<K*K)continue;let best=null;for(const b of m.values())if(!best||b[0]>best[0])best=b;const p=(y*w+x)*4;d.data[p]=best[1]/best[0];d.data[p+1]=best[2]/best[0];d.data[p+2]=best[3]/best[0];d.data[p+3]=255}
+    ox.putImageData(d,0,0)}catch(e){ox.drawImage(src,0,0,w,h)}return o}
+  function raster(svg,w,h){const K=4;return new Promise(res=>{const im=new Image();im.onload=()=>{const c=cnv(w*K,h*K);c.getContext('2d').drawImage(im,0,0,w*K,h*K);res(crisp(boil(c,w,h,K)))};im.onerror=()=>res(null);
+    if(!/xmlns=/.test(svg))svg=svg.replace('<svg ','<svg xmlns="http://www.w3.org/2000/svg" ');svg=svg.replace(/<svg\b[^>]*>/,t=>t.replace(/\s(width|height)="[^"]*"/g,'')).replace('<svg ',`<svg width="${w*K}" height="${h*K}" `);im.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg)})}
   const SP={hero:{},heroS:{},heroU:{},item:{},itemU:{},prop:{},bal:[],ok:false},HW=50,HH=60,IW=16;
   const svgHero=heroBody,svgItem=art;
   const ready=(async()=>{
