@@ -522,6 +522,8 @@
       .run .ta-fly{animation:ta-float 12s linear infinite}
       .run .ta-fly.f2 img{animation:ta-pop 12s linear infinite}
       .run .ta-fly.f2 b{animation:ta-hit 12s linear infinite}
+      .run .ta-fly.f2 b:before,.run .ta-fly.f2 b:after{animation:ta-cut 12s linear 6s infinite}
+      .run .ta-fly.f1,.run .ta-fly.f3{animation-name:ta-away}
       .run .ta-res strong{animation:ta-level 12s linear infinite}
       .run .ta-track i:nth-child(1){animation:ta-fill1 12s linear infinite}
       .run .ta-track i:nth-child(2){animation:ta-fill2 12s linear infinite}
@@ -535,8 +537,10 @@
     @keyframes ta-hand{0%,33.9%{opacity:0}34%,57.9%{opacity:1}58%,63.9%{opacity:0}64%,100%{opacity:1}}
     @keyframes ta-throw{0%,7.9%{opacity:0;transform:none}8%{opacity:1;transform:none}11%{opacity:1;transform:translate(-42px,-84px) rotate(360deg)}11.1%,100%{opacity:0;transform:translate(-42px,-84px)}}
     @keyframes ta-float{0%{transform:translateY(16px)}25%,100%{transform:translateY(-8px)}}
+    @keyframes ta-cut{0%,10.9%{opacity:1}11%,100%{opacity:0}}
+    @keyframes ta-away{0%{transform:translateY(16px);opacity:1}12.5%{transform:translateY(4px);opacity:1}19%,100%{transform:translateY(-46px);opacity:0}}
     @keyframes ta-pop{0%,10.9%{opacity:1;transform:none}11%{opacity:1;transform:scale(1.5)}12.6%,100%{opacity:0;transform:scale(2)}}
-    @keyframes ta-hit{0%,10.9%{background:#f7f3dc;border-color:#1d3529;box-shadow:inset -3px -3px 0 #d9d3b0,inset 3px 3px 0 #fffdf0,0 5px 0 #1d352938}11%,100%{background:#c4ea9f;border-color:#2f7a3f;box-shadow:inset -3px -3px 0 #9fd07a,inset 3px 3px 0 #e2f7cc,0 5px 0 #1d352938}}
+    @keyframes ta-hit{0%,10.9%{background:#f7f3dc;border-color:#1d3529;box-shadow:inset -3px -3px 0 #d9d3b0,inset 3px 3px 0 #fffdf0,0 5px 0 #1d352938;transform:none}11%{background:#c4ea9f;border-color:#2f7a3f;box-shadow:inset -3px -3px 0 #9fd07a,inset 3px 3px 0 #e2f7cc,0 5px 0 #1d352938;transform:scale(1.18)}13%,100%{background:#c4ea9f;border-color:#2f7a3f;box-shadow:inset -3px -3px 0 #9fd07a,inset 3px 3px 0 #e2f7cc,0 5px 0 #1d352938;transform:none}}
     @keyframes ta-level{0%,7.9%{opacity:0;transform:scale(.6)}8%{opacity:1;transform:scale(1.25)}10%,100%{opacity:1;transform:none}}
     @keyframes ta-fill1{0%,3.9%{background:#f7f3dc}4%,100%{background:#c4ea9f}}
     @keyframes ta-fill2{0%,6.9%{background:#f7f3dc}7%,100%{background:#c4ea9f}}
