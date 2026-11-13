@@ -276,7 +276,7 @@ img.px{image-rendering:pixelated;image-rendering:crisp-edges;display:block;heigh
 .hero-art,.res2-hero{animation:pxbob 1s steps(2,jump-none) infinite}
 @keyframes pxbob{0%{transform:translateY(0)}100%{transform:translateY(-4px)}}
 .hero-token .hero-art{width:76%}
-.hero-art img.px,.res2-hero img.px{filter:drop-shadow(0 6px 0 #0b241d59)}
+.hero-art img.px,.res2-hero img.px{width:100%;height:auto;filter:drop-shadow(0 6px 0 #0b241d59)}
 .stage-badge .hero-art{width:108px;margin-top:-16px}
 .res2-hero{width:108px}
 .pxp{display:block;width:100%;height:100%;image-rendering:pixelated;background-repeat:no-repeat;background-size:108px auto;background-position:-37px -17px}
@@ -705,7 +705,7 @@ results=function(partial=false){
         <ul class="res2-perks"><li>Оценим разговорный уровень</li><li>Составим план: что учить дальше</li><li>Можно по-русски, без стресса</li></ul>
         <a class="primary orange" href="https://calendly.com/dcorreavi/free-consultation" target="_blank" rel="noopener">Записаться на бесплатную встречу <span>↗</span></a>
         <div class="res2-under">20 минут · бесплатно · без обязательств</div>
-        <div class="res2-actions"><button class="ghost" id="again">↻ Сыграть ещё раз</button><button class="ghost" id="change">Другой герой</button></div>
+        <div class="res2-actions"><button class="ghost" id="again">Сыграть ещё раз</button><button class="ghost" id="change">Другой герой</button></div>
         <details class="review"><summary>Слова из игры (${state.answers.length})</summary>${state.answers.map(a=>`<div class="review-row"><span>${a.correct?'✓':'○'} ${a.ru}<br><small>${a.regional?'Местное выражение':'Ступень '+(a.stage+1)}</small></span><strong>${a.answer}</strong></div>`).join('')}</details>
       </aside>
     </div>
