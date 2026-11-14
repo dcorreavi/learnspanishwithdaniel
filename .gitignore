@@ -1,0 +1,9 @@
+# Mac clutter
+.DS_Store
+
+# Claude Code's temporary copies of the repo
+.claude/worktrees/
+
+# Secrets — never publish
+.env
+.env.*
