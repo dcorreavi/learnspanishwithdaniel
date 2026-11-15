@@ -471,8 +471,14 @@
     .tg-sky{top:0;height:100%;object-fit:cover;object-position:50% 0;opacity:.75}
     .tg-hills{bottom:0;height:140px;object-fit:cover;object-position:50% 0;opacity:.85}
     .tg-meadow{bottom:0;height:118px;object-fit:cover;object-position:50% 0}
-    .tg-hero{position:absolute;z-index:2;left:50%;bottom:24px;height:112px;width:auto;margin-left:-20px;filter:drop-shadow(0 4px 4px rgba(91,71,42,.3))}
-    .tg-plane{position:absolute;z-index:4;left:50%;top:164px;width:34px;height:auto;margin-left:14px;opacity:0}
+    /* The traveler, assembled from the game's cutout pieces so the arm can throw. Positions are in the pixels of the body image, scaled by --k. */
+    .tg-hero{--k:.1545px;position:absolute;z-index:2;left:50%;bottom:24px;width:calc(264*var(--k));height:calc(725*var(--k));margin-left:calc(-150*var(--k));filter:drop-shadow(0 4px 4px rgba(91,71,42,.3))}
+    .tg-hero img{position:absolute;height:auto}
+    .tg-body{left:0;top:calc(158*var(--k));width:calc(264*var(--k))}
+    .tg-head{left:calc(52*var(--k));top:0;width:calc(205*var(--k))}
+    .tg-arm{left:calc(120*var(--k));top:calc(214*var(--k));width:calc(112*var(--k));transform-origin:50% 7.6%}
+    .tg-arm2{left:calc(21*var(--k));top:calc(218*var(--k));width:calc(98*var(--k))}
+    .tg-plane{position:absolute;z-index:4;left:50%;bottom:120px;width:34px;height:auto;margin-left:14px;opacity:0}
     .tg-sc{position:absolute;inset:0;z-index:3;opacity:0}
     .tg-s2{opacity:1}
     .tg-paper{position:absolute;inset:0;width:100%;height:100%;z-index:-1;filter:drop-shadow(0 3px 3px rgba(91,71,42,.3))}
@@ -498,7 +504,7 @@
     /* One 12s loop, 4s per step. Each step reuses the same keyframes, shifted by its delay. */
     @media (prefers-reduced-motion:no-preference){
       .run .tg-sc{opacity:0;animation:tg-show 12s linear infinite}
-      .run .tg-s2,.run .tg-s2 *,.run .tg-plane{animation-delay:4s!important}
+      .run .tg-s2,.run .tg-s2 *,.run .tg-plane,.run .tg-arm{animation-delay:4s!important}
       .run .tg-s3,.run .tg-s3 *{animation-delay:8s!important}
       .run .ta-steps li{animation:tg-step 12s linear infinite}
       .run .ta-steps li:nth-child(2){animation-delay:4s}
@@ -506,6 +512,7 @@
       .run .tg-sel{animation:tg-pick 12s linear infinite}
       .run .tg-hero{animation:tg-hero 12s linear infinite}
       .run .tg-plane{animation:tg-throw 12s linear infinite}
+      .run .tg-arm{animation:tg-arm 12s linear infinite}
       .run .tg-fly{animation:tg-float 12s linear infinite}
       .run .tg-fly.f1,.run .tg-fly.f2{animation-name:tg-away}
       .run .tg-fly.f3>img{animation:tg-pop 12s linear infinite}
@@ -521,7 +528,9 @@
     @keyframes tg-step{0%,33.2%{border-top-color:var(--cta);color:var(--ink)}33.3%,100%{border-top-color:var(--line);color:#6A7C72}}
     @keyframes tg-pick{0%,11.9%{transform:translateX(52px)}12%,100%{transform:none}}
     @keyframes tg-hero{0%,13.9%{opacity:0;transform:translateY(-16px)}14%{opacity:1;transform:translateY(-16px)}16.5%,71%{opacity:1;transform:none}73%{opacity:1;transform:translateY(-11px)}75%{opacity:1;transform:none}77%{opacity:1;transform:translateY(-11px)}79%,100%{opacity:1;transform:none}}
-    @keyframes tg-throw{0%,10.9%{opacity:0;left:50%;top:164px;margin-left:14px}11%{opacity:1;left:50%;top:164px;margin-left:14px}14.5%{opacity:1;left:83%;top:108px;margin-left:-17px}14.6%,100%{opacity:0;left:83%;top:108px;margin-left:-17px}}
+    /* The arm lifts the plane, pulls back, then swings; the plane leaves the hand at 11.5% and reaches the balloon as it pops. */
+    @keyframes tg-arm{0%{transform:none}3%,9%{transform:rotate(-142deg)}10.6%{transform:rotate(-92deg)}11.5%,14.5%{transform:rotate(-158deg)}19%,100%{transform:none}}
+    @keyframes tg-throw{0%,2.9%{opacity:0;left:50%;bottom:120px;margin-left:14px}3%,9%{opacity:1;left:50%;bottom:120px;margin-left:14px}10.6%{opacity:1;left:50%;bottom:98px;margin-left:30px}11.5%{opacity:1;left:50%;bottom:124px;margin-left:8px}14.5%{opacity:1;left:83%;bottom:176px;margin-left:-17px}14.6%,100%{opacity:0;left:83%;bottom:176px;margin-left:-17px}}
     @keyframes tg-float{0%{transform:translateY(14px)}33%,100%{transform:translateY(-6px)}}
     @keyframes tg-away{0%{transform:translateY(14px);opacity:1}16%{transform:translateY(4px);opacity:1}23%,100%{transform:translateY(-44px);opacity:0}}
     @keyframes tg-pop{0%,14.4%{opacity:1;transform:none}14.5%{opacity:1;transform:scale(1.45)}16%,100%{opacity:0;transform:scale(1.9)}}
@@ -753,7 +762,7 @@
               <img class="tg-sky" alt="" loading="lazy" src="/placement-game/assets/bg-landscape-sky.webp">
               <img class="tg-hills" alt="" loading="lazy" src="/placement-game/assets/bg-portrait-hills.webp">
               <img class="tg-meadow" alt="" loading="lazy" src="/placement-game/assets/teaser-meadow.webp">
-              <img class="tg-hero" alt="" loading="lazy" src="/placement-game/assets/figure-general.webp">
+              <div class="tg-hero"><img class="tg-arm" alt="" loading="lazy" src="/placement-game/assets/hero-arm-back.webp"><img class="tg-body" alt="" loading="lazy" src="/placement-game/assets/hero-body.webp"><img class="tg-head" alt="" loading="lazy" src="/placement-game/assets/hero-head.webp"><img class="tg-arm2" alt="" loading="lazy" src="/placement-game/assets/hero-arm-front.webp"></div>
               <img class="tg-plane" alt="" loading="lazy" src="/placement-game/assets/paper-plane.webp">
               <div class="tg-sc tg-s1"><div class="tg-panel"><img class="tg-paper" alt="" loading="lazy" src="/placement-game/assets/scrap-wide.webp"><span class="tg-cap">Выбери героя</span><div class="tg-row"><img class="tg-p" alt="" loading="lazy" src="/placement-game/assets/figure-general.webp"><img class="tg-p" alt="" loading="lazy" src="/placement-game/assets/figure-spain.webp"><span class="tg-sel"></span></div></div></div>
               <div class="tg-sc tg-s2">
