@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f6f4e9"><title>Palabra — Испанский в цель | Español con Daniel</title><meta name="description" content="Играй со словами, открой испанский разных стран и узнай свой примерный словарный уровень."><style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Press+Start+2P&family=Literata:opsz,wght@7..72,500;7..72,700&display=swap');
 :root{--paper:#f6f4e9;--ink:#243d32;--muted:#71786c;--orange:#e66b37;--line:#daddce;--green:#284f3b;--mint:#e4eada;--accent:#e4b951}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px 'Manrope',sans-serif}button,a,input{touch-action:manipulation}button{font:inherit;cursor:pointer;color:inherit}button:disabled{cursor:default;opacity:.55}button:focus-visible,a:focus-visible{outline:3px solid #c65b31;outline-offset:4px}button{border:0}a{color:inherit}header{height:88px;max-width:1320px;margin:auto;padding:0 48px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{text-decoration:none;display:flex;align-items:center;gap:12px;font-weight:800;font-size:14px}.brand small{display:block;font-size:10px;letter-spacing:2px;font-weight:500;margin-top:3px}.sunlogo{font-size:33px;color:var(--orange)}.header-right{display:flex;align-items:center;gap:24px;font-size:12px}.tag{border:1px solid var(--line);border-radius:30px;padding:8px 13px;font-size:10px;letter-spacing:1.2px;font-weight:800}.backsite{text-decoration:none}.backsite:hover{text-decoration:underline}main{max-width:1224px;margin:auto;padding:30px 0 20px}.steps{display:flex;gap:24px;align-items:center;font-size:11px;font-weight:700;color:#91978b;margin-bottom:33px}.steps span{display:flex;align-items:center;gap:8px}.steps i{font-style:normal;border:1px solid var(--line);width:24px;height:24px;display:grid;place-items:center;border-radius:50%;font-size:10px}.steps .active{color:var(--ink)}.steps .active i{background:var(--ink);color:white;border-color:var(--ink)}.eyebrow{text-transform:uppercase;font-size:10px;letter-spacing:2.5px;font-weight:800;display:flex;align-items:center;gap:8px}.eyebrow:before{content:'';width:7px;height:7px;background:var(--orange);border-radius:50%}h1{font-size:clamp(36px,4.4vw,62px);line-height:1.08;letter-spacing:-3px;margin:20px 0}h1 em{font-family:Georgia,serif;font-weight:400;color:var(--orange)}h2{font-size:31px;letter-spacing:-1.3px;line-height:1.2;margin:14px 0}h3{font-size:19px;letter-spacing:-.5px;margin:12px 0}.intro{font-size:14px;line-height:1.8;color:var(--muted);max-width:480px}.layout{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}.choice-label{font-size:12px;font-weight:800;display:flex;justify-content:space-between;margin:26px 0 12px}.choice-label small{font-size:10px;font-weight:500;color:var(--muted)}.countries{display:grid;grid-template-columns:1fr 1fr;gap:9px}.country{display:flex;text-align:left;align-items:center;gap:12px;background:transparent;border:1px solid var(--line);border-radius:12px;padding:15px;transition:.2s}.country:first-child{grid-column:1/-1}.country:hover{background:#eeeede;transform:translateY(-1px)}.country.selected{border-color:var(--green);background:var(--mint);box-shadow:0 0 0 1px var(--green)}.flag{font-size:24px}.country strong{font-size:12px;display:block}.country small{font-size:10px;color:var(--muted);display:block;margin-top:3px}.check{margin-left:auto;width:17px;height:17px;border:1px solid #bac0ae;border-radius:50%;font-size:10px;display:grid;place-items:center}.selected .check{background:var(--ink);color:white}.primary{background:var(--green);color:#fff;border-radius:9px;padding:17px 23px;font-size:12px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:30px;text-decoration:none;transition:.2s}.primary:hover{background:#183b28;transform:translateY(-1px)}.full{width:100%;margin-top:18px;justify-content:space-between}.primary.orange{background:var(--orange)}.under{font-size:10px;color:var(--muted);margin-top:12px;line-height:1.6}.under.center{text-align:center}.preview{background:#e8eddd;border:1px solid #d7deca;border-radius:22px;overflow:hidden;position:relative;height:564px;margin-top:0}.preview-top{position:absolute;z-index:2;top:23px;left:24px;right:24px;display:flex;justify-content:space-between;align-items:center}.pill{border-radius:30px;background:#ffffffc9;padding:9px 12px;font-size:9px;font-weight:800;letter-spacing:1px}.preview-prompt{position:absolute;z-index:2;top:98px;left:0;right:0;text-align:center}.preview-prompt small{font-size:9px;letter-spacing:2px}.preview-prompt h3{font-size:32px;margin-top:8px}.scene{width:100%;height:100%;position:absolute;inset:0;pointer-events:none}.preview-word{position:absolute;z-index:2;background:var(--paper);padding:15px 26px;border:1px solid #becbb4;border-radius:9px;font-size:19px;font-weight:800;box-shadow:0 5px 0 #c6cfb9;transform:rotate(-7deg);left:9%;top:45%}.preview-word.right{left:auto;right:8%;top:49%;transform:rotate(7deg)}.preview-word.correct{left:36%;top:37%;transform:rotate(0);border-color:var(--orange);box-shadow:0 5px 0 #dc9a73;color:#bb542b}.demo-shot{width:55px;height:55px;position:absolute;left:46%;top:60%;z-index:3;transform:rotate(-20deg)}.demo-trail{position:absolute;left:50%;top:70%;height:55px;border-left:2px dashed #c28349;transform:rotate(7deg)}.launcher{position:absolute;bottom:24px;left:calc(50% - 40px);height:74px;width:80px;z-index:3}.preview-bottom{position:absolute;bottom:17px;left:19px;font-size:9px;line-height:1.7;color:#57705c}.orbit{position:absolute;right:17px;bottom:18px;font-size:9px;letter-spacing:1px;writing-mode:vertical-rl}.benefits{display:flex;gap:20px;margin:32px 0 5px;padding:20px 0;border-top:1px solid var(--line);font-size:11px;justify-content:space-between}.benefits b{margin-right:7px;color:var(--orange)}footer{max-width:1224px;margin:15px auto 25px;display:flex;justify-content:space-between;color:var(--muted);font-size:10px;gap:20px}footer button{font-size:10px;background:none;padding:0;text-decoration:underline}.weapons{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:28px 0 14px}.weapon{position:relative;padding:20px;background:#eeefe3;border:1px solid var(--line);border-radius:15px;text-align:left;min-height:250px}.weapon.selected{border:2px solid var(--green);padding:19px;background:#e2e9d6}.weapon .art{width:95px;height:95px;margin:0 auto 18px;display:block;filter:drop-shadow(0 8px 6px #253e3217);transition:.2s}.weapon:hover .art{transform:rotate(-10deg) scale(1.06)}.weapon p{font-size:12px;line-height:1.7;color:var(--muted)}.weapon .check{position:absolute;top:16px;right:16px}.weapon-name{font-family:Georgia,serif;font-size:25px}.textbtn{background:transparent;font-size:12px;padding:10px 0;text-decoration:underline;text-underline-offset:4px}.weapon-layout{max-width:940px;margin:auto}.weapon-heading{display:flex;justify-content:space-between;align-items:center}.practice{height:180px;border-radius:15px;background:#e5eadb;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}.practice-label{position:absolute;top:17px;left:19px;font-size:10px;color:var(--muted)}.practice-target{background:var(--paper);border:1px solid #aebfa6;box-shadow:0 4px 0 #b5c5a9;border-radius:10px;padding:14px 32px;font-size:19px;font-weight:800;margin-bottom:30px}.practice .launcher{bottom:-16px;transform:scale(.8)}.controls{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-top:20px}.toggle{font-size:11px;display:flex;align-items:center;gap:7px;color:var(--muted)}input{accent-color:var(--green)}.game-shell{max-width:1000px;margin:auto}.game-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;gap:12px}.game-meta strong{font-size:13px}.game-meta small{display:block;font-size:10px;color:var(--muted);margin-top:5px}.stage-track{display:flex;gap:7px}.stage-track i{height:7px;width:42px;background:#dce0d1;border-radius:9px}.stage-track i.done{background:#8f9c68}.stage-track i.current{background:var(--orange)}.arena{position:relative;height:510px;background:#e5eadc;border:1px solid #cbd5c0;border-radius:20px;overflow:hidden}.prompt{position:absolute;top:27px;text-align:center;left:12px;right:12px;z-index:3}.prompt small{font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#60745d}.prompt h2{font-size:31px;margin:10px 0}.targets{position:absolute;inset:145px 20px 100px;z-index:4;display:flex;align-items:flex-start;justify-content:space-around;gap:15px}.target{position:relative;max-width:31%;min-width:23%;background:var(--paper);border:1px solid #b4c4ac;border-radius:12px;box-shadow:0 5px 0 #b1c2a5;padding:18px 12px;font-size:17px;font-weight:800;line-height:1.35;overflow-wrap:anywhere}.target small{display:block;font-size:9px;font-weight:500;color:var(--muted);margin-top:8px}.target.right-answer{background:#d3e5b7;border-color:#648246;box-shadow:0 5px 0 #648246}.target.wrong-answer{background:#f2cfbd;border-color:#b86a47;box-shadow:0 5px 0 #b86a47}.target:disabled{opacity:1}.moving .target{animation:approach 21s linear forwards}.moving .target:nth-child(2){animation-duration:23s}.moving .target:nth-child(3){animation-duration:22s}.paused .target{animation-play-state:paused!important}@keyframes approach{from{transform:translateY(0)}to{transform:translateY(135px)}}.flight{position:fixed;width:51px;height:51px;pointer-events:none;z-index:99}.spark{position:fixed;width:7px;height:7px;border-radius:2px;z-index:100;pointer-events:none}.arena .launcher{bottom:16px}.boundary{position:absolute;bottom:95px;left:25px;right:25px;border-top:1px dashed #9eaf8b70}.arena-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:13px;font-size:11px;color:var(--muted);gap:14px}.feedback{min-height:78px;margin-top:14px;border:1px solid var(--line);border-radius:12px;padding:17px 20px;display:flex;justify-content:space-between;align-items:center;gap:15px;background:#eeefe3}.feedback p{margin:0;font-size:13px;line-height:1.6}.feedback small{font-size:10px;display:block;color:var(--muted)}.feedback[hidden]{display:none}.interlude,.results{max-width:790px;margin:20px auto;text-align:center;padding:35px;background:#eeefe3;border:1px solid var(--line);border-radius:22px}.medal{width:85px;height:85px;border-radius:50%;background:#e7bb56;color:var(--green);margin:0 auto 20px;display:grid;place-items:center;font-size:40px;border:7px double #b99740}.interlude p,.results p{color:var(--muted);font-size:14px;line-height:1.8}.result-level{font-family:Georgia,serif;font-size:90px;color:var(--green);line-height:1;margin:22px}.stats{display:flex;justify-content:center;gap:45px;margin:25px}.stats strong{font-size:26px;display:block}.stats small{font-size:10px;color:var(--muted)}.cta{border-top:1px solid var(--line);margin-top:25px;padding-top:20px}.cta p{max-width:510px;margin:12px auto 20px}.review{margin:24px 0;text-align:left}.review summary{cursor:pointer;font-size:12px;font-weight:800}.review-row{display:flex;justify-content:space-between;gap:15px;border-bottom:1px solid var(--line);padding:11px 0;font-size:12px}.review-row small{color:var(--muted)}dialog{background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:18px;max-width:620px;padding:30px;line-height:1.8;font-size:13px}dialog::backdrop{background:#14271da0}dialog .close{float:right;padding:7px 12px;border-radius:8px}.note{font-size:11px!important}.hidden{display:none!important}@media(min-width:1400px){main{padding-top:40px}.layout{gap:80px}.preview{height:580px}}@media(max-width:1300px){main,footer{margin-left:40px;margin-right:40px}.layout{gap:40px}}@media(max-width:850px){header{padding:0 24px;height:72px}main,footer{margin-left:24px;margin-right:24px}.layout{gap:25px}h1{font-size:43px}.preview{height:540px}.country{padding:12px;gap:8px}.country small{font-size:9px}.benefits{font-size:9px;gap:10px}.header-right .tag{display:none}}@media(max-width:680px){header{padding:0 20px;height:68px}.brand{font-size:12px}.brand small{font-size:8px}.sunlogo{font-size:29px}.header-right{font-size:10px}main{padding-top:22px;margin:0 20px}.steps{gap:17px;margin-bottom:25px;font-size:10px}.steps i{width:20px;height:20px}.layout{display:flex;flex-direction:column;gap:25px}.layout>div{width:100%}h1{font-size:45px;letter-spacing:-2px;margin:17px 0}.intro{font-size:12px}.choice-label{margin-top:22px}.country{padding:13px}.country strong{font-size:12px}.preview{height:350px}.preview-prompt{top:65px}.preview-top{top:15px}.preview-word{font-size:14px;padding:10px 17px;top:49%}.preview-word.correct{top:43%}.preview-word.right{top:52%}.demo-shot{top:65%;width:35px;height:35px}.preview .launcher{bottom:7px;transform:scale(.7)}.preview-bottom{font-size:8px}.preview .demo-trail{height:25px;top:75%}.benefits{flex-wrap:wrap;gap:13px;margin-top:24px}.benefits span:last-child{width:100%}footer{margin:15px 20px 25px;font-size:9px}.weapons{grid-template-columns:1fr;gap:9px;margin-top:20px}.weapon{min-height:130px;padding:17px 17px 17px 112px}.weapon.selected{padding:16px 16px 16px 111px}.weapon .art{position:absolute;left:17px;top:23px;width:72px;height:72px}.weapon-name{font-size:23px}.weapon p{font-size:11px;margin:7px 0;max-width:220px;padding-right:7px}.weapon-heading h1{font-size:35px}.weapon .check{top:13px;right:12px}.controls{align-items:flex-start;flex-direction:column}.controls .primary{width:100%}.arena{height:490px}.prompt{top:25px}.prompt h2{font-size:25px}.targets{inset:145px 9px 90px;gap:7px;flex-direction:column;align-items:stretch;justify-content:flex-start}.target{max-width:90%;min-width:0;width:82%;padding:12px 14px;font-size:15px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:10px;box-shadow:0 3px 0 #b1c2a5}.target small{margin:0;font-size:9px}.moving .target{animation-name:approach-mobile}@keyframes approach-mobile{to{transform:translateY(55px)}}.stage-track i{width:22px;height:5px}.game-meta strong{font-size:11px}.game-meta small{font-size:9px}.arena-bottom{font-size:9px;flex-wrap:wrap}.arena-bottom .toggle{font-size:9px}.feedback{align-items:flex-start;padding:14px;flex-direction:column}.feedback .primary{width:100%;padding:12px}.interlude,.results{padding:24px 17px;margin:10px 0}.result-level{font-size:75px}.stats{gap:25px}.results h2{font-size:26px}.cta .primary{width:100%;padding:15px 12px;font-size:11px}.review-row{font-size:11px}.practice{height:150px}.header-right .backsite{max-width:95px;text-align:right}.under{font-size:9px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
 /* Full-viewport survival arena */
@@ -322,6 +322,92 @@ img.px{image-rendering:crisp-edges;image-rendering:pixelated;display:block;heigh
 #snd.off{opacity:.35;text-decoration:line-through}
 @media(max-width:680px){.wordsign{min-width:88px;max-width:152px;font-size:15px;padding:10px 11px 9px}.bpx.resolved .battle-toast{top:84px}.bpx .battle-hud>div{padding:8px 9px}.bpx .battle-hud strong{font-size:11px}.bpx .battle-hud small{font-size:6px}.bpx .battle-bottom button{font-size:8px;padding:12px 12px 11px}.bpx .battle-prompt small{font-size:6px}}
 @media(max-height:500px){.wordsign{font-size:14px;padding:8px 11px 7px}.bpx.resolved .battle-toast{top:52px}.bpx .battle-hud>div{padding:5px 10px}}
+/* --- Gouache balloon screen (traveler). Painted art lives in assets/; all text is live text on paper cards. --- */
+.gq{background:#f6e3b4;cursor:default;font-family:'Literata',Georgia,serif;color:#33402f;--ink:#33402f;user-select:none;-webkit-user-select:none}
+.gq *{box-sizing:border-box}
+.gq-sky,.gq-hills,.gq-meadow{position:absolute;left:0;width:100%;background-repeat:no-repeat;pointer-events:none}
+.gq-sky{top:0;height:100%;background-image:url(assets/bg-portrait-sky.webp);background-size:cover;background-position:center top;z-index:0;opacity:.7}
+.gq-hills{background-size:100% 100%;z-index:1;opacity:.9}
+.gq-meadow{background-size:100% 100%;z-index:3}
+@media(orientation:landscape){.gq-sky{background-image:url(assets/bg-landscape-sky.webp)}}
+.gq-cloud{position:absolute;z-index:1;left:0;pointer-events:none;opacity:.6;animation:gq-drift linear infinite}
+@keyframes gq-drift{from{transform:translateX(-30vw)}to{transform:translateX(110vw)}}
+/* one paper grain over everything, so pieces from different paintings read as one sheet */
+.gq:after{content:'';position:absolute;inset:0;z-index:40;pointer-events:none;opacity:.16;mix-blend-mode:multiply;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .38 0 0 0 0 .25 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E")}
+.gq-scrap{background:url(assets/scrap-wide.webp) center/100% 100% no-repeat;filter:drop-shadow(0 3px 3px #5b472a40)}
+.gq-hud{position:absolute;z-index:12;top:max(12px,env(safe-area-inset-top));left:12px;right:12px;display:flex;justify-content:space-between;align-items:flex-start;gap:8px;pointer-events:none}
+.gq-stage{padding:9px 16px 10px;text-align:center;line-height:1.2}
+.gq-stage strong{display:block;font-size:13px;font-weight:500}
+.gq-stage small{display:block;font-size:17px;font-weight:700;letter-spacing:.02em}
+.gq-right{display:grid;justify-items:end;gap:6px}
+.gq-right>div{display:flex;gap:7px;align-items:stretch}
+.gq-score{min-width:74px;padding:7px 14px 8px;text-align:center;font-size:20px;font-weight:700;line-height:1.2}
+.gq-ib{pointer-events:auto;width:40px;min-height:40px;padding:0;background:url(assets/scrap-square.webp) center/100% 100% no-repeat;filter:drop-shadow(0 3px 3px #5b472a40);font:700 17px 'Literata',serif;color:var(--ink)}
+.gq-ib.off{opacity:.55}
+.gq-hearts{display:flex;gap:4px;padding-right:2px}
+.gq-hearts img{width:24px;height:auto;display:block}
+.gq-ask{position:absolute;z-index:10;left:0;right:0;display:flex;justify-content:center;align-items:center;pointer-events:none;transition:opacity .25s}
+.gq-fly{display:flex;align-items:center;animation:gq-bob 3.2s ease-in-out infinite alternate}
+@keyframes gq-bob{from{transform:translateY(-3px) rotate(-.6deg)}to{transform:translateY(4px) rotate(.6deg)}}
+.gq-banner{flex:none;display:flex;align-items:center;justify-content:center;margin-right:-10px;background:url(assets/question-banner.webp) center/100% 100% no-repeat;filter:drop-shadow(0 3px 3px #5b472a38)}
+.gq-banner span{display:block;text-align:center;font-weight:700;line-height:1.1;overflow-wrap:break-word}
+.gq-biplane{position:relative;flex:none;width:clamp(74px,19vw,128px)}
+.gq-biplane img{display:block;width:100%;height:auto}
+.gq-biplane .gq-prop{position:absolute;right:-7%;top:34%;width:36%;transform:rotate(90deg);animation:gq-spin .12s linear infinite alternate}
+@keyframes gq-spin{from{transform:rotate(90deg) scaleX(1)}to{transform:rotate(90deg) scaleX(.15)}}
+.gq-fuse{position:absolute;z-index:10;left:50%;width:min(52vw,280px);height:11px;margin-left:calc(min(52vw,280px)/-2);pointer-events:none;transition:opacity .25s}
+.gq-fuse i{position:absolute;left:0;top:0;height:100%;width:100%;background:url(assets/fuse-rope.webp) left center/min(52vw,280px) 100% no-repeat;border-radius:6px}
+.gq-fuse img{position:absolute;top:-17px;width:17px;height:auto;margin-left:-8px;animation:gq-flick .22s ease-in-out infinite alternate;transform-origin:50% 90%}
+@keyframes gq-flick{from{transform:scale(1) rotate(-4deg)}to{transform:scale(1.14,.92) rotate(5deg)}}
+.gq-unit{position:absolute;left:0;top:0;z-index:5;display:flex;flex-direction:column;align-items:center;padding:0;background:none;color:inherit;font:inherit;cursor:pointer;will-change:transform;opacity:0;touch-action:manipulation}
+.gq-unit:disabled{opacity:1;cursor:default}
+.gq-sway{display:flex;flex-direction:column;align-items:center;transform-origin:50% 12%;animation:gq-sway 2.8s ease-in-out infinite alternate}
+.gq-unit:nth-child(2) .gq-sway{animation-duration:3.3s;animation-delay:-1.1s}.gq-unit:nth-child(3) .gq-sway{animation-duration:2.5s;animation-delay:-.6s}
+@keyframes gq-sway{from{transform:rotate(-3.2deg)}to{transform:rotate(3.2deg)}}
+.gq-bal{display:block;height:auto;filter:drop-shadow(0 4px 4px #5b472a30)}
+.gq-str{width:2px;height:22px;background:#7d6a4f;border-radius:1px;margin-top:-3px}
+.gq-card{position:relative;margin-top:-2px;padding:.5em .85em .58em;min-width:74px;max-width:min(29vw,230px);background:url(assets/word-card.webp) center/100% 100% no-repeat;filter:drop-shadow(0 3px 3px #5b472a45);font-size:clamp(15px,4.1vw,21px);font-weight:700;line-height:1.14;text-align:center;overflow-wrap:break-word}
+.gq-card:after{content:'';position:absolute;inset:0;-webkit-mask:url(assets/word-card.webp) center/100% 100% no-repeat;mask:url(assets/word-card.webp) center/100% 100% no-repeat;mix-blend-mode:multiply;background:transparent;transition:background .2s}
+.gq-unit:focus-visible{outline:none}.gq-unit:focus-visible .gq-card{outline:3px solid #c65b31;outline-offset:3px}
+.gq-unit.danger .gq-card{animation:gq-warn .45s ease-in-out infinite alternate}
+@keyframes gq-warn{to{transform:scale(1.06) rotate(-2deg)}}
+.gq-unit.hit .gq-card:after{background:#b4dc92}.gq-unit.wrong .gq-card:after{background:#f0a58a}
+.gq-unit.popped .gq-bal,.gq-unit.popped .gq-str{visibility:hidden}
+.gq-unit.popped .gq-sway{animation:gq-flutter .9s ease-out forwards}
+@keyframes gq-flutter{0%{transform:translateY(0) rotate(0)}30%{transform:translateY(14px) rotate(-7deg)}60%{transform:translateY(30px) rotate(6deg)}100%{transform:translateY(42px) rotate(-2deg)}}
+.gq-unit.wrong .gq-sway{animation:gq-no .45s ease-in-out}
+@keyframes gq-no{20%{transform:translateX(-7px) rotate(-4deg)}50%{transform:translateX(7px) rotate(4deg)}80%{transform:translateX(-4px)}}
+.gq-unit.dim{filter:saturate(.6);transition:opacity .3s}
+.gq-hero{position:absolute;z-index:6;left:0;top:0;pointer-events:none;transform-origin:50% 100%;animation:gq-breathe 2.4s ease-in-out infinite alternate}
+@keyframes gq-breathe{from{transform:scaleY(1)}to{transform:scaleY(1.012)}}
+.gq-flip{position:absolute;inset:0}
+.gq-hero img{position:absolute;display:block}
+.gq-hero .head{transform-origin:45% 95%;animation:gq-nod 2.4s ease-in-out infinite alternate}
+@keyframes gq-nod{from{transform:rotate(-1.5deg)}to{transform:rotate(2.5deg)}}
+.gq-hero.cheer{animation:gq-hop .5s ease-out 2}
+@keyframes gq-hop{50%{transform:translateY(-7%) scaleY(1.03)}}
+.gq-hero.sad .head{animation:none;transform:rotate(9deg) translateY(3%)}
+.gq-plane{position:absolute;z-index:8;left:0;top:0;height:auto;pointer-events:none;will-change:transform;filter:drop-shadow(0 3px 2px #5b472a35)}
+.gq-splat{position:absolute;z-index:9;left:0;top:0;pointer-events:none;-webkit-mask:center/contain no-repeat;mask:center/contain no-repeat}
+.gq-gain{position:absolute;z-index:11;left:0;top:0;pointer-events:none;font:700 30px 'Literata',serif;color:#b9502a;text-shadow:0 2px 0 #fff6dc,0 0 10px #fff6dc}
+.gq-skip{position:absolute;z-index:12;right:12px;bottom:max(14px,env(safe-area-inset-bottom));padding:13px 22px 14px;background:url(assets/scrap-button.webp) center/100% 100% no-repeat;filter:drop-shadow(0 4px 4px #5b472a55);font:700 17px 'Literata',serif;color:var(--ink)}
+.gq-skip:active{transform:translateY(2px)}
+.gq-hint{position:absolute;z-index:12;left:12px;bottom:max(18px,env(safe-area-inset-bottom));max-width:46vw;padding:8px 14px 9px;font-size:13px;font-weight:500;line-height:1.25;pointer-events:none}
+.gq .battle-toast{bottom:auto;top:0;border:0;border-radius:0;box-shadow:none;background:url(assets/scrap-wide.webp) center/100% 100% no-repeat;filter:drop-shadow(0 4px 4px #5b472a55);padding:14px 26px 16px;font-family:'Literata',serif;color:var(--ink)}
+.gq .battle-toast strong{display:block;font-size:19px;font-weight:700;margin-bottom:3px}
+.gq .battle-toast small{font-size:14px;line-height:1.35}
+.gq.resolved .gq-ask,.gq.resolved .gq-fuse{opacity:0}
+.gq .pause-card{border-radius:6px;font-family:'Literata',serif;background:#fbf0d2}
+.gq.shake{animation:gq-shake .28s linear}
+@keyframes gq-shake{20%{transform:translate(-4px,2px)}40%{transform:translate(4px,-3px)}60%{transform:translate(-3px,-2px)}80%{transform:translate(2px,2px)}}
+.gq.calm .gq-sway,.gq.calm .gq-fly,.gq.calm .gq-cloud,.gq.calm .gq-hero,.gq.calm .gq-hero .head{animation:none}
+@media(max-height:500px){.gq-stage strong{display:none}.gq-card{font-size:14px}}
+/* painted heroes on the other screens (hero choice, stage cards, email gate, result) */
+.gq-fig{display:block;width:100%;height:auto;filter:drop-shadow(0 8px 9px #0b241d59)}
+.gq-por{display:block;width:100%;height:100%;background:#efe4c3 no-repeat 50% 5%/215% auto}
+.hero-art,.res2-hero{animation:bob 4.6s ease-in-out infinite}
+.hero-token .hero-art{position:absolute;left:50%;bottom:9%;width:30%;margin-left:-15%}.stage-badge .hero-art{width:33px;margin-top:0}.res2-hero{width:52px}
+.hero .switch-row{margin-top:14px}
 </style><link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
 <link rel="shortcut icon" href="/favicon.ico">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -962,6 +1048,166 @@ function installArcade(){
       if(!c.paused)advanceTimer=setTimeout(next,correct?1250:2300)}
     if(index===null)finish();else ARC.shoot({i:index},finish)};
 }
+/* --- gouache balloon screen ---
+   Painted version of the balloon round, for the traveler only so far. It replaces the drawing and the input of the
+   round; scoring, shields and the make-up rounds still run through the arcade functions it wraps. */
+function installGouache(){
+  const src=n=>'assets/'+n+'.webp',COL={teal:'#1d6b68',terracotta:'#e0562b',ochre:'#edb01f'},clampN=(v,a,b)=>Math.max(a,Math.min(b,v)),rad=Math.PI/180;
+  const game0=game,pos0=positionEnemies,breach0=breach,answer0=answer,aim0=aim,shoot0=shootPoint,on=()=>!!HEROES[state.country];
+  /* The painted heroes. Positions are in the pixels of each hero's body image (drawn 567 tall): where the head and arms attach,
+     the shoulder the throwing arm turns on, the centre of the legs (the figure mirrors around it) and the arm's length.
+     bg: the painted layers and where the ground is in them, as fractions of the meadow image. */
+  const HEROES={
+    general:{art:'hero',tall:725,body:[0,158,264],head:[52,0,205],armB:[120,214,112],armF:[21,218,98],sh:[176,236],legs:150,arm:236,
+      bg:{name:'bg',meadow:[590/1024,659/1536],hills:[291/1024,300/1536],crest:.62,feet:[.71,.69]}},
+    spain:{art:'spain',tall:707,body:[0,140,255],head:[1,0,195],armB:[140,207,92],armF:[15,207,90],sh:[185,225],legs:133,arm:220,
+      bg:{name:'spain-bg',meadow:[637/1024,533/1536],hills:[534/1024,468/1536],crest:.62,feet:[.76,.74],fade:.74}}};
+  /* Only painted heroes are offered. The other countries' words and themes stay in the file for when their art exists. */
+  for(const id of Object.keys(countries))if(!HEROES[id])delete countries[id];
+  heroArt=id=>`<img class="gq-fig" alt="" src="${src('figure-'+id)}">`;
+  heroPortrait=id=>`<span class="gq-por" style="background-image:url(${src('figure-'+id)})"></span>`;
+  /* Three steps now: the ammo screen is gone (the paper plane is the only throwable), so its start button
+     and calm-mode switch sit on the hero screen. */
+  const STEPS=['Герой','Игра','Результат'],calm=()=>state.motion?'Нажми на правильный перевод, пока шарик не улетел.':'Спокойный режим: слова стоят на месте, без таймера.';
+  arcTop=function(step){const n=step>3?3:step>1?2:1;return `<div class="arc-top">
+    <a class="arc-back" href="/">← На сайт</a>
+    <div class="arc-brand">✺ español con Daniel</div>
+    <div class="arc-steps">
+      ${STEPS.map((t,i)=>`<span class="${n===i+1?'on':''}"><b>${i+1}</b> ${t}</span>`).join('')}
+      <button class="arc-help" type="button" onclick="document.getElementById('method').showModal()" aria-label="Как считается результат">?</button>
+    </div>
+    <span class="arc-stepm" aria-label="Шаг ${n} из 3"><b>${n}</b>/3<em style="font-style:normal"> · ${STEPS[n-1]}</em></span>
+  </div>`};
+  home=function(){ARC.end();leaveCombat();state.screen='home';if(!HEROES[state.country])state.country='general';
+    app.innerHTML=`<div class="arc">${arcTop(1)}
+    <div class="arc-main hero">
+      <div class="hero-stage">
+        <div class="hero-token" id="heroToken"><div class="hero-ring"></div><div class="hero-art">${heroArt(state.country)}</div></div>
+        <div class="hero-name">${heroName(state.country)}</div>
+        <div class="hero-sub">${countries[state.country].name}</div>
+      </div>
+      <div class="hero-side">
+        <div class="eyebrow">ВЫБЕРИ СВОЕГО ГЕРОЯ</div>
+        <h1>Кто ты <em>в испанском?</em></h1>
+        <p class="arc-lead">Пять ступеней и слова, которые улетают на шариках. Попадай бумажным самолётиком в правильный перевод — и узнай свой примерный словарный уровень за 5–7 минут.</p>
+        <div class="persona-list">
+          ${Object.keys(HEROES).map(id=>`<button class="persona ${state.country===id?'is-on':''}" data-country="${id}" aria-pressed="${state.country===id}">
+            <span class="pfh">${heroPortrait(id)}</span>
+            <span><b>${heroName(id)}</b><small>${countries[id].sub}</small></span>
+            <span class="tick">${state.country===id?'✓':''}</span>
+          </button>`).join('')}
+        </div>
+        <label class="switch-row"><input type="checkbox" id="motion" ${state.motion?'checked':''}><span class="switch" aria-hidden="true"></span>
+          <span><b>Слова улетают на шариках</b><small>${calm()}</small></span></label>
+        <button class="primary arc-cta" id="start">Начать игру <span>→</span></button>
+      </div>
+    </div>
+  </div>`;
+    document.querySelectorAll('[data-country]').forEach(b=>b.onclick=()=>{state.country=b.dataset.country;home();$(`[data-country="${state.country}"]`)?.focus({preventScroll:true,focusVisible:false})});
+    $('#motion').onchange=e=>{state.motion=e.target.checked;e.target.closest('label').querySelector('small').textContent=calm()};
+    $('#start').onclick=start};
+  let G=null;
+  const hearts=()=>[0,1,2].map(i=>`<img alt="" src="${src(i<state.shields?'heart-full':'heart-empty')}">`).join('');
+  /* Sizes and anchor points for the current window. */
+  function layout(){const el=G.el,W=el.clientWidth,H=el.clientHeight,land=W>H;G.W=W;G.H=H;
+    const h=HEROES[state.country],b=h.bg,o=land?1:0,side=land?'landscape':'portrait',ih=W*b.meadow[o],top=Math.max(H-ih,H*.84-b.crest*ih),hh=W*b.hills[o];
+    Object.assign(G.meadow.style,{top:top+'px',height:ih+'px',backgroundImage:`url(${src(b.name+'-'+side+'-meadow')})`});
+    Object.assign(G.hills.style,{top:top+b.crest*ih-hh*.82+'px',height:hh+'px',opacity:b.fade||'',backgroundImage:`url(${src(b.name+'-'+side+'-hills')})`});
+    const feet=Math.min(H-14,top+ih*b.feet[o]),height=clampN(H*(land?.36:.3),130,330),k=height/h.tall;G.k=k;
+    Object.assign(G.hero.style,{left:W/2-h.legs*k+'px',top:feet-height+'px',width:h.body[2]*k+'px',height:height+'px'});G.hero.firstElementChild.style.transformOrigin=h.legs/h.body[2]*100+'% 50%';
+    const put=(c,[x,y,w])=>Object.assign(G.hero.querySelector(c).style,{left:x*k+'px',top:y*k+'px',width:w*k+'px'});
+    put('.body',h.body);put('.head',h.head);put('.arm-b',h.armB);put('.arm-f',h.armF);
+    G.cx=W/2;const off=(h.sh[0]-h.legs)*k;G.shx=[W/2-off,W/2+off];G.sh={x:G.shx[G.face<0?0:1],y:feet-height+h.sh[1]*k};G.L=h.arm*k;G.heroTop=feet-height;
+    G.pw=clampN(190*k,46,92);G.plane.style.width=G.pw+'px';
+    /* The ribbon is only flat enough to write on across its middle 56%, and that band sits a little above centre.
+       Size the ribbon to the word; shrink the type, then wrap, when the word is too long for the widest ribbon. */
+    const bn=G.ask.querySelector('.gq-banner'),tx=bn.firstElementChild,maxW=Math.min(W-14-G.ask.querySelector('.gq-biplane').offsetWidth,640),room=maxW*.56;
+    let fs=clampN(W*.062,22,32);Object.assign(tx.style,{whiteSpace:'nowrap',width:'',fontSize:fs+'px'});
+    const phrase=/\s/.test(tx.textContent.trim());while(tx.offsetWidth>room&&fs>(phrase?17:10))tx.style.fontSize=--fs+'px';
+    if(phrase&&tx.offsetWidth>room)Object.assign(tx.style,{whiteSpace:'normal',width:room+'px'}); // only phrases wrap; a single word is never split
+    const bwid=clampN(tx.offsetWidth/.56,land?230:190,maxW),bh=Math.max(bwid*.287,tx.offsetHeight/.5);Object.assign(bn.style,{width:bwid+'px',height:bh+'px',paddingBottom:bh*.09+'px'});
+    const hud=el.querySelector('.gq-hud').getBoundingClientRect().bottom-el.getBoundingClientRect().top;
+    G.ask.style.top=hud+10+'px';const askB=hud+10+G.ask.offsetHeight;G.fuse.style.top=askB+8+'px';$('#toast').style.top=hud+14+'px';
+    G.zoneTop=askB+34;G.zoneBot=G.heroTop-4;
+    const bw=clampN((land?H*.14:W*.19),58,104),dx=land?Math.min(W*.24,250):W*.31;
+    G.units.forEach(u=>{u.bal.style.width=bw+'px';u.x=W/2+(u.col-1)*dx});G.bw=bw;aimAt(G.a)}
+  const hand=()=>{const r=(G.a-90)*rad;return {x:G.sh.x-Math.sin(r)*G.L,y:G.sh.y+Math.cos(r)*G.L}};
+  function setPlane(x,y,deg,o=1){G.plane.style.opacity=o;G.plane.style.transform=`translate(${x-G.pw/2}px,${y-G.pw*.32}px) `+(Math.cos(deg*rad)<0?`rotate(${deg+152}deg) scaleX(-1)`:`rotate(${deg+28}deg)`)} // the plane is painted nose up-right; mirror it when it heads left
+  /* a is the screen angle the throwing arm points at, in degrees: -90 is straight up */
+  /* The traveler is painted facing right, so for targets on the left the whole figure is mirrored and the arm angle with it. */
+  function aimAt(a,pull=0){if(a<-102)G.face=-1;else if(a>-78)G.face=1;
+    const local=clampN(G.face<0?-180-a:a,-150,-12);a=G.face<0?-180-local:local;G.a=a;G.sh.x=G.shx[G.face<0?0:1];
+    G.hero.firstElementChild.style.transform=`scaleX(${G.face})`;G.hero.querySelector('.arm-b').style.transform=`rotate(${local-90+pull}deg)`;if(!G.flying){const h=hand();setPlane(h.x+Math.cos(a*rad)*G.pw*.2,h.y+Math.sin(a*rad)*G.pw*.2,a)}}
+  function throwAt(tx,ty,done){const g=G;aimAt(Math.atan2(ty-G.sh.y,tx-G.cx)/rad,55);const a=G.a;G.flying=true;ARC.sfx.throw();
+    setTimeout(()=>{if(G!==g)return;aimAt(a,-8);const h=hand(),d=Math.hypot(tx-h.x,ty-h.y),cx=(h.x+tx)/2,cy=(h.y+ty)/2-d*.32,dur=state.motion?clampN(260+d*.55,320,560):60,t0=performance.now();
+      (function step(now){if(G!==g)return;const u=Math.min(1,(now-t0)/dur),v=1-u,x=v*v*h.x+2*v*u*cx+u*u*tx,y=v*v*h.y+2*v*u*cy+u*u*ty,vx=2*v*(cx-h.x)+2*u*(tx-cx),vy=2*v*(cy-h.y)+2*u*(ty-cy);
+        setPlane(x,y,Math.atan2(vy,vx)/rad,u>.92?(1-u)/.08:1);if(u<1){requestAnimationFrame(step);return}
+        done&&done();setTimeout(()=>{if(G!==g)return;G.flying=false;aimAt(-52);G.plane.animate([{opacity:0},{opacity:1}],{duration:220})},380)})(t0)},state.motion?90:0)}
+  function splat(x,y,col){if(!state.motion)return;for(let i=0;i<8;i++){const s=document.createElement('i'),z=22+Math.random()*40,a=Math.random()*Math.PI*2,r=G.bw*(.35+Math.random()*.9);s.className='gq-splat';
+      Object.assign(s.style,{width:z+'px',height:z+'px',background:i%3?col:'#fff3d6',webkitMaskImage:`url(${src('splat-'+(1+i%8))})`,maskImage:`url(${src('splat-'+(1+i%8))})`});G.el.appendChild(s);
+      s.animate([{transform:`translate(${x-z/2}px,${y-z/2}px) scale(.3)`,opacity:1},{transform:`translate(${x-z/2+Math.cos(a)*r}px,${y-z/2+Math.sin(a)*r+18}px) scale(1) rotate(${Math.random()*120-60}deg)`,opacity:1,offset:.55},{transform:`translate(${x-z/2+Math.cos(a)*r*1.1}px,${y-z/2+Math.sin(a)*r+46}px) scale(1) rotate(${Math.random()*120-60}deg)`,opacity:0}],{duration:760,easing:'cubic-bezier(.2,.7,.3,1)'}).onfinish=()=>s.remove()}}
+  function floatGain(x,y,n){const s=document.createElement('b');s.className='gq-gain';s.textContent='+'+n;G.el.appendChild(s);
+    s.animate([{transform:`translate(${x-30}px,${y}px) scale(.6)`,opacity:0},{transform:`translate(${x-30}px,${y-24}px) scale(1.1)`,opacity:1,offset:.25},{transform:`translate(${x-30}px,${y-78}px) scale(1)`,opacity:0}],{duration:state.motion?1050:1,easing:'ease-out'}).onfinish=()=>s.remove()}
+  const shake=()=>{if(!state.motion)return;G.el.classList.remove('shake');void G.el.offsetWidth;G.el.classList.add('shake')};
+  const mood=m=>{G.hero.classList.remove('cheer','sad');void G.hero.offsetWidth;G.hero.classList.add(m)};
+  const centre=u=>({x:u.x,y:u.y+G.bw*.56});
+  function mark(i,st){const u=G.units[i],c=centre(u);
+    if(st==='pop'){u.el.classList.add('hit','popped');splat(c.x,c.y,COL[u.color])}
+    else if(st==='gone'){if(state.motion)u.el.animate([{transform:u.el.style.transform,opacity:1},{transform:`translate(${u.x-u.el.offsetWidth/2}px,${-u.el.offsetHeight-40}px)`,opacity:1}],{duration:750,easing:'ease-in',fill:'forwards'});else u.el.style.opacity=0}
+    else{u.el.classList.add(st==='reveal'?'hit':st);if(st==='dim')u.el.style.opacity=.45}}
+  game=function(){if(!on())return game0();
+    const fresh=state.screen!=='game';stopCombat();ARC.end();state.screen='game';state.locked=false;document.body.classList.add('playing');
+    const q=state.queue[state.q],cols=shuffle(['teal','terracotta','ochre']),places=shuffle([0,1,2]),lifts=shuffle([0,1,2]);if(state.shields===undefined)state.shields=3;
+    let seen=0;try{seen=+localStorage.getItem('palabra-hint')||0}catch(e){}
+    app.innerHTML=`<div class="battle gq ${state.motion?'':'calm'}" id="battle">
+      <div class="gq-sky"></div>${[2,3].map(i=>`<img class="gq-cloud" alt="" src="${src('cloud-'+i)}" style="top:${[0,0,30,43][i]}%;width:${[0,0,20,15][i]}vmax;animation-duration:${[0,0,120,170][i]}s;animation-delay:-${[0,0,30,110][i]}s">`).join('')}
+      <div class="gq-hills"></div><div class="gq-meadow"></div>
+      <div class="gq-hud"><div class="gq-stage gq-scrap"><strong>${levels[state.stage]}</strong><small>${state.stage+1}/5 · ${state.extra?'уточнение · ':q.regional?'местное · ':''}${state.q+1}/${state.queue.length}</small></div>
+        <div class="gq-right"><div><span class="gq-score gq-scrap" id="points">${state.points}</span><button class="gq-ib ${ARC.sfx.on?'':'off'}" id="snd" aria-label="Звук" aria-pressed="${ARC.sfx.on}">♪</button><button class="gq-ib" id="pause" aria-label="Пауза">II</button></div>
+          <span class="gq-hearts" id="shields" aria-label="Щит ${state.shields} из 3">${hearts()}</span></div></div>
+      <div class="gq-ask"><div class="gq-fly"><div class="gq-banner"><span>${q.ru}</span></div><div class="gq-biplane"><img alt="" src="${src('biplane')}"><img class="gq-prop" alt="" src="${src('propeller')}"></div></div></div>
+      <div class="gq-fuse"><i></i><img alt="" src="${src('flame')}"></div>
+      <div class="target-layer">${q.options.map((o,i)=>`<button class="gq-unit" data-answer="${i}" aria-label="Бросить в: ${o}"><span class="gq-sway"><img class="gq-bal" alt="" src="${src('balloon-'+cols[i])}"><i class="gq-str"></i><span class="gq-card">${o}</span></span></button>`).join('')}</div>
+      <div class="gq-hero"><div class="gq-flip"><img class="arm-b" alt="" src="${src(HEROES[state.country].art+'-arm-back')}"><img class="body" alt="" src="${src(HEROES[state.country].art+'-body')}"><img class="head" alt="" src="${src(HEROES[state.country].art+'-head')}"><img class="arm-f" alt="" src="${src(HEROES[state.country].art+'-arm-front')}"></div></div>
+      <img class="gq-plane" alt="" src="${src('paper-plane')}">
+      ${seen<3?'<div class="gq-hint gq-scrap">Нажми на правильный перевод</div>':''}<button class="gq-skip" id="skip">Не знаю</button>
+      <div class="battle-toast" id="toast" aria-live="polite" hidden></div>
+      <div class="battle-overlay" id="pause-overlay" hidden><div class="pause-card"><div class="eyebrow" style="justify-content:center">ПЕРЕДЫШКА</div><h2>Игра на паузе</h2><p>Слова и время остановлены.</p><button class="primary" id="resume">Продолжить →</button><button class="textbtn" id="quit">Завершить и посмотреть результат</button></div></div></div>`;
+    const el=$('#battle'),btns=[...el.querySelectorAll('.gq-unit')];
+    G={el,a:-52,face:1,flying:false,meadow:el.querySelector('.gq-meadow'),hills:el.querySelector('.gq-hills'),hero:el.querySelector('.gq-hero'),plane:el.querySelector('.gq-plane'),ask:el.querySelector('.gq-ask'),fuse:el.querySelector('.gq-fuse'),
+      units:btns.map((b,i)=>({el:b,bal:b.querySelector('.gq-bal'),color:cols[i],col:places[i],lift:lifts[i],x:0,y:0}))};
+    G.hero.querySelectorAll('.arm-b,.arm-f').forEach(a=>a.style.transformOrigin='50% 7.6%');
+    combat={g:arenaGeometry(innerWidth,innerHeight),elapsed:fresh?-850:-400,last:performance.now(),paused:false,breached:false,lastShot:0,enemies:[],duration:state.hover?Infinity:(14-Math.min(state.stage,4)*.7)*1000};
+    btns.forEach((b,i)=>{combat.enemies.push({el:b,angle:0,delay:i*180,index:i});b.onclick=ev=>{ev.stopPropagation();answer(i)}});
+    layout();positionEnemies();if(fresh)ARC.sfx.wave();
+    $('#skip').onclick=()=>answer(null);$('#pause').onclick=()=>pauseBattle();$('#resume').onclick=resumeBattle;
+    $('#snd').onclick=e=>{e.stopPropagation();const s=ARC.sfx.toggle();e.currentTarget.classList.toggle('off',!s);e.currentTarget.setAttribute('aria-pressed',s)};
+    $('#quit').onclick=()=>{if(!state.answers.length){leaveCombat();home()}else results(true)};
+    el.addEventListener('pointermove',e=>{if(e.pointerType==='mouse'&&combat&&!combat.paused&&!state.locked)aim(e.clientX,e.clientY)});
+    el.addEventListener('pointerdown',e=>{if(e.target.closest('button')||!combat||combat.paused||state.locked)return;shootPoint(e.clientX,e.clientY)});
+    arenaFrame=requestAnimationFrame(tickBattle)};
+  /* Balloons start beside the traveler and rise towards the banner; reaching it is the same "escape" as before. */
+  positionEnemies=function(){if(!on()||!G)return pos0();if(!combat)return;const c=combat;if(G.el.clientWidth!==G.W||G.el.clientHeight!==G.H)layout();
+    for(const en of c.enemies){const u=G.units[en.index],t=state.motion&&isFinite(c.duration)?clampN((c.elapsed-en.delay)/c.duration,0,1):0,h=u.el.offsetHeight,span=Math.max(0,G.zoneBot-G.zoneTop-h);
+      const y0=G.zoneBot-h-u.lift*Math.min(46,span/2),y1=G.zoneTop-h*.5;u.y=y0+(y1-y0)*t;
+      u.el.style.transform=`translate(${u.x-u.el.offsetWidth/2}px,${u.y}px)`;const shown=!(c.elapsed<en.delay&&state.motion);u.el.style.opacity=shown?1:0;u.el.style.pointerEvents=shown?'auto':'none';u.el.classList.toggle('danger',t>.72&&!c.breached&&!state.locked)}
+    const left=state.motion&&isFinite(c.duration)?clampN(1-c.elapsed/c.duration,0,1):1;G.fuse.style.visibility=state.motion&&isFinite(c.duration)?'':'hidden';
+    G.fuse.firstElementChild.style.width=left*100+'%';G.fuse.lastElementChild.style.left=left*100+'%'};
+  aim=function(x,y){if(!on()||!G)return aim0(x,y);if(combat&&!G.flying)aimAt(Math.atan2(Math.min(y,G.sh.y-1)-G.sh.y,x-G.cx)/rad)};
+  shootPoint=function(x,y,done){if(!on()||!G)return shoot0(x,y,done);if(!combat||G.flying)return;const r=G.el.getBoundingClientRect();throwAt(x-r.left,y-r.top,done)};
+  breach=function(){if(!on()||!G)return breach0();const c=combat,had=c&&c.breached;breach0();if(!c||had||!c.breached)return;
+    $('#shields').innerHTML=hearts();c.enemies.forEach(en=>mark(en.index,'gone'));ARC.sfx.breach();mood('sad');shake()};
+  answer=function(index){if(!on()||!G)return answer0(index);if(state.screen!=='game'||state.locked||!combat||combat.paused||G.flying||$('#method').open)return;
+    const c=combat,q=state.queue[state.q],before=state.points,correct=index!==null&&q.options[index]===q.answer;
+    if(index!==null&&state.motion&&c.elapsed<c.enemies[index].delay)return;
+    const settle=()=>{if(combat!==c)return;state.locked=false;answer0(index);
+      if(!state.locked){c.enemies.forEach(e=>e.el.disabled=false);return} // paused mid-throw: nothing was scored, so let the player answer again
+      for(const en of c.enemies){en.el.style.opacity=1;mark(en.index,q.options[en.index]===q.answer?(correct?'pop':'reveal'):en.index===index?'wrong':'dim')}
+      if(correct){const p=centre(G.units[index]);floatGain(p.x,p.y,state.points-before);ARC.sfx.good();mood('cheer');shake()}else if(index!==null){ARC.sfx.bad();mood('sad')}
+      G.el.querySelector('.gq-hint')?.remove();try{localStorage.setItem('palabra-hint',(+localStorage.getItem('palabra-hint')||0)+1)}catch(e){}};
+    if(index===null){settle();return}
+    state.locked=true;c.enemies.forEach(e=>e.el.disabled=true);const p=centre(G.units[index]);throwAt(p.x,p.y,settle)};
+}
 /* --- start event + email gate --- */
 function installLeads(){
   const start0=start,results0=results;let started=false,lead=false;
@@ -995,6 +1241,6 @@ function installLeads(){
         lead=true;try{localStorage.setItem('palabra-lead','1')}catch(e){}goal('game_lead');results0(partial)})};
   };
 }
-ARC.ready.then(installArcade,()=>{}).then(installLeads).then(home);
+ARC.ready.then(installArcade,()=>{}).then(installGouache).then(installLeads).then(()=>home());
 
 </script></body></html>
