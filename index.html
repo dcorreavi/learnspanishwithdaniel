@@ -10,7 +10,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <meta name="description" content="Онлайн-уроки испанского для русскоязычных: жизнь в Испании и Латинской Америке, работа и путешествия. Индивидуально и в мини-группе. Бесплатное знакомство — 20 минут.">
   <meta property="og:title" content="Испанский для настоящей жизни — с Даниэлем">
-  <meta property="og:description" content="Испанский для жизни, работы и путешествий. Преподаватель говорит по-русски. Бесплатная 20-минутная встреча.">
+  <meta property="og:description" content="Испанский для жизни, работы и путешествий. Преподаватель говорит по-русски. Бесплатная 20-минутная консультация.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://learnspanishwithdaniel.xyz/">
   <meta property="og:image" content="https://learnspanishwithdaniel.xyz/social-preview.jpg">
@@ -119,6 +119,7 @@
     .portrait-card{position:absolute;inset:12px 20px 24px 14px;border-radius:220px 220px 30px 30px;background:linear-gradient(155deg,#CFE4D7 0%,#DBEBDD 47%,#ADCCBF 100%);overflow:hidden;box-shadow:var(--shadow)}
     .portrait-card::before{content:"";position:absolute;left:50%;top:35%;transform:translate(-50%,-50%);width:370px;height:370px;border:2px solid rgba(255,255,255,.48);border-radius:50%}
     .portrait-card::after{content:"";position:absolute;right:-130px;bottom:-245px;width:550px;height:550px;border-radius:50%;background:rgba(36,112,88,.17)}
+    .portrait-card.has-photo::after{display:none} /* the green circle sits over the photo; keep it only for the no-photo placeholder */
     .photo-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
     .photo-initial{font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:clamp(210px,28vw,340px);line-height:1;color:rgba(28,105,81,.55);transform:translateY(-13px) rotate(-9deg)}
     .photo-hint{position:absolute;top:19%;left:50%;transform:translateX(-50%);font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:750;color:#456D60;white-space:nowrap}
@@ -129,9 +130,9 @@
     .portrait-overlay .mini{font-size:12px;color:#E2EFE7;font-weight:650;letter-spacing:.1em;text-transform:uppercase}
     .portrait-overlay .name{font-size:30px;font-weight:790;letter-spacing:-.05em;line-height:1.15;margin-top:3px}
     .portrait-overlay .desc{font-size:13px;line-height:1.55;color:#E0EAE2;margin-top:8px}
-    .floating-bubble{position:absolute;z-index:3;top:88px;left:-40px;background:var(--paper);border:1px solid #E3E9DF;box-shadow:0 15px 35px rgba(15,53,44,.10);padding:15px 19px;border-radius:17px 17px 17px 4px;transform:rotate(-7deg)}
-    .floating-bubble small{font-size:11px;font-weight:750;color:#688075;display:block;letter-spacing:.06em}
-    .floating-bubble b{display:block;font-size:19px;letter-spacing:-.035em;color:var(--ink)}
+    
+    
+    
     .floating-stamp{position:absolute;z-index:4;right:-16px;top:208px;width:112px;height:112px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:var(--yellow);border:5px solid var(--bg);transform:rotate(11deg);box-shadow:0 6px 12px rgba(19,55,46,.06)}
     .floating-stamp b{font-size:29px;line-height:1;letter-spacing:-.05em}
     .floating-stamp span{font-size:12px;font-weight:800;line-height:1.25;margin-top:4px}
@@ -285,7 +286,7 @@
       .hero-art{min-height:550px}
       .hero h1{font-size:clamp(52px,6.2vw,72px)}
       .hero h1 .serif{white-space:normal}
-      .floating-bubble{left:-22px}
+      
       .teacher-grid{gap:50px}
       .faq-grid{gap:60px}
     }
@@ -298,8 +299,8 @@
       .hero-lead{font-size:16px;line-height:1.68}
       .hero-art{min-height:480px}
       .portrait-card{inset:28px 12px 30px 9px}
-      .floating-bubble{top:63px;left:-14px;padding:12px}
-      .floating-bubble b{font-size:16px}
+      
+      
       .floating-stamp{top:192px;width:90px;height:90px;right:-10px}
       .floating-stamp b{font-size:24px}
       .audience-card{padding:24px 20px}
@@ -339,7 +340,7 @@
       
       .hero-art{min-height:500px;margin-top:12px}
       .portrait-card{inset:10px 29px 13px 29px;border-radius:190px 190px 26px 26px}
-      .floating-bubble{top:53px;left:0}
+      
       .floating-stamp{top:196px;right:0}
       .scribble{right:-4px;bottom:0}
       .portrait-overlay{padding:65px 24px 26px}
@@ -418,7 +419,7 @@
       .hero h1{font-size:45px}
       .hero-actions .btn{font-size:13px;padding-inline:12px;white-space:normal}
       .closing .btn{font-size:14px;padding-inline:10px}
-      .floating-bubble{left:-6px}
+      
       .floating-stamp{right:-8px}
       .portrait-card{inset-inline:17px}
     }
@@ -579,7 +580,7 @@
         <a href="/placement-game/">Тест уровня</a>
       </div>
       <a class="btn btn-dark nav-cta" href="https://calendly.com/dcorreavi/free-consultation" target="_blank" rel="noopener noreferrer" data-booking data-cta="header">
-        Бесплатный урок
+        Бесплатная консультация
         <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
     </nav>
@@ -594,7 +595,7 @@
           <p class="hero-lead">Чувствуйте себя увереннее <strong>в Испании и Латинской Америке</strong> — в поездках, на работе и в повседневных разговорах.<span class="lead-more"> Учимся на ситуациях, которые важны именно вам.</span></p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="https://calendly.com/dcorreavi/free-consultation" target="_blank" rel="noopener noreferrer" data-booking data-cta="hero">
-              Записаться на бесплатный урок
+              Бесплатная консультация
               <svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
             </a>
           </div>
@@ -608,7 +609,7 @@
               <div class="desc">Преподаватель языков. Из Колумбии, живу в Испании — и говорю по-русски.</div>
             </div>
           </div>
-          <div class="floating-bubble" aria-hidden="true"><small>НЕ ПЕРЕЖИВАЙТЕ</small><b>Я говорю по-русски ☺</b></div>
+          
           <div class="floating-stamp" aria-hidden="true"><b>20</b><span>минут<br>бесплатно</span></div>
           <svg class="scribble" viewBox="0 0 100 100" fill="none" aria-hidden="true"><path d="M10 52c15-28 47-34 50-11 2 16-18 23-27 11-12-17 28-26 45-6" stroke="#E97650" stroke-width="3" stroke-linecap="round"/><path d="m68 34 13 12-16 4" stroke="#E97650" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
@@ -731,7 +732,7 @@
     <section class="section intro-section" aria-labelledby="intro-title">
       <div class="container">
         <div class="intro-panel">
-          <div class="intro-top"><div><div class="eyebrow"><span class="eyebrow-dot"></span> Бесплатный вводный урок</div><h2 id="intro-title">20 минут, чтобы понять, <span class="serif">с чего начать.</span></h2></div></div>
+          <div class="intro-top"><div><div class="eyebrow"><span class="eyebrow-dot"></span> Бесплатная консультация</div><h2 id="intro-title">20 минут, чтобы понять, <span class="serif">с чего начать.</span></h2></div></div>
           <div class="intro-steps">
             <div class="step"><div class="step-no">01</div><h3>Познакомимся</h3><p>Расскажете, зачем вам испанский и в каких ситуациях хочется чувствовать себя увереннее.</p></div>
             <div class="step"><div class="step-no">02</div><h3>Определим уровень</h3><p>Немного поговорим. Даже если вы знаете всего пару слов, этого достаточно для начала.</p></div>
@@ -748,7 +749,7 @@
         <div class="free-head">
           <div class="eyebrow"><span class="eyebrow-dot"></span> Бесплатно</div>
           <h2 id="free-title">Проверь свой испанский <span class="serif">прямо сейчас.</span></h2>
-          <p>Два инструмента: один — про слова, другой — про живую речь. Без оплаты, результат сразу.</p>
+          <p>Практикуйтесь самостоятельно — аккаунт не нужен.</p>
         </div>
         <div class="free-grid">
         <a class="teaser-card" href="/placement-game/" aria-label="Открыть игру-тест: проверь испанский своей страны">
@@ -808,8 +809,8 @@
       <div class="container faq-grid">
         <div><div class="eyebrow"><span class="eyebrow-dot"></span> Всё просто</div><h2 id="faq-title">Остались <span class="serif">вопросы?</span></h2><p class="faq-aside">Вот что чаще всего хочется узнать перед первым уроком.</p></div>
         <div class="faq-list">
-          <details><summary>Я совсем не говорю по-испански. Можно прийти?</summary><p>Конечно. Начать с нуля — нормально. На вводном уроке мы можем говорить по-русски, а испанский подключать постепенно.</p></details>
-          <details><summary>Вводный урок действительно бесплатный?</summary><p>Да. За 20 минут мы определим ваш текущий уровень, обсудим цели и подберём подходящий формат. Платить за вводный урок не нужно.</p></details>
+          <details><summary>Я совсем не говорю по-испански. Можно прийти?</summary><p>Конечно. Начать с нуля — нормально. На консультации мы можем говорить по-русски, а испанский подключать постепенно.</p></details>
+          <details><summary>Консультация действительно бесплатная?</summary><p>Да. За 20 минут мы определим ваш текущий уровень, обсудим цели и подберём подходящий формат. Платить за консультацию не нужно.</p></details>
           <details><summary>Если я живу не в Испании, смогу заниматься?</summary><p>Да. Уроки проходят онлайн, так что можно подключаться из другой страны. Удобное время выберем с учётом часовых поясов.</p></details>
           <details><summary>Нужно сразу выбирать мини-группу или индивидуальные уроки?</summary><p>Нет. Сначала обсудим ваши цели и уровень, а затем решим, какой формат будет полезнее и комфортнее.</p></details>
         </div>
@@ -905,7 +906,7 @@
     </div>
   </footer>
 
-  <div class="mobile-cta"><a class="btn btn-primary" href="https://calendly.com/dcorreavi/free-consultation" target="_blank" rel="noopener noreferrer" data-booking data-cta="mobile-sticky">Бесплатный урок · 20 минут <svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
+  <div class="mobile-cta"><a class="btn btn-primary" href="https://calendly.com/dcorreavi/free-consultation" target="_blank" rel="noopener noreferrer" data-booking data-cta="mobile-sticky">Бесплатная консультация · 20 минут <svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
   <script>
     'use strict';
 
