@@ -163,10 +163,10 @@ function stop(){clearInterval(ticker);if(stream){stream.getTracks().forEach(t=>t
 async function send(blob,ext,seconds){
   app.innerHTML=`<div class="eyebrow">Почти готово</div><div class="card topic"><div class="spin"></div><h2>Слушаю твой испанский…</h2><p>Это займёт секунд десять.</p></div>`;
   const body=new FormData();body.set('audio',new File([blob],'speech.'+ext,{type:blob.type}));body.set('question',TOPICS[topic][1]);body.set('seconds',seconds.toFixed(1));
-  let res,data;try{res=await fetch(API,{method:'POST',body});data=await res.json()}catch(e){problem('Не получилось связаться с сервером. Проверь интернет и попробуй ещё раз.');return}
+  let res,data;try{res=await fetch(API,{method:'POST',body});data=await res.json()}catch(e){goal('speaking_error');problem('Не получилось связаться с сервером. Проверь интернет и попробуй ещё раз.');return}
   if(res.status===429){if(data.scope==='visitor')try{localStorage.setItem('hablar-tries',JSON.stringify({day:today(),n:TRIES_PER_DAY}))}catch(e){}
     problem(data.scope==='visitor'?'На сегодня твои попытки закончились. Приходи завтра!':'Сегодня инструментом воспользовалось очень много людей. Попробуй завтра.',true);return}
-  if(!res.ok){problem('Что-то пошло не так на нашей стороне. Попробуй ещё раз через минуту.');return}
+  if(!res.ok){goal('speaking_error');problem('Что-то пошло не так на нашей стороне. Попробуй ещё раз через минуту.');return}
   useTry();if(!data.ok){problem(data.problem);return}
   lead?result(data):gate(data)}
 function problem(text,limit){stop();app.innerHTML=`<div class="eyebrow">Не получилось</div><div class="card topic"><h2>${limit?'Попытки закончились':'Попробуем ещё раз?'}</h2><p>${esc(text)}</p>
