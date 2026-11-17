@@ -119,6 +119,7 @@
     .portrait-card{position:absolute;inset:12px 20px 24px 14px;border-radius:220px 220px 30px 30px;background:linear-gradient(155deg,#CFE4D7 0%,#DBEBDD 47%,#ADCCBF 100%);overflow:hidden;box-shadow:var(--shadow)}
     .portrait-card::before{content:"";position:absolute;left:50%;top:35%;transform:translate(-50%,-50%);width:370px;height:370px;border:2px solid rgba(255,255,255,.48);border-radius:50%}
     .portrait-card::after{content:"";position:absolute;right:-130px;bottom:-245px;width:550px;height:550px;border-radius:50%;background:rgba(36,112,88,.17)}
+    .portrait-card.has-photo::after{display:none} /* the green circle sits over the photo; keep it only for the no-photo placeholder */
     .photo-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
     .photo-initial{font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:clamp(210px,28vw,340px);line-height:1;color:rgba(28,105,81,.55);transform:translateY(-13px) rotate(-9deg)}
     .photo-hint{position:absolute;top:19%;left:50%;transform:translateX(-50%);font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:750;color:#456D60;white-space:nowrap}
