@@ -455,13 +455,27 @@
     [hidden]{display:none!important}
 
     /* Game teaser */
-    .teaser-card{display:grid;grid-template-columns:1.02fr .98fr;gap:26px;align-items:center;text-decoration:none;
-      background:var(--paper);border:1px solid var(--line);border-radius:30px;padding:34px 36px;transition:transform .2s ease,box-shadow .2s ease}
+    /* Free tools: the word game and the speaking check, side by side */
+    .free-head{max-width:640px;margin:0 auto 34px;text-align:center}
+    .free-head h2{margin:12px 0 10px}
+    .free-head p{margin:0;font-size:17px;line-height:1.6;color:var(--ink-soft)}
+    .free-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch}
+    .teaser-card{display:flex;flex-direction:column;gap:22px;text-decoration:none;
+      background:var(--paper);border:1px solid var(--line);border-radius:30px;padding:24px 24px 28px;transition:transform .2s ease,box-shadow .2s ease}
+    .teaser-visual,.sp-visual{order:-1}
     .teaser-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
-    .teaser-copy h2{margin:10px 0 12px;font-size:clamp(28px,3.4vw,42px);line-height:1.05}
+    .teaser-copy h3{margin:10px 0 12px;font-size:clamp(25px,2.5vw,31px);line-height:1.1;letter-spacing:-.03em;font-weight:800}
     .teaser-copy p{font-size:16px;line-height:1.7;margin:0 0 20px;max-width:44ch}
     .teaser-copy .btn{pointer-events:none}
     .teaser-note{display:block;margin-top:14px;font-size:12.5px;color:#6A7C72}
+    /* Speaking check preview: the topic wheel turning behind a sample question and level */
+    .sp-art{display:grid;place-items:center}
+    .sp-wheel{width:236px;height:236px;margin-top:-34px;border-radius:50%;filter:drop-shadow(0 8px 10px rgba(91,71,42,.3))}
+    .sp-pointer{position:absolute;z-index:2;left:50%;top:12px;width:24px;height:27px;margin-left:-12px}
+    .sp-q{position:absolute;z-index:3;left:50%;bottom:20px;transform:translateX(-50%);display:flex;align-items:center;gap:12px;padding:11px 16px 12px 20px;white-space:nowrap;font-size:17px;font-weight:700}
+    .sp-q b{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:#284f3b;color:#fff8e4;font-size:16px}
+    @media (prefers-reduced-motion:no-preference){.sp-wheel{animation:sp-turn 26s linear infinite}}
+    @keyframes sp-turn{to{transform:rotate(360deg)}}
     /* Painted scene, built from the game's own art. Loops through the three steps — hero, play, result — once .run is set
        (see the script below). Without it (no JS, reduced motion) the scene rests on the play step. */
     .teaser-visual{min-width:0}
@@ -540,7 +554,7 @@
     @keyframes tg-level{0%,7.9%{opacity:0;transform:scale(.6)}8%{opacity:1;transform:scale(1.25)}10%,100%{opacity:1;transform:none}}
     @keyframes tg-fill1{0%,3.9%{background:#e9dcb6}4%,100%{background:#b4dc92}}
     @keyframes tg-fill2{0%,6.9%{background:#e9dcb6}7%,100%{background:#b4dc92}}
-    @media (max-width:900px){.teaser-card{grid-template-columns:1fr;padding:26px 22px}.teaser-art{height:290px}.tg-fly{width:76px;margin-left:-38px}.tg-card{font-size:12px;padding:5px 8px 6px}.ta-steps li{font-size:10px;letter-spacing:.02em}.ta-steps b{margin-right:3px}}
+    @media (max-width:900px){.free-grid{grid-template-columns:1fr}.teaser-card{padding:20px 18px 24px}.teaser-art{height:290px}.tg-fly{width:76px;margin-left:-38px}.tg-card{font-size:12px;padding:5px 8px 6px}.ta-steps li{font-size:10px;letter-spacing:.02em}.ta-steps b{margin-right:3px}}
     @media (max-width:860px){.proof-grid{grid-template-columns:1fr}}
   </style>
   <!-- Top.Mail.Ru counter (VK Ads pixel 3812030) -->
@@ -745,12 +759,18 @@
     </section>
 
 
-    <section class="section game-teaser" aria-labelledby="game-teaser-title">
+    <section class="section game-teaser" aria-labelledby="free-title">
       <div class="container">
+        <div class="free-head">
+          <div class="eyebrow"><span class="eyebrow-dot"></span> Бесплатно</div>
+          <h2 id="free-title">Проверь свой испанский <span class="serif">прямо сейчас.</span></h2>
+          <p>Два инструмента: один — про слова, другой — про живую речь. Без оплаты, результат сразу.</p>
+        </div>
+        <div class="free-grid">
         <a class="teaser-card" href="/placement-game/" aria-label="Открыть игру-тест: проверь испанский своей страны">
           <div class="teaser-copy">
-            <div class="eyebrow"><span class="eyebrow-dot"></span> Игра-тест · 5–7 минут</div>
-            <h2 id="game-teaser-title">Проверь испанский страны, <span class="serif">где ты живёшь.</span></h2>
+            <div class="eyebrow"><span class="eyebrow-dot"></span> Словарный запас · 5–7 минут</div>
+            <h3>Проверь испанский страны, <span class="serif">где ты живёшь.</span></h3>
             <p>Выбери страну и попадай в правильный перевод. В игре есть местные слова: в Испании сок — это zumo, а не jugo. В конце узнаешь свой уровень, от A1 до B2+.</p>
             <span class="btn btn-primary">Узнать свой уровень
               <svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
@@ -776,6 +796,27 @@
             <ol class="ta-steps"><li><b>1</b>Страна</li><li><b>2</b>Игра</li><li><b>3</b>Результат</li></ol>
           </div>
         </a>
+          <a class="teaser-card" href="/speaking/" aria-label="Открыть проверку разговорного испанского">
+          <div class="teaser-copy">
+            <div class="eyebrow"><span class="eyebrow-dot"></span> Живая речь · 1 минута</div>
+            <h3>Скажи вслух — и узнай свой <span class="serif">разговорный уровень.</span></h3>
+            <p>Крути колесо, получи тему и ответь по-испански за минуту. В ответ — примерный уровень, темп речи и разбор ошибок.</p>
+            <span class="btn btn-primary">Попробовать бесплатно
+              <svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+            <span class="teaser-note">Бесплатно · 3 попытки в день · нужен микрофон</span>
+          </div>
+          <div class="sp-visual" aria-hidden="true">
+            <div class="teaser-art sp-art">
+              <img class="tg-sky" alt="" loading="lazy" src="/placement-game/assets/bg-landscape-sky.webp">
+              <svg class="sp-pointer" viewBox="0 0 30 34"><path d="M15 34L1 4a4 4 0 0 1 4-4h20a4 4 0 0 1 4 4z" fill="#BF4E2F" stroke="#33402f" stroke-width="2"/></svg>
+              <svg class="sp-wheel" viewBox="-160 -160 320 320"><circle r="158" fill="#33402f"/><path d="M0 0L-38.82 -144.89A150 150 0 0 1 38.82 -144.89Z" fill="#1d6b68" stroke="#f6e3b4" stroke-width="2"/><circle cx="0.0" cy="-106.0" r="24" fill="#fbf3da"/><path d="M0 0L38.82 -144.89A150 150 0 0 1 106.07 -106.07Z" fill="#e0562b" stroke="#f6e3b4" stroke-width="2"/><circle cx="53.0" cy="-91.8" r="24" fill="#fbf3da"/><path d="M0 0L106.07 -106.07A150 150 0 0 1 144.89 -38.82Z" fill="#edb01f" stroke="#f6e3b4" stroke-width="2"/><circle cx="91.8" cy="-53.0" r="24" fill="#fbf3da"/><path d="M0 0L144.89 -38.82A150 150 0 0 1 144.89 38.82Z" fill="#7f9a6b" stroke="#f6e3b4" stroke-width="2"/><circle cx="106.0" cy="-0.0" r="24" fill="#fbf3da"/><path d="M0 0L144.89 38.82A150 150 0 0 1 106.07 106.07Z" fill="#1d6b68" stroke="#f6e3b4" stroke-width="2"/><circle cx="91.8" cy="53.0" r="24" fill="#fbf3da"/><path d="M0 0L106.07 106.07A150 150 0 0 1 38.82 144.89Z" fill="#e0562b" stroke="#f6e3b4" stroke-width="2"/><circle cx="53.0" cy="91.8" r="24" fill="#fbf3da"/><path d="M0 0L38.82 144.89A150 150 0 0 1 -38.82 144.89Z" fill="#edb01f" stroke="#f6e3b4" stroke-width="2"/><circle cx="0.0" cy="106.0" r="24" fill="#fbf3da"/><path d="M0 0L-38.82 144.89A150 150 0 0 1 -106.07 106.07Z" fill="#7f9a6b" stroke="#f6e3b4" stroke-width="2"/><circle cx="-53.0" cy="91.8" r="24" fill="#fbf3da"/><path d="M0 0L-106.07 106.07A150 150 0 0 1 -144.89 38.82Z" fill="#1d6b68" stroke="#f6e3b4" stroke-width="2"/><circle cx="-91.8" cy="53.0" r="24" fill="#fbf3da"/><path d="M0 0L-144.89 38.82A150 150 0 0 1 -144.89 -38.82Z" fill="#e0562b" stroke="#f6e3b4" stroke-width="2"/><circle cx="-106.0" cy="0.0" r="24" fill="#fbf3da"/><path d="M0 0L-144.89 -38.82A150 150 0 0 1 -106.07 -106.07Z" fill="#edb01f" stroke="#f6e3b4" stroke-width="2"/><circle cx="-91.8" cy="-53.0" r="24" fill="#fbf3da"/><path d="M0 0L-106.07 -106.07A150 150 0 0 1 -38.82 -144.89Z" fill="#7f9a6b" stroke="#f6e3b4" stroke-width="2"/><circle cx="-53.0" cy="-91.8" r="24" fill="#fbf3da"/><circle r="40" fill="#fbf3da" stroke="#33402f" stroke-width="5"/></svg>
+              <div class="sp-q"><img class="tg-paper" alt="" loading="lazy" src="/placement-game/assets/scrap-wide.webp">¿Cómo es tu ciudad? <b>B1</b></div>
+            </div>
+            <ol class="ta-steps"><li><b>1</b>Тема</li><li><b>2</b>Ответ вслух</li><li><b>3</b>Разбор</li></ol>
+          </div>
+        </a>
+        </div>
       </div>
     </section>
 

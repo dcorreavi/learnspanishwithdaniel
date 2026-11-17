@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f6e3b4">
+<title>Говори — проверь свой разговорный испанский | Español con Daniel</title>
+<meta name="description" content="Крути колесо, получи тему и ответь вслух по-испански за минуту. Примерный разговорный уровень, темп речи и разбор ошибок — бесплатно.">
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon.png"><link rel="shortcut icon" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,500;7..72,700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#33402f;--soft:#5f6b58;--paper:#fbf3da;--edge:#e3d3a6;--cta:#BF4E2F;--green:#284f3b;--teal:#1d6b68;--terra:#e0562b;--ochre:#edb01f;--sage:#7f9a6b}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100dvh;color:var(--ink);font:17px/1.5 'Literata',Georgia,serif;background:#f6e3b4 url(/placement-game/assets/bg-portrait-sky.webp) center top/cover fixed}
+/* one paper grain over the page, as in the game */
+body:after{content:'';position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.14;mix-blend-mode:multiply;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .38 0 0 0 0 .25 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E")}
+button,input{font:inherit;color:inherit}button{cursor:pointer;border:0;background:none;touch-action:manipulation}
+a{color:inherit}h1,h2,h3,p{margin:0}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;max-width:640px;margin:0 auto;padding:max(14px,env(safe-area-inset-top)) 18px 0}
+.top a{font-size:14px;font-weight:700;text-decoration:none;padding:8px 14px;border-radius:30px;background:#fbf3dacc;border:1px solid var(--edge)}
+.top span{font-style:italic;font-weight:500;font-size:17px;color:var(--green)}
+main{max-width:640px;margin:0 auto;padding:18px 18px 56px}
+.eyebrow{display:flex;align-items:center;justify-content:center;gap:9px;font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green)}
+.eyebrow:before{content:'';width:8px;height:8px;border-radius:50%;background:var(--terra)}
+h1{margin:10px 0 8px;font-size:clamp(27px,7.2vw,38px);line-height:1.1;font-weight:700;text-align:center;letter-spacing:-.01em}
+h1 em{font-weight:500;color:var(--cta)}
+.lead{max-width:34em;margin:0 auto;text-align:center;color:var(--soft);font-size:16px}
+.card{background:var(--paper);border:1px solid var(--edge);border-radius:14px;box-shadow:0 8px 22px #5b472a26;padding:22px 20px}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:56px;padding:14px 20px;border-radius:13px;background:var(--cta);color:#fff;font-weight:700;font-size:17px;text-decoration:none;box-shadow:0 8px 18px #bf4e2f38}
+.btn:active{transform:translateY(1px)}.btn:disabled{opacity:.5;cursor:default}
+.btn.ghost{background:#fff8e4;color:var(--ink);border:1px solid var(--edge);box-shadow:none}
+.btn.green{background:var(--green);box-shadow:0 8px 18px #284f3b38}
+.row{display:grid;gap:10px;margin-top:14px}.row.two{grid-template-columns:1fr 1fr}
+.fine{margin-top:12px;text-align:center;font-size:13px;line-height:1.45;color:var(--soft)}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #c65b31;outline-offset:3px}
+/* wheel */
+.wheel-wrap{position:relative;width:min(86vw,360px);aspect-ratio:1;margin:22px auto 6px}
+.wheel{width:100%;height:100%;display:block;border-radius:50%;filter:drop-shadow(0 10px 14px #5b472a40);transition:transform 4s cubic-bezier(.12,.62,.1,1);will-change:transform}
+.pointer{position:absolute;z-index:2;left:50%;top:-10px;width:30px;height:34px;margin-left:-15px;filter:drop-shadow(0 3px 2px #5b472a55)}
+.hub{position:absolute;z-index:3;left:50%;top:50%;width:27%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:var(--paper);border:4px solid var(--ink);font-weight:700;font-size:clamp(13px,3.9vw,16px);line-height:1.1;box-shadow:0 4px 0 #33402f33}
+.hub:disabled{cursor:default}
+/* topic + recording */
+.topic{margin-top:20px;text-align:center}
+.topic img{width:84px;height:84px;object-fit:contain;display:block;margin:0 auto 6px}
+.topic small{display:block;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
+.topic h2{margin:6px 0 8px;font-size:clamp(23px,6.2vw,30px);line-height:1.15;font-weight:700}
+.topic p{color:var(--soft);font-size:15.5px}
+.timer{position:relative;width:148px;height:148px;margin:18px auto 4px;display:grid;place-items:center}
+.timer svg{position:absolute;inset:0;transform:rotate(-90deg)}
+.timer b{font-size:44px;font-weight:700;line-height:1}.timer i{display:block;font-style:normal;font-size:12.5px;color:var(--soft);text-align:center}
+.live{display:flex;align-items:center;justify-content:center;gap:8px;font-size:14px;font-weight:700;color:var(--cta)}
+.live:before{content:'';width:10px;height:10px;border-radius:50%;background:var(--terra);animation:pulse 1s ease-in-out infinite alternate}
+@keyframes pulse{to{opacity:.25;transform:scale(.7)}}
+.spin{width:64px;height:64px;margin:26px auto 14px;border-radius:50%;border:6px solid #e9dcb6;border-top-color:var(--terra);animation:turn 1s linear infinite}
+@keyframes turn{to{transform:rotate(360deg)}}
+/* gate */
+.gate{display:grid;gap:10px;margin-top:16px}
+.gate input{width:100%;padding:14px;border:2px solid var(--edge);border-radius:11px;background:#fff;font-size:16px}
+.err{color:#b3401f;font-size:14px}
+/* result */
+.level{display:flex;align-items:center;gap:16px}
+.level strong{flex:none;display:grid;place-items:center;width:92px;height:92px;border-radius:50%;background:var(--green);color:#fff8e4;font-size:38px;font-weight:700}
+.level small{display:block;font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
+.track{display:flex;gap:5px;margin-top:8px}.track i{flex:1;padding:4px 0;border-radius:6px;background:#e9dcb6;text-align:center;font-style:normal;font-size:12.5px;font-weight:700}
+.track i.on{background:#b4dc92}.track i.now{background:var(--terra);color:#fff}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.stats div{background:#fff8e4;border:1px solid var(--edge);border-radius:11px;padding:11px 13px}
+.stats b{display:block;font-size:24px;line-height:1.15}.stats span{display:block;font-size:13px;color:var(--soft);line-height:1.35}
+.block{margin-top:14px}.block h3{margin-bottom:8px;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green)}
+.block ul{margin:0;padding-left:20px}.block li{margin:4px 0}
+.fix{padding:11px 13px;border-left:4px solid var(--terra);background:#fff8e4;border-radius:0 10px 10px 0}.fix+.fix{margin-top:8px}
+.fix s{color:#a2482c}.fix b{color:var(--green)}.fix span{display:block;margin-top:3px;font-size:14.5px;color:var(--soft);line-height:1.4}
+.es{font-size:17.5px;line-height:1.5}
+.prev{margin-top:12px;padding:10px 13px;border-radius:10px;background:#e6f1d8;font-size:15px}
+details{margin-top:14px;font-size:15px;color:var(--soft)}summary{cursor:pointer;font-weight:700}
+.cta{margin-top:16px;background:var(--green);color:#fff8e4;border-color:#1f3f2f}
+.cta h2{font-size:24px;line-height:1.15;font-weight:700}.cta h2 em{font-weight:500;color:#f2c57a}
+.cta p{margin:8px 0 14px;color:#dbe7d6;font-size:16px}.cta .fine{color:#c3d5bd}
+@media(prefers-reduced-motion:reduce){.wheel{transition-duration:.01s}.spin,.live:before{animation:none}}
+</style>
+  <!-- Top.Mail.Ru counter (VK Ads pixel 3812030) -->
+  <script type="text/javascript">
+  var _tmr = window._tmr || (window._tmr = []);
+  _tmr.push({id: "3812030", type: "pageView", start: (new Date()).getTime()});
+  (function (d, w, id) {
+    if (d.getElementById(id)) return;
+    var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;
+    ts.src = "https://top-fwz1.mail.ru/js/code.js";
+    var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+    if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+  })(document, window, "tmr-code");
+  </script>
+  <noscript><div><img src="https://top-fwz1.mail.ru/counter?id=3812030;js=na" style="position:absolute;left:-9999px" alt="Top.Mail.Ru" /></div></noscript>
+</head><body>
+<div class="top"><a href="/">← На сайт</a><span>español con Daniel</span></div>
+<main id="app"></main>
+<script>
+'use strict';
+/* The page records up to a minute of speech and sends it to a small Cloudflare Worker (repo: speaking-worker),
+   which holds the OpenAI key, transcribes the audio and returns a level with corrections. */
+const API=location.hostname==='localhost'?'http://localhost:8787/':'https://speaking-worker.dcorreavi.workers.dev/';
+const BOOKING_URL='https://calendly.com/dcorreavi/free-consultation';
+const TRIES_PER_DAY=3,MAX_SECONDS=60,MIN_SECONDS=10;
+/* Email gate: the same Brevo form as the placement game, sent the way Brevo's own form sends it. */
+const LEAD_FORM={url:'https://8c4bf166.sibforms.com/serve/MUIFAGL4IC-hjcEbQj2COzn1aWBjoREC1y3ovnW88T7DVQVmQvyi0RIN4x7wRjkglouLP92VWJIIgQoSanPGa0ae4hy3KbnrTDOwrU5SXlmGcg4FxZtmKep9daVRw4VekyYAD2cyBTyYlEitzJi-TE5vUN-x3MtiDOtdLxqcMv4y8N8Nz3dejLjekPLCS7KXw4IVFkh1LoVbBqrwuQ==',
+  emailField:'EMAIL',nameField:'FIRSTNAME',levelField:'SPEAKING_LEVEL',fields:{email_address_check:'',locale:'en'}};
+/* Same pixel ID as the counter in <head>. Each goal must exist in VK Ads → Конверсии → Пиксели → События (JS-событие). */
+const goal=name=>{if(typeof window.gtag==='function')window.gtag('event',name);if(window._tmr)window._tmr.push({id:'3812030',type:'reachGoal',goal:name})};
+const TOPICS=[
+  ['Мой город','¿Cómo es tu ciudad?','Где она, что в ней нравится, что бы ты изменил.'],
+  ['Еда','¿Qué te gusta comer?','Любимое блюдо, кто готовит, что ты ел вчера.'],
+  ['Работа','¿A qué te dedicas?','Чем занимаешься, как проходит обычный день.'],
+  ['Путешествие','Cuéntame de un viaje.','Куда ездил, с кем, что запомнилось.'],
+  ['Выходные','¿Qué haces los fines de semana?','Обычные выходные и планы на ближайшие.'],
+  ['Семья','Háblame de tu familia.','Кто в ней, какие они, что вы делаете вместе.'],
+  ['Хобби','¿Qué haces en tu tiempo libre?','Чем увлекаешься, как давно, почему.'],
+  ['Дом','¿Cómo es tu casa?','Комнаты, любимое место, что рядом.'],
+  ['Друзья','Háblame de un amigo.','Как познакомились, какой он, что делаете вместе.'],
+  ['Погода','¿Qué tiempo te gusta?','Любимое время года и что ты тогда делаешь.'],
+  ['Кино','¿Qué película o serie te gusta?','О чём она и почему тебе нравится.'],
+  ['Планы','¿Qué planes tienes para este año?','Что хочешь сделать, выучить, увидеть.']];
+const COLORS=['#1d6b68','#e0562b','#edb01f','#7f9a6b'],LEVELS=['A1','A2','B1','B2','C1'];
+const $=s=>document.querySelector(s),app=$('#app'),icon=i=>`assets/icon-${i+1}.webp`,esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let topic=null,turn=0,rec=null,stream=null,ticker=0,last={},lead=false;
+try{lead=!!localStorage.getItem('palabra-lead')}catch(e){}
+const today=()=>new Date().toISOString().slice(0,10);
+function triesLeft(){try{const t=JSON.parse(localStorage.getItem('hablar-tries')||'{}');return TRIES_PER_DAY-(t.day===today()?t.n:0)}catch(e){return TRIES_PER_DAY}}
+function useTry(){try{const t=JSON.parse(localStorage.getItem('hablar-tries')||'{}');localStorage.setItem('hablar-tries',JSON.stringify({day:today(),n:(t.day===today()?t.n:0)+1}))}catch(e){}}
+const triesNote=()=>{const n=Math.max(0,triesLeft());return n?`Осталось попыток сегодня: ${n} из ${TRIES_PER_DAY}`:'На сегодня попытки закончились — приходи завтра.'};
+function wheelSvg(){const n=TOPICS.length,a=360/n,r=150,pt=d=>[Math.sin(d*Math.PI/180)*r,-Math.cos(d*Math.PI/180)*r].map(v=>v.toFixed(2)).join(' ');
+  return `<svg class="wheel" id="wheel" viewBox="-160 -160 320 320" aria-hidden="true"><circle r="158" fill="#33402f"/>${TOPICS.map((t,i)=>`<path d="M0 0L${pt(i*a-a/2)}A${r} ${r} 0 0 1 ${pt(i*a+a/2)}Z" fill="${COLORS[i%4]}" stroke="#f6e3b4" stroke-width="2"/><g transform="rotate(${i*a})"><circle cy="-106" r="27" fill="#fbf3da"/><image href="${icon(i)}" x="-22" y="-128" width="44" height="44"/></g>`).join('')}</svg>`}
+function home(){stop();const left=triesLeft();
+  app.innerHTML=`<div class="eyebrow">Бесплатно · 1 минута</div><h1>Крути колесо — и <em>говори по-испански</em></h1>
+    <p class="lead">Выпадет тема. Ответь вслух за минуту и узнай свой примерный разговорный уровень, темп речи и ошибки.</p>
+    <div class="wheel-wrap"><svg class="pointer" viewBox="0 0 30 34" aria-hidden="true"><path d="M15 34L1 4a4 4 0 0 1 4-4h20a4 4 0 0 1 4 4z" fill="#BF4E2F" stroke="#33402f" stroke-width="2"/></svg>${wheelSvg()}<button class="hub" id="spin" ${left>0?'':'disabled'}>Крутить</button></div>
+    <p class="fine">${triesNote()}</p>${left>0?'':ctaCard('Пока попытки отдыхают — поговорим вживую?')}`;
+  $('#wheel').style.transform=`rotate(${turn}deg)`;
+  if(left>0){$('#spin').onclick=spin;$('#wheel').onclick=spin}bindCta()}
+function spin(){const i=Math.floor(Math.random()*TOPICS.length),a=360/TOPICS.length;$('#spin').disabled=true;$('#wheel').onclick=null;
+  turn=Math.ceil(turn/360)*360+360*5+(360-i*a)+(Math.random()*a*.6-a*.3);$('#wheel').style.transform=`rotate(${turn}deg)`;
+  setTimeout(()=>{topic=i;showTopic()},matchMedia('(prefers-reduced-motion:reduce)').matches?300:4200)}
+const topicHead=()=>`<img alt="" src="${icon(topic)}"><small>${TOPICS[topic][0]}</small><h2 lang="es">${TOPICS[topic][1]}</h2>`;
+function showTopic(){stop();const left=triesLeft();
+  app.innerHTML=`<div class="eyebrow">Твоя тема</div><div class="card topic">${topicHead()}<p>${TOPICS[topic][2]}</p>
+      <div class="row"><button class="btn" id="go" ${left>0?'':'disabled'}>Записать ответ · до 1 минуты</button><button class="btn ghost" id="again">Другая тема</button></div>
+      <p class="fine">${triesNote()}<br>Запись отправляется на анализ в OpenAI и не сохраняется.</p></div>`;
+  $('#go').onclick=record;$('#again').onclick=home;window.scrollTo(0,0)}
+async function record(){
+  if(!navigator.mediaDevices||!window.MediaRecorder){problem('Этот браузер не умеет записывать звук. Открой страницу в Chrome или Safari.');return}
+  try{stream=await navigator.mediaDevices.getUserMedia({audio:true})}catch(e){problem('Нужен доступ к микрофону. Разреши его в настройках браузера и попробуй ещё раз.');return}
+  const mime=['audio/webm;codecs=opus','audio/webm','audio/mp4'].find(m=>MediaRecorder.isTypeSupported(m))||'',chunks=[],t0=performance.now();
+  rec=new MediaRecorder(stream,mime?{mimeType:mime,audioBitsPerSecond:32000}:undefined);rec.ondataavailable=e=>{if(e.data.size)chunks.push(e.data)};
+  rec.onstop=()=>{const seconds=(performance.now()-t0)/1000,type=rec.mimeType||mime||'audio/webm',cancelled=rec.cancelled;stop();if(!cancelled)send(new Blob(chunks,{type}),type.includes('mp4')?'mp4':'webm',seconds)};
+  rec.start(1000);goal('speaking_start');
+  const C=2*Math.PI*66;
+  app.innerHTML=`<div class="eyebrow">Запись идёт</div><div class="card topic">${topicHead()}
+      <div class="timer"><svg viewBox="0 0 148 148"><circle cx="74" cy="74" r="66" fill="none" stroke="#e9dcb6" stroke-width="10"/><circle id="ring" cx="74" cy="74" r="66" fill="none" stroke="#e0562b" stroke-width="10" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="0"/></svg><span><b id="sec">${MAX_SECONDS}</b><i>секунд</i></span></div>
+      <div class="live">Говори по-испански</div>
+      <div class="row"><button class="btn green" id="done" disabled>Готово</button><button class="btn ghost" id="cancel">Отмена</button></div>
+      <p class="fine" id="minnote">Кнопка «Готово» включится через ${MIN_SECONDS} секунд.</p></div>`;
+  $('#done').onclick=()=>rec&&rec.state!=='inactive'&&rec.stop();$('#cancel').onclick=()=>{if(rec){rec.cancelled=true;rec.state!=='inactive'&&rec.stop()}showTopic()};
+  ticker=setInterval(()=>{const s=(performance.now()-t0)/1000;if(!$('#sec'))return;$('#sec').textContent=Math.max(0,Math.ceil(MAX_SECONDS-s));$('#ring').style.strokeDashoffset=C*Math.min(1,s/MAX_SECONDS);
+    if(s>=MIN_SECONDS&&$('#done').disabled){$('#done').disabled=false;$('#minnote').textContent='Скажи всё, что хочешь, и нажми «Готово».'}
+    if(s>=MAX_SECONDS&&rec&&rec.state!=='inactive')rec.stop()},200)}
+function stop(){clearInterval(ticker);if(stream){stream.getTracks().forEach(t=>t.stop());stream=null}}
+async function send(blob,ext,seconds){
+  app.innerHTML=`<div class="eyebrow">Почти готово</div><div class="card topic"><div class="spin"></div><h2>Слушаю твой испанский…</h2><p>Это займёт секунд десять.</p></div>`;
+  const body=new FormData();body.set('audio',new File([blob],'speech.'+ext,{type:blob.type}));body.set('question',TOPICS[topic][1]);body.set('seconds',seconds.toFixed(1));
+  let res,data;try{res=await fetch(API,{method:'POST',body});data=await res.json()}catch(e){problem('Не получилось связаться с сервером. Проверь интернет и попробуй ещё раз.');return}
+  if(res.status===429){if(data.scope==='visitor')try{localStorage.setItem('hablar-tries',JSON.stringify({day:today(),n:TRIES_PER_DAY}))}catch(e){}
+    problem(data.scope==='visitor'?'На сегодня твои попытки закончились. Приходи завтра!':'Сегодня инструментом воспользовалось очень много людей. Попробуй завтра.',true);return}
+  if(!res.ok){problem('Что-то пошло не так на нашей стороне. Попробуй ещё раз через минуту.');return}
+  useTry();if(!data.ok){problem(data.problem);return}
+  lead?result(data):gate(data)}
+function problem(text,limit){stop();app.innerHTML=`<div class="eyebrow">Не получилось</div><div class="card topic"><h2>${limit?'Попытки закончились':'Попробуем ещё раз?'}</h2><p>${esc(text)}</p>
+    <div class="row">${limit?'':`<button class="btn" id="retry">${topic===null?'К колесу':'Вернуться к теме'}</button>`}<button class="btn ghost" id="home">К колесу</button></div></div>${limit?ctaCard('Пока попытки отдыхают — поговорим вживую?'):''}`;
+  if($('#retry'))$('#retry').onclick=topic===null?home:showTopic;$('#home').onclick=home;bindCta()}
+function gate(data){
+  app.innerHTML=`<div class="eyebrow">Результат готов</div><div class="card topic"><h2>Твой разбор готов!</h2><p>Оставь имя и email, чтобы его увидеть. Иногда буду присылать полезное для испанского — без спама.</p>
+    <form class="gate" id="gate" novalidate><input id="gname" type="text" autocomplete="given-name" maxlength="200" placeholder="Как тебя зовут?" aria-label="Имя" required>
+      <input id="gmail" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com" aria-label="Email" aria-describedby="gerr" required>
+      <p class="err" id="gerr" role="alert" hidden></p><button class="btn" id="gsend">Показать мой разбор</button></form>
+    <p class="fine">Нажимая кнопку, ты соглашаешься получать письма от Español con Daniel. Отписаться можно в любой момент.</p></div>`;
+  $('#gate').onsubmit=e=>{e.preventDefault();const name=$('#gname').value.trim(),email=$('#gmail').value.trim(),err=t=>{$('#gerr').textContent=t;$('#gerr').hidden=false};
+    if(!name){err('Напиши, как тебя зовут.');$('#gname').focus();return}
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){err('Проверь адрес — похоже, в нём ошибка.');$('#gmail').focus();return}
+    $('#gsend').disabled=true;const body=new FormData();for(const [k,v] of Object.entries({...LEAD_FORM.fields,[LEAD_FORM.emailField]:email,[LEAD_FORM.nameField]:name,[LEAD_FORM.levelField]:data.level}))body.set(k,v);
+    /* The reply is opaque (no-cors), so don't wait on it for long: the learner gets the result either way. */
+    Promise.race([fetch(LEAD_FORM.url+'?isAjax=1',{method:'POST',mode:'no-cors',body}),new Promise(r=>setTimeout(r,4000))]).catch(()=>{}).then(()=>{lead=true;try{localStorage.setItem('palabra-lead','1')}catch(e){}goal('speaking_lead');result(data)})}}
+const pace=w=>w<90?'медленно — это нормально в начале':w<140?'спокойный, уверенный темп':'бегло, почти как в живом разговоре';
+function ctaCard(title){return `<div class="card cta"><h2>${title||'Хочешь говорить <em>свободнее?</em>'}</h2><p>На бесплатной встрече разберём твою речь вживую и составим план: что учить и в каком порядке.</p>
+    <a class="btn" id="cta" href="${BOOKING_URL}" target="_blank" rel="noopener noreferrer">Записаться на бесплатную встречу →</a><p class="fine">20 минут · бесплатно · можно по-русски</p></div>`}
+function bindCta(){const a=$('#cta');if(!a)return;const u=new URL(BOOKING_URL),q=new URLSearchParams(location.search);for(const k of ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'])if(q.has(k))u.searchParams.set(k,q.get(k));a.href=u.href;a.onclick=()=>goal('speaking_cta')}
+function result(d){goal('speaking_result');const li=LEVELS.indexOf(d.level),fillers=Object.entries(d.fillers||{}),fn=fillers.reduce((a,[,n])=>a+n,0),p=last[topic],left=triesLeft();last[topic]={level:d.level,wpm:d.wpm};
+  app.innerHTML=`<div class="eyebrow">Твой разбор · ${esc(TOPICS[topic][0])}</div>
+    <div class="card" style="margin-top:14px"><div class="level"><strong>${d.level}</strong><div style="flex:1"><small>Примерный разговорный уровень</small><div class="track">${LEVELS.map((l,i)=>`<i class="${i<li?'on':i===li?'now':''}">${l}</i>`).join('')}</div></div></div>
+      <p style="margin-top:12px">${esc(d.level_reason)}</p>
+      ${p?`<p class="prev">Прошлая попытка на эту тему: ${p.level}, ${p.wpm} слов в минуту. Сейчас: ${d.level}, ${d.wpm}.</p>`:''}
+      <div class="stats"><div><b>${d.wpm}</b><span>слов в минуту — ${pace(d.wpm)}</span></div><div><b>${fn}</b><span>${fn?'слов-паразитов: '+fillers.map(([f,n])=>esc(f)+(n>1?' ×'+n:'')).join(', '):'слов-паразитов — чистая речь'}</span></div></div>
+      <div class="block"><h3>Что уже получается</h3><ul>${d.strengths.map(s=>`<li>${esc(s)}</li>`).join('')}</ul></div>
+      ${d.corrections.length?`<div class="block"><h3>Что поправить</h3>${d.corrections.map(c=>`<div class="fix"><s lang="es">${esc(c.said)}</s> → <b lang="es">${esc(c.better)}</b><span>${esc(c.why)}</span></div>`).join('')}</div>`:''}
+      <div class="block"><h3>Как это сказал бы носитель</h3><p class="es" lang="es">${esc(d.improved)}</p></div>
+      <div class="block"><h3>Что тренировать</h3><p>${esc(d.tip)}</p></div>
+      <details><summary>Что я услышал</summary><p lang="es" style="margin-top:6px">${esc(d.transcript)}</p></details>
+      <p class="fine">Это оценка по одной минуте речи, а не полный уровень испанского.</p></div>
+    ${ctaCard()}
+    <div class="row two">${left>0?'<button class="btn ghost" id="same">Ещё раз на эту тему</button>':'<a class="btn ghost" href="/placement-game/">Игра: словарный запас</a>'}<button class="btn ghost" id="other">Другая тема</button></div>
+    <p class="fine">${triesNote()}</p>`;
+  if($('#same'))$('#same').onclick=showTopic;$('#other').onclick=home;bindCta();window.scrollTo(0,0)}
+home();
+</script>
+</body></html>

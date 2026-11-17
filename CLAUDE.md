@@ -10,6 +10,7 @@ I'm not a programmer. Explain changes in plain language, and tell me in a senten
 
 - `index.html`: the landing page. It includes the game teaser, the reviews and the booking links.
 - `placement-game/index.html`: Palabra, the placement game. It ends with an email gate, then shows the player's level.
+- `speaking/index.html`: the speaking check. Spin a topic, answer aloud for up to a minute, then get a level and corrections. It calls a Cloudflare Worker that lives in its own repo, `~/dev/speaking-worker`, which holds the OpenAI key and the daily limits.
 - Shared files at the root: favicons, `social-preview.jpg` (the link preview image) and `avatars/` (the reviewers' photos).
 
 Every page is a single self-contained HTML file with its CSS and JS inline, and there is no build step. Keep it that way unless there's a clear reason not to.
