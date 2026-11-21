@@ -17,7 +17,9 @@ Every page is a single self-contained HTML file with its CSS and JS inline, and 
 
 ## Content and language
 
-The site is written for Russian speakers (`lang="ru"`), with Spanish words as the learning content. Write new copy in Russian, matching the tone of the existing text.
+The site and both games are in English and Russian, with Spanish words as the learning content. English is the default; browsers set to Russian, Ukrainian, Belarusian or Kazakh get Russian, and an EN/RU switch saves the visitor's choice in `localStorage` (`lang`), shared by all pages. The Russian text stays in the HTML. On the landing page the English sits in the `I18N_EN` dictionary (keys in `data-i18n` attributes); in the games each string is written as `EN?'English':'Russian'`. Any new copy needs both languages, matching the tone of the existing text.
+
+The speaking check sends `lang` to the worker, which answers in that language.
 
 ## Services the pages use
 
