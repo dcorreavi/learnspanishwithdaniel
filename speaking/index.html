@@ -1,7 +1,7 @@
 <!doctype html>
-<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f6e3b4">
+<html lang="ru"><head><meta charset="utf-8"><script>/* Language: a saved choice wins; otherwise Russian for browsers set to Russian, Ukrainian, Belarusian or Kazakh. */var EN=(function(){var l;try{l=localStorage.getItem('lang')}catch(e){}if(l!=='ru'&&l!=='en'){var b=((navigator.languages&&navigator.languages[0])||navigator.language||'').toLowerCase().slice(0,2);l=['ru','uk','be','kk'].indexOf(b)>-1?'ru':'en'}document.documentElement.lang=l;return l==='en'})();</script><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f6e3b4">
 <title>Говори — проверь свой разговорный испанский | Español con Daniel</title>
-<meta name="description" content="Крути колесо, получи тему и ответь вслух по-испански за минуту. Примерный разговорный уровень, темп речи и разбор ошибок — бесплатно.">
+<meta name="description" content="Крути колесо, получи тему и ответь вслух по-испански за минуту. ${EN?'Approximate speaking level':'Примерный разговорный уровень'}, темп речи и разбор ошибок — бесплатно.">
 <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png"><link rel="shortcut icon" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,500;7..72,700&display=swap" rel="stylesheet">
@@ -74,6 +74,7 @@ details{margin-top:14px;font-size:15px;color:var(--soft)}summary{cursor:pointer;
 .cta h2{font-size:24px;line-height:1.15;font-weight:700}.cta h2 em{font-weight:500;color:#f2c57a}
 .cta p{margin:8px 0 14px;color:#dbe7d6;font-size:16px}.cta .fine{color:#c3d5bd}
 @media(prefers-reduced-motion:reduce){.wheel{transition-duration:.01s}.spin,.live:before{animation:none}}
+.lang-switch{display:inline-flex;gap:2px;padding:3px;border:1px solid var(--edge);border-radius:10px;background:var(--paper)}.lang-switch button{min-width:32px;min-height:28px;padding:0 6px;border:0;border-radius:7px;background:none;font:inherit;font-size:12px;font-weight:700;letter-spacing:.04em;color:var(--soft);cursor:pointer}html[lang=en] .lang-switch [data-setlang=en],html[lang=ru] .lang-switch [data-setlang=ru]{background:var(--green);color:#fff}
 </style>
   <!-- Top.Mail.Ru counter (VK Ads pixel 3812030) -->
   <script type="text/javascript">
@@ -89,7 +90,7 @@ details{margin-top:14px;font-size:15px;color:var(--soft)}summary{cursor:pointer;
   </script>
   <noscript><div><img src="https://top-fwz1.mail.ru/counter?id=3812030;js=na" style="position:absolute;left:-9999px" alt="Top.Mail.Ru" /></div></noscript>
 </head><body>
-<div class="top"><a href="/">← На сайт</a><span>español con Daniel</span></div>
+<div class="top"><a href="/" data-en="← Back to the site">← На сайт</a><div class="lang-switch" role="group" aria-label="Язык / Language"><button type="button" data-setlang="en" lang="en">EN</button><button type="button" data-setlang="ru" lang="ru">RU</button></div><span>español con Daniel</span></div>
 <main id="app"></main>
 <script>
 'use strict';
@@ -104,18 +105,18 @@ const LEAD_FORM={url:'https://8c4bf166.sibforms.com/serve/MUIFAGL4IC-hjcEbQj2COz
 /* Same pixel ID as the counter in <head>. Each goal must exist in VK Ads → Конверсии → Пиксели → События (JS-событие). */
 const goal=name=>{if(typeof window.gtag==='function')window.gtag('event',name);if(window._tmr)window._tmr.push({id:'3812030',type:'reachGoal',goal:name})};
 const TOPICS=[
-  ['Мой город','¿Cómo es tu ciudad?','Где она, что в ней нравится, что бы ты изменил.'],
-  ['Еда','¿Qué te gusta comer?','Любимое блюдо, кто готовит, что ты ел вчера.'],
-  ['Работа','¿A qué te dedicas?','Чем занимаешься, как проходит обычный день.'],
-  ['Путешествие','Cuéntame de un viaje.','Куда ездил, с кем, что запомнилось.'],
-  ['Выходные','¿Qué haces los fines de semana?','Обычные выходные и планы на ближайшие.'],
-  ['Семья','Háblame de tu familia.','Кто в ней, какие они, что вы делаете вместе.'],
-  ['Хобби','¿Qué haces en tu tiempo libre?','Чем увлекаешься, как давно, почему.'],
-  ['Дом','¿Cómo es tu casa?','Комнаты, любимое место, что рядом.'],
-  ['Друзья','Háblame de un amigo.','Как познакомились, какой он, что делаете вместе.'],
-  ['Погода','¿Qué tiempo te gusta?','Любимое время года и что ты тогда делаешь.'],
-  ['Кино','¿Qué película o serie te gusta?','О чём она и почему тебе нравится.'],
-  ['Планы','¿Qué planes tienes para este año?','Что хочешь сделать, выучить, увидеть.']];
+  [(EN?'My city':'Мой город'),'¿Cómo es tu ciudad?',(EN?'Where it is, what you like about it, what you’d change.':'Где она, что в ней нравится, что бы ты изменил.')],
+  [(EN?'Food':'Еда'),'¿Qué te gusta comer?',(EN?'Your favourite dish, who cooks, what you ate yesterday.':'Любимое блюдо, кто готовит, что ты ел вчера.')],
+  [(EN?'Work':'Работа'),'¿A qué te dedicas?',(EN?'What you do and what a normal day looks like.':'Чем занимаешься, как проходит обычный день.')],
+  [(EN?'A trip':'Путешествие'),'Cuéntame de un viaje.',(EN?'Where you went, who with, what you remember.':'Куда ездил, с кем, что запомнилось.')],
+  [(EN?'Weekends':'Выходные'),'¿Qué haces los fines de semana?',(EN?'A normal weekend and your plans for the next one.':'Обычные выходные и планы на ближайшие.')],
+  [(EN?'Family':'Семья'),'Háblame de tu familia.',(EN?'Who’s in it, what they’re like, what you do together.':'Кто в ней, какие они, что вы делаете вместе.')],
+  [(EN?'Hobbies':'Хобби'),'¿Qué haces en tu tiempo libre?',(EN?'What you’re into, for how long, and why.':'Чем увлекаешься, как давно, почему.')],
+  [(EN?'Home':'Дом'),'¿Cómo es tu casa?',(EN?'The rooms, your favourite spot, what’s nearby.':'Комнаты, любимое место, что рядом.')],
+  [(EN?'Friends':'Друзья'),'Háblame de un amigo.',(EN?'How you met, what they’re like, what you do together.':'Как познакомились, какой он, что делаете вместе.')],
+  [(EN?'Weather':'Погода'),'¿Qué tiempo te gusta?',(EN?'Your favourite season and what you do then.':'Любимое время года и что ты тогда делаешь.')],
+  [(EN?'Films':'Кино'),'¿Qué película o serie te gusta?',(EN?'What it’s about and why you like it.':'О чём она и почему тебе нравится.')],
+  [(EN?'Plans':'Планы'),'¿Qué planes tienes para este año?',(EN?'What you want to do, learn and see.':'Что хочешь сделать, выучить, увидеть.')]];
 const COLORS=['#1d6b68','#e0562b','#edb01f','#7f9a6b'],LEVELS=['A1','A2','B1','B2','C1'];
 const $=s=>document.querySelector(s),app=$('#app'),icon=i=>`assets/icon-${i+1}.webp`,esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 let topic=null,turn=0,rec=null,stream=null,ticker=0,last={},lead=false;
@@ -123,14 +124,14 @@ try{lead=!!localStorage.getItem('palabra-lead')}catch(e){}
 const today=()=>new Date().toISOString().slice(0,10);
 function triesLeft(){try{const t=JSON.parse(localStorage.getItem('hablar-tries')||'{}');return TRIES_PER_DAY-(t.day===today()?t.n:0)}catch(e){return TRIES_PER_DAY}}
 function useTry(){try{const t=JSON.parse(localStorage.getItem('hablar-tries')||'{}');localStorage.setItem('hablar-tries',JSON.stringify({day:today(),n:(t.day===today()?t.n:0)+1}))}catch(e){}}
-const triesNote=()=>{const n=Math.max(0,triesLeft());return n?`Осталось попыток сегодня: ${n} из ${TRIES_PER_DAY}`:'На сегодня попытки закончились — приходи завтра.'};
+const triesNote=()=>{const n=Math.max(0,triesLeft());return n?`${EN?`Tries left today: ${n} of ${TRIES_PER_DAY}`:`Осталось попыток сегодня: ${n} из ${TRIES_PER_DAY}`}`:(EN?'No tries left for today — come back tomorrow.':'На сегодня попытки закончились — приходи завтра.')};
 function wheelSvg(){const n=TOPICS.length,a=360/n,r=150,pt=d=>[Math.sin(d*Math.PI/180)*r,-Math.cos(d*Math.PI/180)*r].map(v=>v.toFixed(2)).join(' ');
   return `<svg class="wheel" id="wheel" viewBox="-160 -160 320 320" aria-hidden="true"><circle r="158" fill="#33402f"/>${TOPICS.map((t,i)=>`<path d="M0 0L${pt(i*a-a/2)}A${r} ${r} 0 0 1 ${pt(i*a+a/2)}Z" fill="${COLORS[i%4]}" stroke="#f6e3b4" stroke-width="2"/><g transform="rotate(${i*a})"><circle cy="-106" r="27" fill="#fbf3da"/><image href="${icon(i)}" x="-22" y="-128" width="44" height="44"/></g>`).join('')}</svg>`}
 function home(){stop();const left=triesLeft();
-  app.innerHTML=`<div class="eyebrow">Бесплатно · 1 минута</div><h1>Крути колесо — и <em>говори по-испански</em></h1>
-    <p class="lead">Выпадет тема. Ответь вслух за минуту и узнай свой примерный разговорный уровень, темп речи и ошибки.</p>
-    <div class="wheel-wrap"><svg class="pointer" viewBox="0 0 30 34" aria-hidden="true"><path d="M15 34L1 4a4 4 0 0 1 4-4h20a4 4 0 0 1 4 4z" fill="#BF4E2F" stroke="#33402f" stroke-width="2"/></svg>${wheelSvg()}<button class="hub" id="spin" ${left>0?'':'disabled'}>Крутить</button></div>
-    <p class="fine">${triesNote()}</p>${left>0?'':ctaCard('Пока попытки отдыхают — поговорим вживую?')}`;
+  app.innerHTML=`<div class="eyebrow">${EN?'Free · 1 minute':'Бесплатно · 1 минута'}</div><h1>${EN?'Spin the wheel and <em>speak Spanish</em>':'Крути колесо — и <em>говори по-испански</em>'}</h1>
+    <p class="lead">${EN?'You’ll get a topic. Answer out loud for a minute and find out your approximate speaking level, your pace and your mistakes.':'Выпадет тема. Ответь вслух за минуту и узнай свой примерный разговорный уровень, темп речи и ошибки.'}</p>
+    <div class="wheel-wrap"><svg class="pointer" viewBox="0 0 30 34" aria-hidden="true"><path d="M15 34L1 4a4 4 0 0 1 4-4h20a4 4 0 0 1 4 4z" fill="#BF4E2F" stroke="#33402f" stroke-width="2"/></svg>${wheelSvg()}<button class="hub" id="spin" ${left>0?'':'disabled'}>${EN?'Spin':'Крутить'}</button></div>
+    <p class="fine">${triesNote()}</p>${left>0?'':ctaCard((EN?'While your tries recharge, shall we talk live?':'Пока попытки отдыхают — поговорим вживую?'))}`;
   $('#wheel').style.transform=`rotate(${turn}deg)`;
   if(left>0){$('#spin').onclick=spin;$('#wheel').onclick=spin}bindCta()}
 function spin(){const i=Math.floor(Math.random()*TOPICS.length),a=360/TOPICS.length;$('#spin').disabled=true;$('#wheel').onclick=null;
@@ -138,72 +139,75 @@ function spin(){const i=Math.floor(Math.random()*TOPICS.length),a=360/TOPICS.len
   setTimeout(()=>{topic=i;showTopic()},matchMedia('(prefers-reduced-motion:reduce)').matches?300:4200)}
 const topicHead=()=>`<img alt="" src="${icon(topic)}"><small>${TOPICS[topic][0]}</small><h2 lang="es">${TOPICS[topic][1]}</h2>`;
 function showTopic(){stop();const left=triesLeft();
-  app.innerHTML=`<div class="eyebrow">Твоя тема</div><div class="card topic">${topicHead()}<p>${TOPICS[topic][2]}</p>
-      <div class="row"><button class="btn" id="go" ${left>0?'':'disabled'}>Записать ответ · до 1 минуты</button><button class="btn ghost" id="again">Другая тема</button></div>
-      <p class="fine">${triesNote()}<br>Запись отправляется на анализ в OpenAI и не сохраняется.</p></div>`;
+  app.innerHTML=`<div class="eyebrow">${EN?'Your topic':'Твоя тема'}</div><div class="card topic">${topicHead()}<p>${TOPICS[topic][2]}</p>
+      <div class="row"><button class="btn" id="go" ${left>0?'':'disabled'}>${EN?'Record my answer · up to 1 minute':'Записать ответ · до 1 минуты'}</button><button class="btn ghost" id="again">${EN?'Another topic':'Другая тема'}</button></div>
+      <p class="fine">${triesNote()}<br>${EN?'The recording is sent to OpenAI for analysis and isn’t stored.':'Запись отправляется на анализ в OpenAI и не сохраняется.'}</p></div>`;
   $('#go').onclick=record;$('#again').onclick=home;window.scrollTo(0,0)}
 async function record(){
-  if(!navigator.mediaDevices||!window.MediaRecorder){problem('Этот браузер не умеет записывать звук. Открой страницу в Chrome или Safari.');return}
-  try{stream=await navigator.mediaDevices.getUserMedia({audio:true})}catch(e){problem('Нужен доступ к микрофону. Разреши его в настройках браузера и попробуй ещё раз.');return}
+  if(!navigator.mediaDevices||!window.MediaRecorder){problem((EN?'This browser can’t record sound. Open the page in Chrome or Safari.':'Этот браузер не умеет записывать звук. Открой страницу в Chrome или Safari.'));return}
+  try{stream=await navigator.mediaDevices.getUserMedia({audio:true})}catch(e){problem((EN?'The page needs your microphone. Allow it in your browser settings and try again.':'Нужен доступ к микрофону. Разреши его в настройках браузера и попробуй ещё раз.'));return}
   const mime=['audio/webm;codecs=opus','audio/webm','audio/mp4'].find(m=>MediaRecorder.isTypeSupported(m))||'',chunks=[],t0=performance.now();
   rec=new MediaRecorder(stream,mime?{mimeType:mime,audioBitsPerSecond:32000}:undefined);rec.ondataavailable=e=>{if(e.data.size)chunks.push(e.data)};
   rec.onstop=()=>{const seconds=(performance.now()-t0)/1000,type=rec.mimeType||mime||'audio/webm',cancelled=rec.cancelled;stop();if(!cancelled)send(new Blob(chunks,{type}),type.includes('mp4')?'mp4':'webm',seconds)};
   rec.start(1000);goal('speaking_start');
   const C=2*Math.PI*66;
-  app.innerHTML=`<div class="eyebrow">Запись идёт</div><div class="card topic">${topicHead()}
-      <div class="timer"><svg viewBox="0 0 148 148"><circle cx="74" cy="74" r="66" fill="none" stroke="#e9dcb6" stroke-width="10"/><circle id="ring" cx="74" cy="74" r="66" fill="none" stroke="#e0562b" stroke-width="10" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="0"/></svg><span><b id="sec">${MAX_SECONDS}</b><i>секунд</i></span></div>
-      <div class="live">Говори по-испански</div>
-      <div class="row"><button class="btn green" id="done" disabled>Готово</button><button class="btn ghost" id="cancel">Отмена</button></div>
-      <p class="fine" id="minnote">Кнопка «Готово» включится через ${MIN_SECONDS} секунд.</p></div>`;
+  app.innerHTML=`<div class="eyebrow">${EN?'Recording':'Запись идёт'}</div><div class="card topic">${topicHead()}
+      <div class="timer"><svg viewBox="0 0 148 148"><circle cx="74" cy="74" r="66" fill="none" stroke="#e9dcb6" stroke-width="10"/><circle id="ring" cx="74" cy="74" r="66" fill="none" stroke="#e0562b" stroke-width="10" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="0"/></svg><span><b id="sec">${MAX_SECONDS}</b><i>${EN?'seconds':'секунд'}</i></span></div>
+      <div class="live">${EN?'Speak Spanish':'Говори по-испански'}</div>
+      <div class="row"><button class="btn green" id="done" disabled>${EN?'Done':'Готово'}</button><button class="btn ghost" id="cancel">${EN?'Cancel':'Отмена'}</button></div>
+      <p class="fine" id="minnote">${EN?`The “Done” button switches on after ${MIN_SECONDS} seconds.`:`Кнопка «Готово» включится через ${MIN_SECONDS} секунд.`}</p></div>`;
   $('#done').onclick=()=>rec&&rec.state!=='inactive'&&rec.stop();$('#cancel').onclick=()=>{if(rec){rec.cancelled=true;rec.state!=='inactive'&&rec.stop()}showTopic()};
   ticker=setInterval(()=>{const s=(performance.now()-t0)/1000;if(!$('#sec'))return;$('#sec').textContent=Math.max(0,Math.ceil(MAX_SECONDS-s));$('#ring').style.strokeDashoffset=C*Math.min(1,s/MAX_SECONDS);
-    if(s>=MIN_SECONDS&&$('#done').disabled){$('#done').disabled=false;$('#minnote').textContent='Скажи всё, что хочешь, и нажми «Готово».'}
+    if(s>=MIN_SECONDS&&$('#done').disabled){$('#done').disabled=false;$('#minnote').textContent=(EN?'Say everything you want to, then press “Done”.':'Скажи всё, что хочешь, и нажми «Готово».')}
     if(s>=MAX_SECONDS&&rec&&rec.state!=='inactive')rec.stop()},200)}
 function stop(){clearInterval(ticker);if(stream){stream.getTracks().forEach(t=>t.stop());stream=null}}
 async function send(blob,ext,seconds){
-  app.innerHTML=`<div class="eyebrow">Почти готово</div><div class="card topic"><div class="spin"></div><h2>Слушаю твой испанский…</h2><p>Это займёт секунд десять.</p></div>`;
-  const body=new FormData();body.set('audio',new File([blob],'speech.'+ext,{type:blob.type}));body.set('question',TOPICS[topic][1]);body.set('seconds',seconds.toFixed(1));
-  let res,data;try{res=await fetch(API,{method:'POST',body});data=await res.json()}catch(e){goal('speaking_error');problem('Не получилось связаться с сервером. Проверь интернет и попробуй ещё раз.');return}
+  app.innerHTML=`<div class="eyebrow">${EN?'Almost there':'Почти готово'}</div><div class="card topic"><div class="spin"></div><h2>${EN?'Listening to your Spanish…':'Слушаю твой испанский…'}</h2><p>${EN?'This takes about ten seconds.':'Это займёт секунд десять.'}</p></div>`;
+  const body=new FormData();body.set('audio',new File([blob],'speech.'+ext,{type:blob.type}));body.set('question',TOPICS[topic][1]);body.set('seconds',seconds.toFixed(1));body.set('lang',EN?'en':'ru');
+  let res,data;try{res=await fetch(API,{method:'POST',body});data=await res.json()}catch(e){goal('speaking_error');problem((EN?'Couldn’t reach the server. Check your internet and try again.':'Не получилось связаться с сервером. Проверь интернет и попробуй ещё раз.'));return}
   if(res.status===429){if(data.scope==='visitor')try{localStorage.setItem('hablar-tries',JSON.stringify({day:today(),n:TRIES_PER_DAY}))}catch(e){}
-    problem(data.scope==='visitor'?'На сегодня твои попытки закончились. Приходи завтра!':'Сегодня инструментом воспользовалось очень много людей. Попробуй завтра.',true);return}
-  if(!res.ok){goal('speaking_error');problem('Что-то пошло не так на нашей стороне. Попробуй ещё раз через минуту.');return}
+    problem(data.scope==='visitor'?(EN?'You’ve used your tries for today. Come back tomorrow!':'На сегодня твои попытки закончились. Приходи завтра!'):(EN?'A lot of people used the tool today. Try again tomorrow.':'Сегодня инструментом воспользовалось очень много людей. Попробуй завтра.'),true);return}
+  if(!res.ok){goal('speaking_error');problem((EN?'Something went wrong on our side. Try again in a minute.':'Что-то пошло не так на нашей стороне. Попробуй ещё раз через минуту.'));return}
   useTry();if(!data.ok){problem(data.problem);return}
   lead?result(data):gate(data)}
-function problem(text,limit){stop();app.innerHTML=`<div class="eyebrow">Не получилось</div><div class="card topic"><h2>${limit?'Попытки закончились':'Попробуем ещё раз?'}</h2><p>${esc(text)}</p>
-    <div class="row">${limit?'':`<button class="btn" id="retry">${topic===null?'К колесу':'Вернуться к теме'}</button>`}<button class="btn ghost" id="home">К колесу</button></div></div>${limit?ctaCard('Пока попытки отдыхают — поговорим вживую?'):''}`;
+function problem(text,limit){stop();app.innerHTML=`<div class="eyebrow">${EN?'That didn’t work':'Не получилось'}</div><div class="card topic"><h2>${limit?(EN?'No tries left':'Попытки закончились'):(EN?'Shall we try again?':'Попробуем ещё раз?')}</h2><p>${esc(text)}</p>
+    <div class="row">${limit?'':`<button class="btn" id="retry">${topic===null?(EN?'Back to the wheel':'К колесу'):(EN?'Back to the topic':'Вернуться к теме')}</button>`}<button class="btn ghost" id="home">К колесу</button></div></div>${limit?ctaCard((EN?'While your tries recharge, shall we talk live?':'Пока попытки отдыхают — поговорим вживую?')):''}`;
   if($('#retry'))$('#retry').onclick=topic===null?home:showTopic;$('#home').onclick=home;bindCta()}
 function gate(data){
-  app.innerHTML=`<div class="eyebrow">Результат готов</div><div class="card topic"><h2>Твой разбор готов!</h2><p>Оставь имя и email, чтобы его увидеть. Иногда буду присылать полезное для испанского — без спама.</p>
-    <form class="gate" id="gate" novalidate><input id="gname" type="text" autocomplete="given-name" maxlength="200" placeholder="Как тебя зовут?" aria-label="Имя" required>
+  app.innerHTML=`<div class="eyebrow">${EN?'Result ready':'Результат готов'}</div><div class="card topic"><h2>${EN?'Your feedback is ready!':'Твой разбор готов!'}</h2><p>${EN?'Leave your name and email to see it. Now and then I’ll send you something useful for your Spanish — no spam.':'Оставь имя и email, чтобы его увидеть. Иногда буду присылать полезное для испанского — без спама.'}</p>
+    <form class="gate" id="gate" novalidate><input id="gname" type="text" autocomplete="given-name" maxlength="200" placeholder="${EN?'What’s your name?':'Как тебя зовут?'}" aria-label="${EN?'Name':'Имя'}" required>
       <input id="gmail" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com" aria-label="Email" aria-describedby="gerr" required>
-      <p class="err" id="gerr" role="alert" hidden></p><button class="btn" id="gsend">Показать мой разбор</button></form>
-    <p class="fine">Нажимая кнопку, ты соглашаешься получать письма от Español con Daniel. Отписаться можно в любой момент.</p></div>`;
+      <p class="err" id="gerr" role="alert" hidden></p><button class="btn" id="gsend">${EN?'Show my feedback':'Показать мой разбор'}</button></form>
+    <p class="fine">${EN?'By pressing the button you agree to receive emails from Español con Daniel. You can unsubscribe at any time.':'Нажимая кнопку, ты соглашаешься получать письма от Español con Daniel. Отписаться можно в любой момент.'}</p></div>`;
   $('#gate').onsubmit=e=>{e.preventDefault();const name=$('#gname').value.trim(),email=$('#gmail').value.trim(),err=t=>{$('#gerr').textContent=t;$('#gerr').hidden=false};
-    if(!name){err('Напиши, как тебя зовут.');$('#gname').focus();return}
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){err('Проверь адрес — похоже, в нём ошибка.');$('#gmail').focus();return}
+    if(!name){err((EN?'Please write your name.':'Напиши, как тебя зовут.'));$('#gname').focus();return}
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){err((EN?'Check the address — it looks like there’s a typo.':'Проверь адрес — похоже, в нём ошибка.'));$('#gmail').focus();return}
     $('#gsend').disabled=true;const body=new FormData();for(const [k,v] of Object.entries({...LEAD_FORM.fields,[LEAD_FORM.emailField]:email,[LEAD_FORM.nameField]:name,[LEAD_FORM.levelField]:data.level}))body.set(k,v);
     /* The reply is opaque (no-cors), so don't wait on it for long: the learner gets the result either way. */
     Promise.race([fetch(LEAD_FORM.url+'?isAjax=1',{method:'POST',mode:'no-cors',body}),new Promise(r=>setTimeout(r,4000))]).catch(()=>{}).then(()=>{lead=true;try{localStorage.setItem('palabra-lead','1')}catch(e){}goal('speaking_lead');result(data)})}}
-const pace=w=>w<90?'медленно — это нормально в начале':w<140?'спокойный, уверенный темп':'бегло, почти как в живом разговоре';
-function ctaCard(title){return `<div class="card cta"><h2>${title||'Хочешь говорить <em>свободнее?</em>'}</h2><p>На бесплатной встрече разберём твою речь вживую и составим план: что учить и в каком порядке.</p>
-    <a class="btn" id="cta" href="${BOOKING_URL}" target="_blank" rel="noopener noreferrer">Записаться на бесплатную встречу →</a><p class="fine">20 минут · бесплатно · можно по-русски</p></div>`}
+const pace=w=>w<90?(EN?'slow — normal at the start':'медленно — это нормально в начале'):w<140?(EN?'a calm, confident pace':'спокойный, уверенный темп'):(EN?'fluent, almost like a real conversation':'бегло, почти как в живом разговоре');
+function ctaCard(title){return `<div class="card cta"><h2>${title||(EN?'Want to speak <em>more freely?</em>':'Хочешь говорить <em>свободнее?</em>')}</h2><p>${EN?'In a free call we’ll go through your speaking live and make a plan: what to learn and in what order.':'На бесплатной встрече разберём твою речь вживую и составим план: что учить и в каком порядке.'}</p>
+    <a class="btn" id="cta" href="${BOOKING_URL}" target="_blank" rel="noopener noreferrer">${EN?'Book a free call →':'Записаться на бесплатную встречу →'}</a><p class="fine">${EN?'20 minutes · free · in English if you like':'20 минут · бесплатно · можно по-русски'}</p></div>`}
 function bindCta(){const a=$('#cta');if(!a)return;const u=new URL(BOOKING_URL),q=new URLSearchParams(location.search);for(const k of ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'])if(q.has(k))u.searchParams.set(k,q.get(k));a.href=u.href;a.onclick=()=>goal('speaking_cta')}
 function result(d){goal('speaking_result');const li=LEVELS.indexOf(d.level),fillers=Object.entries(d.fillers||{}),fn=fillers.reduce((a,[,n])=>a+n,0),p=last[topic],left=triesLeft();last[topic]={level:d.level,wpm:d.wpm};
-  app.innerHTML=`<div class="eyebrow">Твой разбор · ${esc(TOPICS[topic][0])}</div>
-    <div class="card" style="margin-top:14px"><div class="level"><strong>${d.level}</strong><div style="flex:1"><small>Примерный разговорный уровень</small><div class="track">${LEVELS.map((l,i)=>`<i class="${i<li?'on':i===li?'now':''}">${l}</i>`).join('')}</div></div></div>
+  app.innerHTML=`<div class="eyebrow">${EN?'Your feedback · ':'Твой разбор · '}${esc(TOPICS[topic][0])}</div>
+    <div class="card" style="margin-top:14px"><div class="level"><strong>${d.level}</strong><div style="flex:1"><small>${EN?'Approximate speaking level':'Примерный разговорный уровень'}</small><div class="track">${LEVELS.map((l,i)=>`<i class="${i<li?'on':i===li?'now':''}">${l}</i>`).join('')}</div></div></div>
       <p style="margin-top:12px">${esc(d.level_reason)}</p>
-      ${p?`<p class="prev">Прошлая попытка на эту тему: ${p.level}, ${p.wpm} слов в минуту. Сейчас: ${d.level}, ${d.wpm}.</p>`:''}
-      <div class="stats"><div><b>${d.wpm}</b><span>слов в минуту — ${pace(d.wpm)}</span></div><div><b>${fn}</b><span>${fn?'слов-паразитов: '+fillers.map(([f,n])=>esc(f)+(n>1?' ×'+n:'')).join(', '):'слов-паразитов — чистая речь'}</span></div></div>
-      <div class="block"><h3>Что уже получается</h3><ul>${d.strengths.map(s=>`<li>${esc(s)}</li>`).join('')}</ul></div>
-      ${d.corrections.length?`<div class="block"><h3>Что поправить</h3>${d.corrections.map(c=>`<div class="fix"><s lang="es">${esc(c.said)}</s> → <b lang="es">${esc(c.better)}</b><span>${esc(c.why)}</span></div>`).join('')}</div>`:''}
-      <div class="block"><h3>Как это сказал бы носитель</h3><p class="es" lang="es">${esc(d.improved)}</p></div>
-      <div class="block"><h3>Что тренировать</h3><p>${esc(d.tip)}</p></div>
-      <details><summary>Что я услышал</summary><p lang="es" style="margin-top:6px">${esc(d.transcript)}</p></details>
-      <p class="fine">Это оценка по одной минуте речи, а не полный уровень испанского.</p></div>
+      ${p?`<p class="prev">${EN?`Last try on this topic: ${p.level}, ${p.wpm} words a minute. Now: ${d.level}, ${d.wpm}.`:`Прошлая попытка на эту тему: ${p.level}, ${p.wpm} слов в минуту. Сейчас: ${d.level}, ${d.wpm}.`}</p>`:''}
+      <div class="stats"><div><b>${d.wpm}</b><span>${EN?`words a minute — ${pace(d.wpm)}`:`слов в минуту — ${pace(d.wpm)}`}</span></div><div><b>${fn}</b><span>${fn?(EN?'filler words: ':'слов-паразитов: ')+fillers.map(([f,n])=>esc(f)+(n>1?' ×'+n:'')).join(', '):(EN?'filler words — clean speech':'слов-паразитов — чистая речь')}</span></div></div>
+      <div class="block"><h3>${EN?'What’s already working':'Что уже получается'}</h3><ul>${d.strengths.map(s=>`<li>${esc(s)}</li>`).join('')}</ul></div>
+      ${d.corrections.length?`<div class="block"><h3>${EN?'What to fix':'Что поправить'}</h3>${d.corrections.map(c=>`<div class="fix"><s lang="es">${esc(c.said)}</s> → <b lang="es">${esc(c.better)}</b><span>${esc(c.why)}</span></div>`).join('')}</div>`:''}
+      <div class="block"><h3>${EN?'How a native speaker would say it':'Как это сказал бы носитель'}</h3><p class="es" lang="es">${esc(d.improved)}</p></div>
+      <div class="block"><h3>${EN?'What to practise':'Что тренировать'}</h3><p>${esc(d.tip)}</p></div>
+      <details><summary>${EN?'What I heard':'Что я услышал'}</summary><p lang="es" style="margin-top:6px">${esc(d.transcript)}</p></details>
+      <p class="fine">${EN?'This is an estimate from one minute of speech, not your full Spanish level.':'Это оценка по одной минуте речи, а не полный уровень испанского.'}</p></div>
     ${ctaCard()}
-    <div class="row two">${left>0?'<button class="btn ghost" id="same">Ещё раз на эту тему</button>':'<a class="btn ghost" href="/placement-game/">Игра: словарный запас</a>'}<button class="btn ghost" id="other">Другая тема</button></div>
+    <div class="row two">${left>0?(EN?'<button class="btn ghost" id="same">Same topic again</button>':'<button class="btn ghost" id="same">Ещё раз на эту тему</button>'):(EN?'<a class="btn ghost" href="/placement-game/">Vocabulary game</a>':'<a class="btn ghost" href="/placement-game/">Игра: словарный запас</a>')}<button class="btn ghost" id="other">${EN?'Another topic':'Другая тема'}</button></div>
     <p class="fine">${triesNote()}</p>`;
   if($('#same'))$('#same').onclick=showTopic;$('#other').onclick=home;bindCta();window.scrollTo(0,0)}
 home();
+if(EN){document.title='Speak — check your spoken Spanish | Español con Daniel';document.querySelector('meta[name="description"]').content='Spin the wheel, get a topic and answer out loud in Spanish for a minute. An approximate speaking level, your pace and your mistakes explained — free.';
+  document.querySelectorAll('[data-en]').forEach(e=>{e.textContent=e.dataset.en})}
+document.querySelectorAll('[data-setlang]').forEach(b=>b.onclick=()=>{if((b.dataset.setlang==='en')===EN)return;try{localStorage.setItem('lang',b.dataset.setlang)}catch(e){}location.reload()});
 </script>
 </body></html>
