@@ -1063,7 +1063,9 @@ function installGouache(){
     spain:{art:'spain',tall:707,body:[0,140,255],head:[1,0,195],armB:[140,207,92],armF:[15,207,90],sh:[185,225],legs:133,arm:220,
       bg:{name:'spain-bg',meadow:[637/1024,533/1536],hills:[534/1024,468/1536],crest:.62,feet:[.76,.74],fade:.74}},
     argentina:{art:'argentina',tall:717,body:[0,150,244],head:[25,0,181],armB:[148,192,93],armF:[-16,192,90],sh:[194,215],legs:110,arm:245,
-      bg:{name:'argentina-bg',meadow:[612/1024,557/1536],hills:[505/1024,498/1536],crest:.6,feet:[.75,.76],fade:.74}}};
+      bg:{name:'argentina-bg',meadow:[612/1024,557/1536],hills:[505/1024,498/1536],crest:.6,feet:[.75,.76],fade:.74}},
+    colombia:{art:'colombia',tall:735,body:[0,170,225],head:[-41,0,197],armB:[122,188,100],armF:[-45,188,104],sh:[147,203],legs:99,arm:285,
+      bg:{name:'colombia-bg',meadow:[868/1024,995/1536],hills:[562/1024,449/1536],crest:.71,feet:[.807,.815],fade:.74}}};
   /* Only painted heroes are offered. The other countries' words and themes stay in the file for when their art exists. */
   for(const id of Object.keys(countries))if(!HEROES[id])delete countries[id];
   heroArt=id=>`<img class="gq-fig" alt="" src="${src('figure-'+id)}">`;
